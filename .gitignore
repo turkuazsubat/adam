@@ -1,0 +1,77 @@
+# Genellikle Python Projelerinde Göz Ardı Edilmesi Gerekenler
+
+# ----------------------------------------------------------------------
+# 1. Sanal Ortamlar (Virtual Environments)
+# Python ortamları çok büyük yer kaplar ve herkes kendi bilgisayarında kurmalıdır.
+# Sizin venv klasörünüz de dahil.
+# ----------------------------------------------------------------------
+venv/
+.venv/
+env/
+.env/
+.direnv/
+pip-wheel-cache/
+pip-sync.log
+
+# ----------------------------------------------------------------------
+# 2. Byte-compiled (Otomatik Üretilen) Dosyalar
+# Python'ın kodu daha hızlı çalıştırmak için ürettiği dosyalar.
+# ----------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ----------------------------------------------------------------------
+# 3. İşletim Sistemi ve Editör Dosyaları
+# Kişisel ayarlarınızı veya işletim sisteminin ürettiği gereksiz dosyaları görmezden gelir.
+# ----------------------------------------------------------------------
+# VS Code
+.vscode/
+# IDE Ayarları (PyCharm vb.)
+.idea/
+
+# Mac OS Dosyaları
+.DS_Store
+
+# Windows Dosyaları
+Thumbs.db
+
+# ----------------------------------------------------------------------
+# 4. Derleme ve Paketleme (Packaging) Dosyaları
+# Kütüphane oluştururken kullanılan geçici klasörler.
+# ----------------------------------------------------------------------
+build/
+dist/
+*.egg-info/
+.eggs/
+sdist/
+wheels/
+*.egg
+
+# ----------------------------------------------------------------------
+# 5. Test/Veritabanı Dosyaları
+# Bazı popüler veritabanı dosyalarını ve test raporlarını dışlar.
+# ----------------------------------------------------------------------
+# SQLite Veritabanı
+*.sqlite
+*.db
+
+# Test ve Kapsam Raporları
+.coverage
+.tox/
+htmlcov/
+.pytest_cache/
+
+# ----------------------------------------------------------------------
+# 6. Güvenlik ve Ayar Dosyaları
+# Şifreler ve anahtarlar içeren ayar dosyalarını yüklemeyin.
+# ----------------------------------------------------------------------
+# Eğer projede kullanıyorsanız, kişisel config ve sırları dışlamak için:
+# config.ini
+# settings.local.py
+# *.key
+
+# ----------------------------------------------------------------------
+# 7. Jupyter/Veri Analizi Dosyaları (Eğer kullanıyorsanız)
+# ----------------------------------------------------------------------
+.ipynb_checkpoints

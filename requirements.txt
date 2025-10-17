@@ -1,0 +1,34 @@
+# === CORE DEPENDENCIES ===
+spacy==3.6.1
+thinc==8.1.12
+srsly==2.4.8
+ujson==5.8.0
+confection==0.1.3
+preshed==3.0.9
+blis==0.7.10
+catalogue==2.0.10
+murmurhash==1.0.10
+pathlib==1.0.1
+
+# === SPEECH TO TEXT (stt.py) ===
+openai-whisper==20231117
+sounddevice==0.4.6
+soundfile==0.12.1
+click==8.1.7
+
+# === NATURAL LANGUAGE UNDERSTANDING (nlu.py) ===
+spacy-transformers==1.3.4  # ileride ek NLP analizleri için
+en-core-web-sm 
+# === MEMORY, LOGGING, RESPONSE MANAGEMENT ===
+python-dotenv==1.0.1
+colorama==0.4.6
+sqlite-utils==3.37
+loguru==0.7.2
+
+# === FEEDBACK SYSTEM & RETRIEVAL ===
+requests==2.31.0
+beautifulsoup4==4.12.3
+lxml==5.2.1
+
+# === TESTING & DEV ===
+pytest==7.4.4
