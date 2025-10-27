@@ -108,3 +108,21 @@
 2025-10-27 19:59:23,809 [INFO] Kullanıcı: pekala çıkış | Asistan: Bu konuda emin değilim, biraz daha detay verebilir misiniz?
 2025-10-27 19:59:26,099 [INFO] Kullanıcı: çıkış | Asistan: Bu konuda emin değilim, biraz daha detay verebilir misiniz?
 2025-10-27 19:59:27,939 [INFO] Asistan kapatıldı.
+2025-10-27 21:00:30,417 - INFO - memory - SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+2025-10-27 21:00:30,417 - ERROR - memory - Veritaban\u0131 \u015fema �al\u0131\u015ft\u0131rma hatas\u0131: table versions already exists
+2025-10-27 21:00:30,419 - INFO - project_x - Asistan ba\u015flat\u0131l\u0131yor...
+2025-10-27 21:00:33,082 - DEBUG - memory - Etkile\u015fim interactions tablosuna kaydedildi.
+2025-10-27 21:00:33,082 - INFO - project_x - Kullan\u0131c\u0131: merhaba | Asistan: Merhaba! Size nas\u0131l yard\u0131mc\u0131 olabilirim?
+2025-10-27 21:00:35,292 - DEBUG - memory - Etkile\u015fim interactions tablosuna kaydedildi.
+2025-10-27 21:00:35,301 - INFO - project_x - Kullan\u0131c\u0131: nas\u0131ls\u0131n | Asistan: \u0130yiyim, te\u015fekk�r ederim. Siz nas\u0131ls\u0131n\u0131z?
+2025-10-27 21:00:39,842 - INFO - retriever - Wikipedia API iste\u011fi: https://tr.wikipedia.org/api/rest_v1/page/summary/roma_tarihi_nedir
+2025-10-27 21:00:39,847 - DEBUG - urllib3.connectionpool - Starting new HTTPS connection (1): tr.wikipedia.org:443
+2025-10-27 21:00:40,978 - DEBUG - urllib3.connectionpool - https://tr.wikipedia.org:443 "GET /api/rest_v1/page/summary/roma_tarihi_nedir HTTP/1.1" 403 92
+2025-10-27 21:00:40,980 - WARNING - retriever - API beklenmedik durum kodu d�nd�rd�: 403
+2025-10-27 21:00:40,982 - INFO - retriever - Yerel dosyadan bilgi �ekildi: roma.txt
+2025-10-27 21:00:40,994 - DEBUG - memory - Etkile\u015fim interactions tablosuna kaydedildi.
+2025-10-27 21:00:40,996 - INFO - project_x - Kullan\u0131c\u0131: roma tarihi nedir | Asistan: Roma, \u0130talya'n\u0131n ba\u015fkentidir ve Antik Roma \u0130mparatorlu\u011fu'nun merkezi olmu\u015ftur. \u015eu anda 2.8 milyon n�fusu vard\u0131r. Bu bilgi yerel dosyalardan �ekilmi\u015ftir.
+2025-10-27 21:00:44,272 - DEBUG - memory - Etkile\u015fim interactions tablosuna kaydedildi.
+2025-10-27 21:00:44,272 - INFO - project_x - Kullan\u0131c\u0131: italya tarihi | Asistan: Bu konuda emin de\u011filim, biraz daha detay verebilir misiniz?
+2025-10-27 21:00:46,192 - INFO - project_x - Asistan kapat\u0131ld\u0131.
+2025-10-27 21:00:46,192 - INFO - memory - Veritaban\u0131 ba\u011flant\u0131s\u0131 kapat\u0131ld\u0131.
