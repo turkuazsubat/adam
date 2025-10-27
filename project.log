@@ -1,1 +1,110 @@
 2025-10-17 20:30:40,443 [INFO] Input: Bu dizinin betimlemesi TRT taraf\u0131ndan Sesli Betimleme Derne\u011fi'ne yapt\u0131r\u0131lm\u0131\u015ft\u0131r. | Response: Bunu tam anlayamad\u0131m ama son sordu\u011funuz '' ile ilgili olabilir.
+2025-10-19 16:57:47,259 [INFO] Kullanıcı: merhaba | Asistan: Merhaba! Size nasıl yardımcı olabilirim?
+2025-10-19 16:57:50,499 [INFO] Kullanıcı: nasılsın | Asistan: İyiyim, teşekkür ederim. Siz nasılsınız?
+2025-10-19 16:58:00,722 [INFO] Kullanıcı: roma tarihi nedir? | Asistan: Bilgiye ulaşılamadı.
+2025-10-19 16:58:12,616 [INFO] Kullanıcı: Roma tarihi nedir? | Asistan: Bilgiye ulaşılamadı.
+2025-10-19 16:58:26,367 [INFO] Kullanıcı: Roma nedir cart curt | Asistan: Bilgiye ulaşılamadı.
+2025-10-19 17:03:35,459 [INFO] Kullanıcı: Roma nedir | Asistan: Bilgiye ulaşılamadı.
+2025-10-19 17:03:43,588 [INFO] Kullanıcı: Roma tarihi nedir? | Asistan: Bilgiye ulaşılamadı.
+2025-10-19 17:07:49,064 [INFO] API isteği yapılıyor: https://tr.wikipedia.org/api/rest_v1/page/summary/roma_tarihi_nedir
+2025-10-19 17:07:49,705 [WARNING] API'den yanıt alınamadı veya status code: 403. Yerel yedeklemeye geçiliyor.
+2025-10-19 17:07:49,705 [WARNING] Bilgiye ulaşılamadı (ne çevrimiçi ne yerel veri bulunamadı).
+2025-10-19 17:07:49,721 [INFO] Kullanıcı: Roma tarihi nedir? | Asistan: Bilgiye ulaşılamadı. Yardımcı olabileceğim başka bir konu var mı?
+2025-10-19 17:07:58,455 [INFO] Kullanıcı: Roma | Asistan: Bu konuda emin değilim, biraz daha detay verebilir misiniz?
+2025-10-19 17:12:21,772 [INFO] API isteği yapılıyor: https://tr.wikipedia.org/api/rest_v1/page/summary/roma_tarihi_nedir
+2025-10-19 17:12:23,008 [WARNING] API'den yanıt alınamadı veya status code: 403. Yerel yedeklemeye geçiliyor.
+2025-10-19 17:12:23,008 [WARNING] Bilgiye ulaşılamadı (ne çevrimiçi ne yerel veri bulunamadı).
+2025-10-19 17:12:23,035 [INFO] Kullanıcı: Roma tarihi nedir? | Asistan: Bilgiye ulaşılamadı. Yardımcı olabileceğim başka bir konu var mı?
+2025-10-23 00:28:55,458 [INFO] Kullanıcı: Merhaba | Asistan: Merhaba! Size nasıl yardımcı olabilirim?
+2025-10-23 00:29:06,638 [INFO] Kullanıcı: Roma tarihi hakkında bilgi verir misin | Asistan: Bu konuda emin değilim, biraz daha detay verebilir misiniz?
+2025-10-23 00:29:13,486 [INFO] Kullanıcı: Roma tarihi | Asistan: Bu konuda emin değilim, biraz daha detay verebilir misiniz?
+2025-10-23 00:38:17,975 [INFO] Asistan başlatılıyor...
+2025-10-23 00:38:25,388 [INFO] Kullanıcı: Merhaba | Asistan: Merhaba! Size nasıl yardımcı olabilirim?
+2025-10-23 00:38:36,171 [INFO] API isteği yapılıyor: https://tr.wikipedia.org/api/rest_v1/page/summary/roma_tarihi_hakkında_bilgi_verir_misin
+2025-10-23 00:38:36,837 [WARNING] API'den yanıt alınamadı (Status: 403). Yerel yedeklemeye geçiliyor.
+2025-10-23 00:38:36,861 [INFO] Yerel dosyadan bilgi çekildi: roma.txt.txt
+2025-10-23 00:38:36,900 [INFO] Kullanıcı: Roma tarihi hakkında bilgi verir misin? | Asistan: Roma, İtalya'nın başkentidir ve Antik Roma İmparatorluğu'nun merkezi olmuştur. Şu anda 2.8 milyon nüfusu vardır. Bu bilgi yerel dosyalardan çekilmiştir.
+2025-10-23 00:38:45,444 [INFO] Asistan kapatıldı.
+2025-10-23 00:46:19,032 [INFO] Asistan başlatılıyor...
+2025-10-23 00:46:25,697 [INFO] Kullanıcı: merhaba | Asistan: Merhaba! Size nasıl yardımcı olabilirim?
+2025-10-23 00:46:31,945 [INFO] API isteği yapılıyor: https://tr.wikipedia.org/api/rest_v1/page/summary/roma_tarihi_hakkında_bilgi_verir_misin
+2025-10-23 00:46:32,824 [WARNING] API'den yanıt alınamadı (Status: 403). Yerel yedeklemeye geçiliyor.
+2025-10-23 00:46:32,836 [INFO] Yerel dosyadan bilgi çekildi: roma.txt.txt
+2025-10-23 00:46:32,888 [INFO] Kullanıcı: roma tarihi hakkında bilgi verir misin | Asistan: Roma, İtalya'nın başkentidir ve Antik Roma İmparatorluğu'nun merkezi olmuştur. Şu anda 2.8 milyon nüfusu vardır. Bu bilgi yerel dosyalardan çekilmiştir.
+2025-10-23 00:46:37,760 [INFO] Kullanıcı: peki ya italya tarihi | Asistan: Bu konuda emin değilim, biraz daha detay verebilir misiniz?
+2025-10-23 00:46:43,627 [INFO] Kullanıcı: italya tarihi | Asistan: Bu konuda emin değilim, biraz daha detay verebilir misiniz?
+2025-10-23 00:46:47,816 [INFO] Asistan kapatıldı.
+2025-10-23 00:56:35,026 [INFO] Asistan başlatılıyor...
+2025-10-23 00:56:42,315 [INFO] API isteği yapılıyor: https://tr.wikipedia.org/api/rest_v1/page/summary/italya_hakkında_bilgi_verir_misin
+2025-10-23 00:56:43,035 [WARNING] API'den yanıt alınamadı (Status: 403). Yerel yedeklemeye geçiliyor.
+2025-10-23 00:56:43,039 [WARNING] Bilgiye ulaşılamadı (ne çevrimiçi ne yerel veri bulunamadı).
+2025-10-23 00:56:43,097 [INFO] Kullanıcı: italya hakkında bilgi verir misin | Asistan: Bilgiye ulaşılamadı. Yardımcı olabileceğim başka bir konu var mı?
+2025-10-23 00:56:49,260 [INFO] Asistan kapatıldı.
+2025-10-23 01:01:07,894 [INFO] Asistan başlatılıyor...
+2025-10-23 01:01:12,390 [INFO] API isteği yapılıyor: https://tr.wikipedia.org/api/rest_v1/page/summary/italya_tarihi
+2025-10-23 01:01:13,052 [WARNING] API'den yanıt alınamadı (Status: 403). Yerel yedeklemeye geçiliyor.
+2025-10-23 01:01:13,052 [WARNING] Bilgiye ulaşılamadı (ne çevrimiçi ne yerel veri bulunamadı).
+2025-10-23 01:01:13,074 [INFO] Kullanıcı: italya tarihi? | Asistan: Bilgiye ulaşılamadı. Yardımcı olabileceğim başka bir konu var mı?
+2025-10-23 01:01:16,040 [INFO] Asistan kapatıldı.
+2025-10-23 01:01:58,432 [INFO] Asistan başlatılıyor...
+2025-10-23 01:02:06,250 [INFO] API isteği yapılıyor: https://tr.wikipedia.org/api/rest_v1/page/summary/italya_tarihi_hakkında_bilgi_verir_misin
+2025-10-23 01:02:06,758 [WARNING] API'den yanıt alınamadı (Status: 403). Yerel yedeklemeye geçiliyor.
+2025-10-23 01:02:06,758 [WARNING] Bilgiye ulaşılamadı (ne çevrimiçi ne yerel veri bulunamadı).
+2025-10-23 01:02:06,798 [INFO] Kullanıcı: italya tarihi hakkında bilgi verir misin | Asistan: Bilgiye ulaşılamadı. Yardımcı olabileceğim başka bir konu var mı?
+2025-10-23 01:02:08,595 [INFO] Asistan kapatıldı.
+2025-10-23 01:04:51,883 [INFO] Asistan başlatılıyor...
+2025-10-23 01:04:59,709 [INFO] API isteği yapılıyor: https://tr.wikipedia.org/api/rest_v1/page/summary/italya_tarihi_hakkında_bilgi_verir_misin
+2025-10-23 01:05:00,519 [WARNING] API'den yanıt alınamadı (Status: 403). Yerel yedeklemeye geçiliyor.
+2025-10-23 01:05:00,522 [WARNING] Bilgiye ulaşılamadı (ne çevrimiçi ne yerel veri bulunamadı).
+2025-10-23 01:05:00,587 [INFO] Kullanıcı: italya tarihi hakkında bilgi verir misin? | Asistan: Bilgiye ulaşılamadı. Yardımcı olabileceğim başka bir konu var mı?
+2025-10-23 01:05:03,320 [INFO] Asistan kapatıldı.
+2025-10-23 01:07:28,544 [INFO] Asistan başlatılıyor...
+2025-10-23 01:07:33,787 [INFO] API isteği yapılıyor: https://tr.wikipedia.org/api/rest_v1/page/summary/italya_hakkında_bilgi_verir_misin
+2025-10-23 01:07:34,823 [WARNING] API'den yanıt alınamadı (Status: 403). Yerel yedeklemeye geçiliyor.
+2025-10-23 01:07:34,825 [WARNING] Bilgiye ulaşılamadı (ne çevrimiçi ne yerel veri bulunamadı).
+2025-10-23 01:07:34,883 [INFO] Kullanıcı: italya hakkında bilgi verir misin | Asistan: Bilgiye ulaşılamadı. Yardımcı olabileceğim başka bir konu var mı?
+2025-10-23 01:07:37,129 [INFO] Asistan kapatıldı.
+2025-10-23 01:09:54,796 [INFO] Asistan başlatılıyor...
+2025-10-23 01:09:58,393 [INFO] Kullanıcı: italya tarihi | Asistan: Bu konuda emin değilim, biraz daha detay verebilir misiniz?
+2025-10-23 01:10:08,133 [INFO] API isteği yapılıyor: https://tr.wikipedia.org/api/rest_v1/page/summary/i̇talya_tarihi_nedir
+2025-10-23 01:10:08,917 [WARNING] API'den yanıt alınamadı (Status: 403). Yerel yedeklemeye geçiliyor.
+2025-10-23 01:10:08,919 [WARNING] Bilgiye ulaşılamadı (ne çevrimiçi ne yerel veri bulunamadı).
+2025-10-23 01:10:08,974 [INFO] Kullanıcı: İtalya tarihi nedir | Asistan: Bilgiye ulaşılamadı. Yardımcı olabileceğim başka bir konu var mı?
+2025-10-23 01:10:12,063 [INFO] API isteği yapılıyor: https://tr.wikipedia.org/api/rest_v1/page/summary/roma_tarihi_nedir
+2025-10-23 01:10:12,500 [WARNING] API'den yanıt alınamadı (Status: 403). Yerel yedeklemeye geçiliyor.
+2025-10-23 01:10:12,500 [INFO] Yerel dosyadan bilgi çekildi: roma.txt.txt
+2025-10-23 01:10:12,542 [INFO] Kullanıcı: roma tarihi nedir | Asistan: Roma, İtalya'nın başkentidir ve Antik Roma İmparatorluğu'nun merkezi olmuştur. Şu anda 2.8 milyon nüfusu vardır. Bu bilgi yerel dosyalardan çekilmiştir.
+2025-10-23 01:10:15,044 [INFO] Asistan kapatıldı.
+2025-10-23 01:18:23,390 [INFO] Asistan başlatılıyor...
+2025-10-23 01:18:29,795 [INFO] API isteği yapılıyor: https://tr.wikipedia.org/api/rest_v1/page/summary/italya_tarihi_hakkında_bilgi
+2025-10-23 01:18:30,561 [WARNING] API'den yanıt alınamadı (Status: 403). Yerel yedeklemeye geçiliyor.
+2025-10-23 01:18:30,561 [WARNING] Bilgiye ulaşılamadı (ne çevrimiçi ne yerel veri bulunamadı).
+2025-10-23 01:18:30,607 [INFO] Kullanıcı: italya tarihi hakkında bilgi | Asistan: Bilgiye ulaşılamadı. Yardımcı olabileceğim başka bir konu var mı?
+2025-10-23 01:18:35,630 [INFO] API isteği yapılıyor: https://tr.wikipedia.org/api/rest_v1/page/summary/roma_tarihi_nedir
+2025-10-23 01:18:36,288 [WARNING] API'den yanıt alınamadı (Status: 403). Yerel yedeklemeye geçiliyor.
+2025-10-23 01:18:36,290 [INFO] Yerel dosyadan bilgi çekildi: roma.txt.txt
+2025-10-23 01:18:36,344 [INFO] Kullanıcı: roma tarihi nedir | Asistan: Roma, İtalya'nın başkentidir ve Antik Roma İmparatorluğu'nun merkezi olmuştur. Şu anda 2.8 milyon nüfusu vardır. Bu bilgi yerel dosyalardan çekilmiştir.
+2025-10-23 01:18:40,495 [INFO] Asistan kapatıldı.
+2025-10-23 01:19:14,629 [INFO] Asistan başlatılıyor...
+2025-10-23 01:19:17,850 [INFO] API isteği yapılıyor: https://tr.wikipedia.org/api/rest_v1/page/summary/italya_nedir
+2025-10-23 01:19:18,576 [WARNING] API'den yanıt alınamadı (Status: 403). Yerel yedeklemeye geçiliyor.
+2025-10-23 01:19:18,576 [WARNING] Bilgiye ulaşılamadı (ne çevrimiçi ne yerel veri bulunamadı).
+2025-10-23 01:19:18,608 [INFO] Kullanıcı: italya nedir | Asistan: Bilgiye ulaşılamadı. Yardımcı olabileceğim başka bir konu var mı?
+2025-10-23 01:19:20,883 [INFO] Asistan kapatıldı.
+2025-10-23 01:20:55,881 [INFO] Asistan başlatılıyor...
+2025-10-23 01:21:00,426 [INFO] Wikipedia API isteği: https://tr.wikipedia.org/api/rest_v1/page/summary/amerika_nedir
+2025-10-23 01:21:01,177 [WARNING] API beklenmedik durum kodu döndürdü: 403
+2025-10-23 01:21:01,189 [WARNING] Eşleşen yerel dosya bulunamadı (sorgu: amerika).
+2025-10-23 01:21:01,220 [INFO] Kullanıcı: amerika nedir? | Asistan: Bilgiye ulaşılamadı. Yardımcı olabileceğim başka bir konu var mı?
+2025-10-23 01:21:03,369 [INFO] Asistan kapatıldı.
+2025-10-27 19:59:06,141 [INFO] Asistan başlatılıyor...
+2025-10-27 19:59:08,394 [INFO] Kullanıcı: merhaba | Asistan: Merhaba! Size nasıl yardımcı olabilirim?
+2025-10-27 19:59:11,069 [INFO] Kullanıcı: nasılsıj | Asistan: Bu konuda emin değilim, biraz daha detay verebilir misiniz?
+2025-10-27 19:59:15,449 [INFO] Wikipedia API isteği: https://tr.wikipedia.org/api/rest_v1/page/summary/roma_tarihi_nedir
+2025-10-27 19:59:15,798 [WARNING] API beklenmedik durum kodu döndürdü: 403
+2025-10-27 19:59:15,815 [INFO] Yerel dosyadan bilgi çekildi: roma.txt.txt
+2025-10-27 19:59:15,839 [INFO] Kullanıcı: roma tarihi nedir | Asistan: Roma, İtalya'nın başkentidir ve Antik Roma İmparatorluğu'nun merkezi olmuştur. Şu anda 2.8 milyon nüfusu vardır. Bu bilgi yerel dosyalardan çekilmiştir.
+2025-10-27 19:59:20,479 [INFO] Kullanıcı: peki ya italya tarihi | Asistan: Bu konuda emin değilim, biraz daha detay verebilir misiniz?
+2025-10-27 19:59:23,809 [INFO] Kullanıcı: pekala çıkış | Asistan: Bu konuda emin değilim, biraz daha detay verebilir misiniz?
+2025-10-27 19:59:26,099 [INFO] Kullanıcı: çıkış | Asistan: Bu konuda emin değilim, biraz daha detay verebilir misiniz?
+2025-10-27 19:59:27,939 [INFO] Asistan kapatıldı.

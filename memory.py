@@ -1,25 +1,42 @@
 import sqlite3
+from datetime import datetime
+import os
 
 class MemoryManager:
-    def __init__(self, db_path):
-        self.conn = sqlite3.connect(db_path)
-        self.create_table()
+    def __init__(self, db_path="db/project.db"):
+        self.db_path = db_path
+        if not os.path.exists("db"):
+            os.makedirs("db")
+        self._init_db()
 
-    def create_table(self):
-        self.conn.execute("""
-        CREATE TABLE IF NOT EXISTS memory(
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            user_input TEXT,
-            response TEXT
-        )
+    def _init_db(self):
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS conversations (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                timestamp TEXT,
+                user_input TEXT,
+                assistant_response TEXT
+            )
         """)
+        conn.commit()
+        conn.close()
 
-    def save_interaction(self, user_input, response):
-        self.conn.execute("INSERT INTO memory (user_input, response) VALUES (?, ?)", (user_input, response))
-        self.conn.commit()
+    def save_interaction(self, user_input, assistant_response):
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        cursor.execute(
+            "INSERT INTO conversations (timestamp, user_input, assistant_response) VALUES (?, ?, ?)",
+            (datetime.now().isoformat(), user_input, assistant_response)
+        )
+        conn.commit()
+        conn.close()
 
-    def get_last_user_input(self):
-        cur = self.conn.cursor()
-        cur.execute("SELECT user_input FROM memory ORDER BY id DESC LIMIT 1")
-        row = cur.fetchone()
-        return row[0] if row else ""
+    def get_last_interactions(self, limit=5):
+        conn = sqlite3.connect(self.db_path)
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM conversations ORDER BY id DESC LIMIT ?", (limit,))
+        rows = cursor.fetchall()
+        conn.close()
+        return rows

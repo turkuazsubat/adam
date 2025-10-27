@@ -1,8 +1,26 @@
-def generate_response(intent, memory):
-    if intent == "open_calculator":
-        return "Hesap makinesini açıyorum."
-    elif intent == "take_note":
-        return "Notunuzu kaydedebilirim."
+from nlu import interpret_text
+from retriever_stub import retrieve_info
+from memory import MemoryManager
+
+memory = MemoryManager()
+
+def generate_response(user_input: str) -> str:
+    analysis = interpret_text(user_input)
+    intent = analysis["intent"]
+    keywords = analysis["keywords"]
+
+    if intent == "query":
+        topic = " ".join(keywords)
+        result = retrieve_info(topic)
+        memory.save_interaction(user_input, result)
+        return result
+
+    elif "merhaba" in user_input.lower():
+        return "Merhaba! Size nasıl yardımcı olabilirim?"
+
+    elif "nasılsın" in user_input.lower():
+        return "İyiyim, teşekkür ederim. Siz nasılsınız?"
+
     else:
-        last = memory.get_last_user_input()
-        return f"Bunu tam anlayamadım ama son sorduğunuz '{last}' ile ilgili olabilir."
+        return "Bu konuda emin değilim, biraz daha detay verebilir misiniz?"
+
