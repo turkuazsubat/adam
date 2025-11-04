@@ -6,6 +6,7 @@ import logging
 from response import generate_response
 from memory import MemoryManager 
 from logger import log_event # <<< logger.py'den alıyoruz
+from feedback import FeedbackManager
 
 # Veritabanı ve şema dosya yolları
 DB_PATH = "db/project.db" # db klasörü içine
@@ -29,7 +30,8 @@ def main():
     # YENİ HAFıZA BAŞLATMA: Veritabanı ve şema yollarını geçiriyoruz.
     # Bu, ilk çalıştırmada db/project.db dosyasını oluşturur ve tabloları kurar.
     try:
-        memory = MemoryManager(db_path=DB_PATH, schema_path=SCHEMA_PATH) 
+        memory = MemoryManager(db_path=DB_PATH, schema_path=SCHEMA_PATH)
+        feedback_manager = FeedbackManager(memory) 
     except Exception as e:
         log_event("CRITICAL", f"Hafıza Yöneticisi başlatılamadı: {e}")
         # Programı kapatmak isteyebilirsiniz, şimdilik devam edelim.
@@ -42,18 +44,26 @@ def main():
     while True:
         try:
             user_input = input("Siz: ").strip()
-            if user_input.lower() in ["çık", "exit", "quit"]:
+
+            if user_input.startswith("!"):
+                response = feedback_manager.handle_command(user_input)
+                print("Asistan (Geri Bildirim): ",response )
+                log_event("INFO",f"Geri Bildirim Komutu: {user_input} | Cevap: {response}")
+ 
+            elif user_input.lower() in ["çık", "exit", "quit"]:
                 log_event("INFO", "Asistan kapatıldı.")
                 # Bağlantıyı kapatmayı unutmayalım
                 memory.close() 
                 print("Asistan: Görüşmek üzere!")
                 break
+            
+            else:
 
-            answer = generate_response(user_input, memory) # <<< memory'yi de gönderiyoruz
-            print("Asistan:", answer)
+                answer = generate_response(user_input, memory) # <<< memory'yi de gönderiyoruz
+                print("Asistan:", answer)
 
-            # memory.save_interaction çağrısı zaten response.py'de yapılıyor.
-            log_event("INFO", f"Kullanıcı: {user_input} | Asistan: {answer}")
+                # memory.save_interaction çağrısı zaten response.py'de yapılıyor.
+                log_event("INFO", f"Kullanıcı: {user_input} | Asistan: {answer}")
             
         except KeyboardInterrupt:
             log_event("INFO", "Kullanıcı tarafından durduruldu (Ctrl+C).")

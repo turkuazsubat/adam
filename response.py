@@ -22,7 +22,7 @@ def generate_response(user_input: str, memory) -> str:
         # En iyisi, retriever.py'nin yaptığı gibi, yine de tüm kelimeleri göndermek.
         topic = " ".join(keywords)
 
-        result = retrieve_info(topic)
+        result = retrieve_info(user_input,memory)
         
         # Etkileşim kaydı
         memory.save_interaction(user_input, result)

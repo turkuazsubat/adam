@@ -126,3 +126,198 @@
 2025-10-27 21:00:44,272 - INFO - project_x - Kullan\u0131c\u0131: italya tarihi | Asistan: Bu konuda emin de\u011filim, biraz daha detay verebilir misiniz?
 2025-10-27 21:00:46,192 - INFO - project_x - Asistan kapat\u0131ld\u0131.
 2025-10-27 21:00:46,192 - INFO - memory - Veritaban\u0131 ba\u011flant\u0131s\u0131 kapat\u0131ld\u0131.
+2025-10-27 21:18:08,664 - INFO - memory - SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+2025-10-27 21:18:08,666 - ERROR - memory - Veritaban\u0131 \u015fema çal\u0131\u015ft\u0131rma hatas\u0131: table versions already exists
+2025-10-27 21:18:08,669 - INFO - project_x - Asistan ba\u015flat\u0131l\u0131yor...
+2025-10-27 21:18:11,212 - DEBUG - memory - Etkile\u015fim interactions tablosuna kaydedildi.
+2025-10-27 21:18:11,222 - INFO - project_x - Kullan\u0131c\u0131: merhaba | Asistan: Merhaba! Size nas\u0131l yard\u0131mc\u0131 olabilirim?
+2025-10-27 21:18:13,381 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/italya_nedir
+2025-10-27 21:18:14,484 - WARNING - retriever - API yan\u0131t\u0131 geçerli ancak bilgi bulunamad\u0131.
+2025-10-27 21:18:14,487 - WARNING - retriever - E\u015fle\u015fen yerel dosya bulunamad\u0131 (sorgu: italya).
+2025-10-27 21:18:14,498 - DEBUG - memory - Etkile\u015fim interactions tablosuna kaydedildi.
+2025-10-27 21:18:14,502 - INFO - project_x - Kullan\u0131c\u0131: italya nedir | Asistan: Bilgiye ula\u015f\u0131lamad\u0131. Yard\u0131mc\u0131 olabilece\u011fim ba\u015fka bir konu var m\u0131?
+2025-10-27 21:18:20,112 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/roma_nedir
+2025-10-27 21:18:21,027 - WARNING - retriever - API yan\u0131t\u0131 geçerli ancak bilgi bulunamad\u0131.
+2025-10-27 21:18:21,030 - INFO - retriever - Yerel dosyadan bilgi çekildi: roma.txt
+2025-10-27 21:18:21,042 - DEBUG - memory - Etkile\u015fim interactions tablosuna kaydedildi.
+2025-10-27 21:18:21,044 - INFO - project_x - Kullan\u0131c\u0131: roma nedir | Asistan: Roma, \u0130talya'n\u0131n ba\u015fkentidir ve Antik Roma \u0130mparatorlu\u011fu'nun merkezi olmu\u015ftur. \u015eu anda 2.8 milyon nüfusu vard\u0131r. Bu bilgi yerel dosyalardan çekilmi\u015ftir.
+2025-10-27 21:18:22,972 - INFO - project_x - Asistan kapat\u0131ld\u0131.
+2025-10-27 21:18:22,972 - INFO - memory - Veritaban\u0131 ba\u011flant\u0131s\u0131 kapat\u0131ld\u0131.
+2025-10-27 21:21:38,908 - INFO - memory - SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+2025-10-27 21:21:38,912 - ERROR - memory - Veritaban\u0131 \u015fema çal\u0131\u015ft\u0131rma hatas\u0131: table versions already exists
+2025-10-27 21:21:38,912 - INFO - project_x - Asistan ba\u015flat\u0131l\u0131yor...
+2025-10-27 21:21:41,376 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/italya
+2025-10-27 21:21:41,726 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-10-27 21:21:41,742 - DEBUG - memory - Etkile\u015fim interactions tablosuna kaydedildi.
+2025-10-27 21:21:41,742 - INFO - project_x - Kullan\u0131c\u0131: italya nedir | Asistan: Ä°talya, resmÃ® adÄ±yla Ä°talyan Cumhuriyeti, GÃ¼ney Avrupa'da, bÃ¼yÃ¼k Ã¶lÃ§Ã¼de Ä°talya YarÄ±madasÄ± Ã¼zerinde yer alan bir Ã¼lke. Akdeniz'in en bÃ¼yÃ¼k iki adasÄ± Sicilya ve Sardinya da Ä°talyan topraklarÄ±dÄ±r. YÃ¼zÃ¶lÃ§Ã¼mÃ¼ 301.340Â km2 olan Ã¼lkenin kuzeyde Alpler bÃ¶lgesinde Fransa, Ä°sviÃ§re, Avusturya ve Slovenya'yla kara sÄ±nÄ±rÄ± vardÄ±r. BaÄŸÄ±msÄ±z iki Avrupa Ã¼lkesi olan Vatikan ve San Marino da Ä°talya'nÄ±n yarÄ±madadaki topraklarÄ± iÃ§ine sÄ±kÄ±ÅŸmÄ±ÅŸ anklav Ã¼lkelerdir. Ä°talya'nÄ±n ayrÄ±ca biri Ä°sviÃ§re (Campione), diÄŸeriyse Tunus (Lampedusa) tarafÄ±ndan kara ve deniz sÄ±nÄ±rlarÄ±yla kuÅŸatÄ±lmÄ±ÅŸ iki eksklavÄ± bulunur. NÃ¼fusu 58 milyon olan Ä°talya, Avrupa BirliÄŸi'nin en kalabalÄ±k Ã¼Ã§Ã¼ncÃ¼ Ã¼lkesidir. BaÅŸkenti ve en bÃ¼yÃ¼k ÅŸehri Roma, yÃ¼zyÄ±llar boyunca BatÄ± uygarlÄ±ÄŸÄ±nÄ±n merkezi olmuÅŸ, mimaride barok Ã¼slÃ»bunun doÄŸuÅŸuna tanÄ±klÄ±k etmiÅŸ ve eskiden beri Katolik Kilisesi'nin merkezi olmuÅŸtur.
+2025-10-27 21:21:49,221 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/ankara
+2025-10-27 21:21:49,672 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-10-27 21:21:49,689 - DEBUG - memory - Etkile\u015fim interactions tablosuna kaydedildi.
+2025-10-27 21:21:49,689 - INFO - project_x - Kullan\u0131c\u0131: ankara nedir | Asistan: Ankara, TÃ¼rkiye'nin baÅŸkenti ve Ankara ilinin merkezi olan ÅŸehirdir. AynÄ± zamanda dÃ¼nyada en bÃ¼yÃ¼k yÃ¼zÃ¶lÃ§Ã¼mÃ¼ne sahip olan baÅŸkenttir. CoÄŸrafi olarak TÃ¼rkiye'nin merkezine yakÄ±n bir konumda bulunur ve Ä°Ã§ Anadolu BÃ¶lgesi'nde yer alÄ±r. Ãœlkenin Ä°stanbul'dan sonra nÃ¼fus bakÄ±mÄ±ndan ikinci, kentsel alan bakÄ±mÄ±ndan birinci, metropol alan bakÄ±mÄ±ndan ise Konya ve Sivas'tan sonra en bÃ¼yÃ¼k Ã¼Ã§Ã¼ncÃ¼ ÅŸehridir. Toplam 25 tane ilÃ§esi vardÄ±r, bunlarÄ±n 9'u merkez ilÃ§edir.
+2025-10-27 21:21:53,693 - INFO - project_x - Asistan kapat\u0131ld\u0131.
+2025-10-27 21:21:53,703 - INFO - memory - Veritaban\u0131 ba\u011flant\u0131s\u0131 kapat\u0131ld\u0131.
+2025-10-27 21:23:22,443 - INFO - memory - SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+2025-10-27 21:23:22,443 - ERROR - memory - Veritaban\u0131 \u015fema çal\u0131\u015ft\u0131rma hatas\u0131: table versions already exists
+2025-10-27 21:23:22,443 - INFO - project_x - Asistan ba\u015flat\u0131l\u0131yor...
+2025-10-27 21:23:25,803 - DEBUG - memory - Etkile\u015fim interactions tablosuna kaydedildi.
+2025-10-27 21:23:25,803 - INFO - project_x - Kullan\u0131c\u0131: merhaba | Asistan: Merhaba! Size nas\u0131l yard\u0131mc\u0131 olabilirim?
+2025-10-27 21:23:28,132 - DEBUG - memory - Etkile\u015fim interactions tablosuna kaydedildi.
+2025-10-27 21:23:28,132 - INFO - project_x - Kullan\u0131c\u0131: nas\u0131ls\u0131n | Asistan: \u0130yiyim, te\u015fekkür ederim. Siz nas\u0131ls\u0131n\u0131z?
+2025-10-27 21:23:31,232 - DEBUG - memory - Etkile\u015fim interactions tablosuna kaydedildi.
+2025-10-27 21:23:31,232 - INFO - project_x - Kullan\u0131c\u0131: te\u015fekkür ederim | Asistan: Bu konuda emin de\u011filim, biraz daha detay verebilir misiniz?
+2025-10-27 21:23:37,603 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/ankara
+2025-10-27 21:23:37,973 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-10-27 21:23:37,983 - DEBUG - memory - Etkile\u015fim interactions tablosuna kaydedildi.
+2025-10-27 21:23:37,989 - INFO - project_x - Kullan\u0131c\u0131: ankara nedir | Asistan: Ankara, Türkiye'nin ba\u015fkenti ve Ankara ilinin merkezi olan \u015fehirdir. Ayn\u0131 zamanda dünyada en büyük yüzölçümüne sahip olan ba\u015fkenttir. Co\u011frafi olarak Türkiye'nin merkezine yak\u0131n bir konumda bulunur ve \u0130ç Anadolu Bölgesi'nde yer al\u0131r. Ülkenin \u0130stanbul'dan sonra nüfus bak\u0131m\u0131ndan ikinci, kentsel alan bak\u0131m\u0131ndan birinci, metropol alan bak\u0131m\u0131ndan ise Konya ve Sivas'tan sonra en büyük üçüncü \u015fehridir. Toplam 25 tane ilçesi vard\u0131r, bunlar\u0131n 9'u merkez ilçedir.
+2025-10-27 21:23:41,993 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/italya
+2025-10-27 21:23:42,361 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-10-27 21:23:42,380 - DEBUG - memory - Etkile\u015fim interactions tablosuna kaydedildi.
+2025-10-27 21:23:42,383 - INFO - project_x - Kullan\u0131c\u0131: italya nedir | Asistan: \u0130talya, resmî ad\u0131yla \u0130talyan Cumhuriyeti, Güney Avrupa'da, büyük ölçüde \u0130talya Yar\u0131madas\u0131 üzerinde yer alan bir ülke. Akdeniz'in en büyük iki adas\u0131 Sicilya ve Sardinya da \u0130talyan topraklar\u0131d\u0131r. Yüzölçümü 301.340 km2 olan ülkenin kuzeyde Alpler bölgesinde Fransa, \u0130sviçre, Avusturya ve Slovenya'yla kara s\u0131n\u0131r\u0131 vard\u0131r. Ba\u011f\u0131ms\u0131z iki Avrupa ülkesi olan Vatikan ve San Marino da \u0130talya'n\u0131n yar\u0131madadaki topraklar\u0131 içine s\u0131k\u0131\u015fm\u0131\u015f anklav ülkelerdir. \u0130talya'n\u0131n ayr\u0131ca biri \u0130sviçre (Campione), di\u011feriyse Tunus (Lampedusa) taraf\u0131ndan kara ve deniz s\u0131n\u0131rlar\u0131yla ku\u015fat\u0131lm\u0131\u015f iki eksklav\u0131 bulunur. Nüfusu 58 milyon olan \u0130talya, Avrupa Birli\u011fi'nin en kalabal\u0131k üçüncü ülkesidir. Ba\u015fkenti ve en büyük \u015fehri Roma, yüzy\u0131llar boyunca Bat\u0131 uygarl\u0131\u011f\u0131n\u0131n merkezi olmu\u015f, mimaride barok üslûbunun do\u011fu\u015funa tan\u0131kl\u0131k etmi\u015f ve eskiden beri Katolik Kilisesi'nin merkezi olmu\u015ftur.
+2025-10-27 21:23:47,452 - INFO - project_x - Asistan kapat\u0131ld\u0131.
+2025-10-27 21:23:47,452 - INFO - memory - Veritaban\u0131 ba\u011flant\u0131s\u0131 kapat\u0131ld\u0131.
+2025-11-04 18:41:22,419 - INFO - memory - SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+2025-11-04 18:41:22,445 - ERROR - memory - Veritaban\u0131 \u015fema çal\u0131\u015ft\u0131rma hatas\u0131: table versions already exists
+2025-11-04 18:41:22,447 - INFO - project_x - Asistan ba\u015flat\u0131l\u0131yor...
+2025-11-04 18:41:27,237 - DEBUG - memory - Etkile\u015fim interactions tablosuna kaydedildi.
+2025-11-04 18:41:27,237 - INFO - project_x - Kullan\u0131c\u0131: merhabalar | Asistan: Merhaba! Size nas\u0131l yard\u0131mc\u0131 olabilirim?
+2025-11-04 18:41:32,747 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/polonya
+2025-11-04 18:41:33,384 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-11-04 18:41:33,391 - DEBUG - memory - Etkile\u015fim interactions tablosuna kaydedildi.
+2025-11-04 18:41:33,394 - INFO - project_x - Kullan\u0131c\u0131: polonya nedir | Asistan: Polonya, resmî ad\u0131yla Polonya Cumhuriyeti, Orta Avrupa'da bulunan bir ülkedir. Kom\u015fular\u0131, bat\u0131da Almanya, güneybat\u0131da Çekya, güneyde Slovakya, kuzeydo\u011fuda Rusya ve Litvanya, do\u011fuda Belarus, güneydo\u011fuda Ukrayna ve kuzeyde Balt\u0131k Denizi'dir. Ülke 312.696 km²'lik yüzölçümüyle Avrupa'n\u0131n dokuzuncu, dünyan\u0131n altm\u0131\u015f dokuzuncu büyük ülkesidir. Yakla\u015f\u0131k 38,4 milyonluk nüfusuyla dünya s\u0131ralamas\u0131nda en kalabal\u0131k 36. ülkedir.
+2025-11-04 18:41:39,423 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/roma
+2025-11-04 18:41:39,935 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-11-04 18:41:39,942 - DEBUG - memory - Etkile\u015fim interactions tablosuna kaydedildi.
+2025-11-04 18:41:39,947 - INFO - project_x - Kullan\u0131c\u0131: roma tarihi nedir | Asistan: Roma veya Roma komünü, \u0130talya'n\u0131n, Lazio bölgesinin ve ayn\u0131 zamanda Roma ilinin ba\u015fkentidir. Roma hem \u015fehir hem de özel komün statüsü ta\u015f\u0131r. Tiber ve Aniene nehirleri aras\u0131nda ve Akdeniz'e yak\u0131nd\u0131r. Yakla\u015f\u0131k 2,7 milyon nüfuslu \u015fehirde, Katoliklerin ruhani lideri Papa'n\u0131n ya\u015fad\u0131\u011f\u0131 ba\u011f\u0131ms\u0131z devlet Vatikan da yer almaktad\u0131r. Bu sebeple Roma'ya baz\u0131 kaynaklar taraf\u0131ndan iki devletin ba\u015fkenti de denilmektedir.
+2025-11-04 18:41:50,832 - INFO - project_x - Asistan kapat\u0131ld\u0131.
+2025-11-04 18:41:50,834 - INFO - memory - Veritaban\u0131 ba\u011flant\u0131s\u0131 kapat\u0131ld\u0131.
+2025-11-04 20:53:02,514 - CRITICAL - project_x - Haf\u0131za Yöneticisi ba\u015flat\u0131lamad\u0131: Row expected 2 arguments, got 0
+2025-11-04 20:57:00,256 - CRITICAL - project_x - Haf\u0131za Yöneticisi ba\u015flat\u0131lamad\u0131: Row expected 2 arguments, got 0
+2025-11-04 21:00:49,694 - INFO - memory - SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+2025-11-04 21:00:49,696 - ERROR - memory - Veritaban\u0131 \u015fema çal\u0131\u015ft\u0131rma hatas\u0131: table versions already exists
+2025-11-04 21:00:49,696 - INFO - feedback - FeedbackManager ba\u015flat\u0131ld\u0131.
+2025-11-04 21:00:49,696 - INFO - project_x - Asistan ba\u015flat\u0131l\u0131yor...
+2025-11-04 21:00:56,397 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/italya
+2025-11-04 21:00:56,873 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-11-04 21:00:56,883 - DEBUG - memory - Etkile\u015fim kaydedildi. ID: 26
+2025-11-04 21:00:56,890 - INFO - project_x - Kullan\u0131c\u0131: italya nedir | Asistan: \u0130talya, resmî ad\u0131yla \u0130talyan Cumhuriyeti, Güney Avrupa'da, büyük ölçüde \u0130talya Yar\u0131madas\u0131 üzerinde yer alan bir ülke. Akdeniz'in en büyük iki adas\u0131 Sicilya ve Sardinya da \u0130talyan topraklar\u0131d\u0131r. Yüzölçümü 301.340 km2 olan ülkenin kuzeyde Alpler bölgesinde Fransa, \u0130sviçre, Avusturya ve Slovenya'yla kara s\u0131n\u0131r\u0131 vard\u0131r. Ba\u011f\u0131ms\u0131z iki Avrupa ülkesi olan Vatikan ve San Marino da \u0130talya'n\u0131n yar\u0131madadaki topraklar\u0131 içine s\u0131k\u0131\u015fm\u0131\u015f anklav ülkelerdir. \u0130talya'n\u0131n ayr\u0131ca biri \u0130sviçre (Campione), di\u011feriyse Tunus (Lampedusa) taraf\u0131ndan kara ve deniz s\u0131n\u0131rlar\u0131yla ku\u015fat\u0131lm\u0131\u015f iki eksklav\u0131 bulunur. Nüfusu 58 milyon olan \u0130talya, Avrupa Birli\u011fi'nin en kalabal\u0131k üçüncü ülkesidir. Ba\u015fkenti ve en büyük \u015fehri Roma, yüzy\u0131llar boyunca Bat\u0131 uygarl\u0131\u011f\u0131n\u0131n merkezi olmu\u015f, mimaride barok üslûbunun do\u011fu\u015funa tan\u0131kl\u0131k etmi\u015f ve eskiden beri Katolik Kilisesi'nin merkezi olmu\u015ftur.
+2025-11-04 21:01:07,885 - INFO - memory - Geri bildirim kaydedildi (ID: 26, Tip: important).
+2025-11-04 21:01:07,885 - WARNING - memory - !!! KR\u0130T\u0130K Ö\u011eRENME !!! Etkile\u015fim ID 26 kal\u0131c\u0131 haf\u0131zaya ta\u015f\u0131nd\u0131.
+2025-11-04 21:01:07,885 - INFO - project_x - Geri Bildirim Komutu: !kaydet | Cevap: Geri bildirim ('important'): Kaydedildi (ID: 26). Cevap, kal\u0131c\u0131 haf\u0131zaya ta\u015f\u0131nd\u0131
+2025-11-04 21:01:13,960 - INFO - project_x - Asistan kapat\u0131ld\u0131.
+2025-11-04 21:01:13,960 - INFO - memory - Veritaban\u0131 ba\u011flant\u0131s\u0131 kapat\u0131ld\u0131.
+2025-11-04 21:02:33,107 - INFO - memory - SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+2025-11-04 21:02:33,107 - ERROR - memory - Veritaban\u0131 \u015fema çal\u0131\u015ft\u0131rma hatas\u0131: table versions already exists
+2025-11-04 21:02:33,107 - INFO - feedback - FeedbackManager ba\u015flat\u0131ld\u0131.
+2025-11-04 21:02:33,107 - INFO - project_x - Asistan ba\u015flat\u0131l\u0131yor...
+2025-11-04 21:02:36,123 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/ankara
+2025-11-04 21:02:36,993 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-11-04 21:02:37,002 - DEBUG - memory - Etkile\u015fim kaydedildi. ID: 27
+2025-11-04 21:02:37,009 - INFO - project_x - Kullan\u0131c\u0131: Ankara nedir | Asistan: Ankara, Türkiye'nin ba\u015fkenti ve Ankara ilinin merkezi olan \u015fehirdir. Ayn\u0131 zamanda dünyada en büyük yüzölçümüne sahip olan ba\u015fkenttir. Co\u011frafi olarak Türkiye'nin merkezine yak\u0131n bir konumda bulunur ve \u0130ç Anadolu Bölgesi'nde yer al\u0131r. Ülkenin \u0130stanbul'dan sonra nüfus bak\u0131m\u0131ndan ikinci, kentsel alan bak\u0131m\u0131ndan birinci, metropol alan bak\u0131m\u0131ndan ise Konya ve Sivas'tan sonra en büyük üçüncü \u015fehridir. Toplam 25 tane ilçesi vard\u0131r, bunlar\u0131n 9'u merkez ilçedir.
+2025-11-04 21:02:41,927 - INFO - memory - Geri bildirim kaydedildi (ID: 27, Tip: important).
+2025-11-04 21:02:41,943 - WARNING - memory - !!! KR\u0130T\u0130K Ö\u011eRENME !!! Etkile\u015fim ID 27 kal\u0131c\u0131 haf\u0131zaya ta\u015f\u0131nd\u0131.
+2025-11-04 21:02:41,943 - INFO - project_x - Geri Bildirim Komutu: !kaydet | Cevap: Geri bildirim ('important'): Kaydedildi (ID: 27). Cevap, kal\u0131c\u0131 haf\u0131zaya ta\u015f\u0131nd\u0131
+2025-11-04 21:02:46,914 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/ankara
+2025-11-04 21:02:47,325 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-11-04 21:02:47,330 - DEBUG - memory - Etkile\u015fim kaydedildi. ID: 28
+2025-11-04 21:02:47,331 - INFO - project_x - Kullan\u0131c\u0131: Ankara nedir | Asistan: Ankara, Türkiye'nin ba\u015fkenti ve Ankara ilinin merkezi olan \u015fehirdir. Ayn\u0131 zamanda dünyada en büyük yüzölçümüne sahip olan ba\u015fkenttir. Co\u011frafi olarak Türkiye'nin merkezine yak\u0131n bir konumda bulunur ve \u0130ç Anadolu Bölgesi'nde yer al\u0131r. Ülkenin \u0130stanbul'dan sonra nüfus bak\u0131m\u0131ndan ikinci, kentsel alan bak\u0131m\u0131ndan birinci, metropol alan bak\u0131m\u0131ndan ise Konya ve Sivas'tan sonra en büyük üçüncü \u015fehridir. Toplam 25 tane ilçesi vard\u0131r, bunlar\u0131n 9'u merkez ilçedir.
+2025-11-04 21:03:08,516 - INFO - memory - Geri bildirim kaydedildi (ID: 28, Tip: incorrect).
+2025-11-04 21:03:08,516 - DEBUG - memory - ID 28 ile ilgili geçerli bir haf\u0131za kayd\u0131 bulunamad\u0131.
+2025-11-04 21:03:08,516 - INFO - project_x - Geri Bildirim Komutu: !yanlis | Cevap: Geri bildirim ('incorrect'): Kaydedildi (ID: 28). Geçerli bir haf\u0131za kayd\u0131 varsa geçersiz k\u0131l\u0131nd\u0131.
+2025-11-04 21:03:15,100 - INFO - project_x - Asistan kapat\u0131ld\u0131.
+2025-11-04 21:03:15,100 - INFO - memory - Veritaban\u0131 ba\u011flant\u0131s\u0131 kapat\u0131ld\u0131.
+2025-11-04 21:38:15,655 - INFO - memory - SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+2025-11-04 21:38:15,681 - INFO - memory - Veritaban\u0131 tablolar\u0131 ba\u015far\u0131yla olu\u015fturuldu/kontrol edildi.
+2025-11-04 21:38:15,681 - INFO - feedback - FeedbackManager ba\u015flat\u0131ld\u0131.
+2025-11-04 21:38:15,681 - INFO - project_x - Asistan ba\u015flat\u0131l\u0131yor...
+2025-11-04 21:38:20,822 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/ankara
+2025-11-04 21:38:21,229 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-11-04 21:38:21,239 - DEBUG - memory - Etkile\u015fim kaydedildi. ID: 1
+2025-11-04 21:38:21,245 - INFO - project_x - Kullan\u0131c\u0131: Ankara nedir | Asistan: Ankara, Türkiye'nin ba\u015fkenti ve Ankara ilinin merkezi olan \u015fehirdir. Ayn\u0131 zamanda dünyada en büyük yüzölçümüne sahip olan ba\u015fkenttir. Co\u011frafi olarak Türkiye'nin merkezine yak\u0131n bir konumda bulunur ve \u0130ç Anadolu Bölgesi'nde yer al\u0131r. Ülkenin \u0130stanbul'dan sonra nüfus bak\u0131m\u0131ndan ikinci, kentsel alan bak\u0131m\u0131ndan birinci, metropol alan bak\u0131m\u0131ndan ise Konya ve Sivas'tan sonra en büyük üçüncü \u015fehridir. Toplam 25 tane ilçesi vard\u0131r, bunlar\u0131n 9'u merkez ilçedir.
+2025-11-04 21:38:28,732 - INFO - memory - Geri bildirim kaydedildi (ID: 1, Tip: important).
+2025-11-04 21:38:28,737 - WARNING - memory - !!! KR\u0130T\u0130K Ö\u011eRENME !!! Etkile\u015fim ID 1 kal\u0131c\u0131 haf\u0131zaya ta\u015f\u0131nd\u0131.
+2025-11-04 21:38:28,737 - INFO - project_x - Geri Bildirim Komutu: !kaydet | Cevap: Geri bildirim ('important'): Kaydedildi (ID: 1). Cevap, kal\u0131c\u0131 haf\u0131zaya ta\u015f\u0131nd\u0131
+2025-11-04 21:38:41,377 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/ankara
+2025-11-04 21:38:41,675 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-11-04 21:38:41,684 - DEBUG - memory - Etkile\u015fim kaydedildi. ID: 2
+2025-11-04 21:38:41,685 - INFO - project_x - Kullan\u0131c\u0131: Ankara nedir | Asistan: Ankara, Türkiye'nin ba\u015fkenti ve Ankara ilinin merkezi olan \u015fehirdir. Ayn\u0131 zamanda dünyada en büyük yüzölçümüne sahip olan ba\u015fkenttir. Co\u011frafi olarak Türkiye'nin merkezine yak\u0131n bir konumda bulunur ve \u0130ç Anadolu Bölgesi'nde yer al\u0131r. Ülkenin \u0130stanbul'dan sonra nüfus bak\u0131m\u0131ndan ikinci, kentsel alan bak\u0131m\u0131ndan birinci, metropol alan bak\u0131m\u0131ndan ise Konya ve Sivas'tan sonra en büyük üçüncü \u015fehridir. Toplam 25 tane ilçesi vard\u0131r, bunlar\u0131n 9'u merkez ilçedir.
+2025-11-04 21:40:12,556 - INFO - project_x - Asistan kapat\u0131ld\u0131.
+2025-11-04 21:40:12,558 - INFO - memory - Veritaban\u0131 ba\u011flant\u0131s\u0131 kapat\u0131ld\u0131.
+2025-11-04 21:43:33,479 - INFO - memory - SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+2025-11-04 21:43:33,503 - INFO - memory - Veritaban\u0131 tablolar\u0131 ba\u015far\u0131yla olu\u015fturuldu/kontrol edildi.
+2025-11-04 21:43:33,503 - INFO - feedback - FeedbackManager ba\u015flat\u0131ld\u0131.
+2025-11-04 21:43:33,503 - INFO - project_x - Asistan ba\u015flat\u0131l\u0131yor...
+2025-11-04 21:43:36,317 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/ankara
+2025-11-04 21:43:36,744 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-11-04 21:43:36,755 - DEBUG - memory - Etkile\u015fim kaydedildi. ID: 1
+2025-11-04 21:43:36,755 - INFO - project_x - Kullan\u0131c\u0131: Ankara nedir? | Asistan: Ankara, Türkiye'nin ba\u015fkenti ve Ankara ilinin merkezi olan \u015fehirdir. Ayn\u0131 zamanda dünyada en büyük yüzölçümüne sahip olan ba\u015fkenttir. Co\u011frafi olarak Türkiye'nin merkezine yak\u0131n bir konumda bulunur ve \u0130ç Anadolu Bölgesi'nde yer al\u0131r. Ülkenin \u0130stanbul'dan sonra nüfus bak\u0131m\u0131ndan ikinci, kentsel alan bak\u0131m\u0131ndan birinci, metropol alan bak\u0131m\u0131ndan ise Konya ve Sivas'tan sonra en büyük üçüncü \u015fehridir. Toplam 25 tane ilçesi vard\u0131r, bunlar\u0131n 9'u merkez ilçedir.
+2025-11-04 21:43:39,487 - INFO - memory - Geri bildirim kaydedildi (ID: 1, Tip: important).
+2025-11-04 21:43:39,502 - WARNING - memory - !!! KR\u0130T\u0130K Ö\u011eRENME !!! Etkile\u015fim ID 1 kal\u0131c\u0131 haf\u0131zaya ta\u015f\u0131nd\u0131.
+2025-11-04 21:43:39,502 - INFO - project_x - Geri Bildirim Komutu: !kaydet | Cevap: Geri bildirim ('important'): Kaydedildi (ID: 1). Cevap, kal\u0131c\u0131 haf\u0131zaya ta\u015f\u0131nd\u0131
+2025-11-04 21:43:45,605 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/ankara
+2025-11-04 21:43:45,960 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-11-04 21:43:45,964 - DEBUG - memory - Etkile\u015fim kaydedildi. ID: 2
+2025-11-04 21:43:45,964 - INFO - project_x - Kullan\u0131c\u0131: Ankara nedir | Asistan: Ankara, Türkiye'nin ba\u015fkenti ve Ankara ilinin merkezi olan \u015fehirdir. Ayn\u0131 zamanda dünyada en büyük yüzölçümüne sahip olan ba\u015fkenttir. Co\u011frafi olarak Türkiye'nin merkezine yak\u0131n bir konumda bulunur ve \u0130ç Anadolu Bölgesi'nde yer al\u0131r. Ülkenin \u0130stanbul'dan sonra nüfus bak\u0131m\u0131ndan ikinci, kentsel alan bak\u0131m\u0131ndan birinci, metropol alan bak\u0131m\u0131ndan ise Konya ve Sivas'tan sonra en büyük üçüncü \u015fehridir. Toplam 25 tane ilçesi vard\u0131r, bunlar\u0131n 9'u merkez ilçedir.
+2025-11-04 21:43:54,324 - INFO - project_x - Asistan kapat\u0131ld\u0131.
+2025-11-04 21:43:54,324 - INFO - memory - Veritaban\u0131 ba\u011flant\u0131s\u0131 kapat\u0131ld\u0131.
+2025-11-04 21:44:44,035 - INFO - memory - SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+2025-11-04 21:44:44,036 - ERROR - memory - Veritaban\u0131 \u015fema çal\u0131\u015ft\u0131rma hatas\u0131: table versions already exists
+2025-11-04 21:44:44,036 - INFO - feedback - FeedbackManager ba\u015flat\u0131ld\u0131.
+2025-11-04 21:44:44,036 - INFO - project_x - Asistan ba\u015flat\u0131l\u0131yor...
+2025-11-04 21:44:50,446 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/ankara
+2025-11-04 21:44:51,390 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-11-04 21:44:51,399 - DEBUG - memory - Etkile\u015fim kaydedildi. ID: 3
+2025-11-04 21:44:51,400 - INFO - project_x - Kullan\u0131c\u0131: Ankara nedir | Asistan: Ankara, Türkiye'nin ba\u015fkenti ve Ankara ilinin merkezi olan \u015fehirdir. Ayn\u0131 zamanda dünyada en büyük yüzölçümüne sahip olan ba\u015fkenttir. Co\u011frafi olarak Türkiye'nin merkezine yak\u0131n bir konumda bulunur ve \u0130ç Anadolu Bölgesi'nde yer al\u0131r. Ülkenin \u0130stanbul'dan sonra nüfus bak\u0131m\u0131ndan ikinci, kentsel alan bak\u0131m\u0131ndan birinci, metropol alan bak\u0131m\u0131ndan ise Konya ve Sivas'tan sonra en büyük üçüncü \u015fehridir. Toplam 25 tane ilçesi vard\u0131r, bunlar\u0131n 9'u merkez ilçedir.
+2025-11-04 21:45:03,844 - INFO - memory - Geri bildirim kaydedildi (ID: 3, Tip: important).
+2025-11-04 21:45:03,849 - WARNING - memory - !!! KR\u0130T\u0130K Ö\u011eRENME !!! Etkile\u015fim ID 3 kal\u0131c\u0131 haf\u0131zaya ta\u015f\u0131nd\u0131.
+2025-11-04 21:45:03,850 - INFO - project_x - Geri Bildirim Komutu: !kaydet | Cevap: Geri bildirim ('important'): Kaydedildi (ID: 3). Cevap, kal\u0131c\u0131 haf\u0131zaya ta\u015f\u0131nd\u0131
+2025-11-04 21:45:09,175 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/ankara
+2025-11-04 21:45:09,504 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-11-04 21:45:09,516 - DEBUG - memory - Etkile\u015fim kaydedildi. ID: 4
+2025-11-04 21:45:09,516 - INFO - project_x - Kullan\u0131c\u0131: Ankara nedir | Asistan: Ankara, Türkiye'nin ba\u015fkenti ve Ankara ilinin merkezi olan \u015fehirdir. Ayn\u0131 zamanda dünyada en büyük yüzölçümüne sahip olan ba\u015fkenttir. Co\u011frafi olarak Türkiye'nin merkezine yak\u0131n bir konumda bulunur ve \u0130ç Anadolu Bölgesi'nde yer al\u0131r. Ülkenin \u0130stanbul'dan sonra nüfus bak\u0131m\u0131ndan ikinci, kentsel alan bak\u0131m\u0131ndan birinci, metropol alan bak\u0131m\u0131ndan ise Konya ve Sivas'tan sonra en büyük üçüncü \u015fehridir. Toplam 25 tane ilçesi vard\u0131r, bunlar\u0131n 9'u merkez ilçedir.
+2025-11-04 21:45:12,283 - INFO - project_x - Asistan kapat\u0131ld\u0131.
+2025-11-04 21:45:12,283 - INFO - memory - Veritaban\u0131 ba\u011flant\u0131s\u0131 kapat\u0131ld\u0131.
+2025-11-04 21:48:52,140 - INFO - memory - SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+2025-11-04 21:48:52,168 - INFO - memory - Veritaban\u0131 tablolar\u0131 ba\u015far\u0131yla olu\u015fturuldu/kontrol edildi.
+2025-11-04 21:48:52,168 - INFO - feedback - FeedbackManager ba\u015flat\u0131ld\u0131.
+2025-11-04 21:48:52,168 - INFO - project_x - Asistan ba\u015flat\u0131l\u0131yor...
+2025-11-04 21:48:57,354 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/ankara
+2025-11-04 21:48:57,750 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-11-04 21:48:57,761 - DEBUG - memory - Etkile\u015fim kaydedildi. ID: 1
+2025-11-04 21:48:57,764 - INFO - project_x - Kullan\u0131c\u0131: Ankara nedir | Asistan: Ankara, Türkiye'nin ba\u015fkenti ve Ankara ilinin merkezi olan \u015fehirdir. Ayn\u0131 zamanda dünyada en büyük yüzölçümüne sahip olan ba\u015fkenttir. Co\u011frafi olarak Türkiye'nin merkezine yak\u0131n bir konumda bulunur ve \u0130ç Anadolu Bölgesi'nde yer al\u0131r. Ülkenin \u0130stanbul'dan sonra nüfus bak\u0131m\u0131ndan ikinci, kentsel alan bak\u0131m\u0131ndan birinci, metropol alan bak\u0131m\u0131ndan ise Konya ve Sivas'tan sonra en büyük üçüncü \u015fehridir. Toplam 25 tane ilçesi vard\u0131r, bunlar\u0131n 9'u merkez ilçedir.
+2025-11-04 21:49:01,275 - INFO - memory - Geri bildirim kaydedildi (ID: 1, Tip: important).
+2025-11-04 21:49:01,281 - WARNING - memory - !!! KR\u0130T\u0130K Ö\u011eRENME !!! Etkile\u015fim ID 1 kal\u0131c\u0131 haf\u0131zaya ta\u015f\u0131nd\u0131.
+2025-11-04 21:49:01,282 - INFO - project_x - Geri Bildirim Komutu: !kaydet | Cevap: Geri bildirim ('important'): Kaydedildi (ID: 1). Cevap, kal\u0131c\u0131 haf\u0131zaya ta\u015f\u0131nd\u0131
+2025-11-04 21:49:04,899 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/ankara
+2025-11-04 21:49:05,476 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-11-04 21:49:05,482 - DEBUG - memory - Etkile\u015fim kaydedildi. ID: 2
+2025-11-04 21:49:05,482 - INFO - project_x - Kullan\u0131c\u0131: Ankara nedir | Asistan: Ankara, Türkiye'nin ba\u015fkenti ve Ankara ilinin merkezi olan \u015fehirdir. Ayn\u0131 zamanda dünyada en büyük yüzölçümüne sahip olan ba\u015fkenttir. Co\u011frafi olarak Türkiye'nin merkezine yak\u0131n bir konumda bulunur ve \u0130ç Anadolu Bölgesi'nde yer al\u0131r. Ülkenin \u0130stanbul'dan sonra nüfus bak\u0131m\u0131ndan ikinci, kentsel alan bak\u0131m\u0131ndan birinci, metropol alan bak\u0131m\u0131ndan ise Konya ve Sivas'tan sonra en büyük üçüncü \u015fehridir. Toplam 25 tane ilçesi vard\u0131r, bunlar\u0131n 9'u merkez ilçedir.
+2025-11-04 21:49:09,046 - INFO - project_x - Asistan kapat\u0131ld\u0131.
+2025-11-04 21:49:09,046 - INFO - memory - Veritaban\u0131 ba\u011flant\u0131s\u0131 kapat\u0131ld\u0131.
+2025-11-04 21:50:19,034 - INFO - memory - SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+2025-11-04 21:50:19,035 - ERROR - memory - Veritaban\u0131 \u015fema çal\u0131\u015ft\u0131rma hatas\u0131: table versions already exists
+2025-11-04 21:50:19,035 - INFO - feedback - FeedbackManager ba\u015flat\u0131ld\u0131.
+2025-11-04 21:50:19,037 - INFO - project_x - Asistan ba\u015flat\u0131l\u0131yor...
+2025-11-04 21:50:22,162 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/ankara
+2025-11-04 21:50:22,936 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-11-04 21:50:22,948 - DEBUG - memory - Etkile\u015fim kaydedildi. ID: 3
+2025-11-04 21:50:22,949 - INFO - project_x - Kullan\u0131c\u0131: Ankara nedir | Asistan: Ankara, Türkiye'nin ba\u015fkenti ve Ankara ilinin merkezi olan \u015fehirdir. Ayn\u0131 zamanda dünyada en büyük yüzölçümüne sahip olan ba\u015fkenttir. Co\u011frafi olarak Türkiye'nin merkezine yak\u0131n bir konumda bulunur ve \u0130ç Anadolu Bölgesi'nde yer al\u0131r. Ülkenin \u0130stanbul'dan sonra nüfus bak\u0131m\u0131ndan ikinci, kentsel alan bak\u0131m\u0131ndan birinci, metropol alan bak\u0131m\u0131ndan ise Konya ve Sivas'tan sonra en büyük üçüncü \u015fehridir. Toplam 25 tane ilçesi vard\u0131r, bunlar\u0131n 9'u merkez ilçedir.
+2025-11-04 21:50:25,837 - INFO - project_x - Asistan kapat\u0131ld\u0131.
+2025-11-04 21:50:25,837 - INFO - memory - Veritaban\u0131 ba\u011flant\u0131s\u0131 kapat\u0131ld\u0131.
+2025-11-04 22:10:18,986 - INFO - memory - SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+2025-11-04 22:10:19,034 - INFO - memory - Veritaban\u0131 tablolar\u0131 ba\u015far\u0131yla olu\u015fturuldu/kontrol edildi.
+2025-11-04 22:10:19,034 - INFO - feedback - FeedbackManager ba\u015flat\u0131ld\u0131.
+2025-11-04 22:10:19,034 - INFO - project_x - Asistan ba\u015flat\u0131l\u0131yor...
+2025-11-04 22:10:21,090 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/ankara
+2025-11-04 22:10:21,438 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-11-04 22:10:21,445 - DEBUG - memory - Etkile\u015fim kaydedildi. ID: 1
+2025-11-04 22:10:21,447 - INFO - project_x - Kullan\u0131c\u0131: ankara nedir | Asistan: Ankara, Türkiye'nin ba\u015fkenti ve Ankara ilinin merkezi olan \u015fehirdir. Ayn\u0131 zamanda dünyada en büyük yüzölçümüne sahip olan ba\u015fkenttir. Co\u011frafi olarak Türkiye'nin merkezine yak\u0131n bir konumda bulunur ve \u0130ç Anadolu Bölgesi'nde yer al\u0131r. Ülkenin \u0130stanbul'dan sonra nüfus bak\u0131m\u0131ndan ikinci, kentsel alan bak\u0131m\u0131ndan birinci, metropol alan bak\u0131m\u0131ndan ise Konya ve Sivas'tan sonra en büyük üçüncü \u015fehridir. Toplam 25 tane ilçesi vard\u0131r, bunlar\u0131n 9'u merkez ilçedir.
+2025-11-04 22:10:25,936 - INFO - memory - Geri bildirim kaydedildi (ID: 1, Tip: important).
+2025-11-04 22:10:25,946 - WARNING - memory - !!! KR\u0130T\u0130K Ö\u011eRENME !!! Etkile\u015fim ID 1 kal\u0131c\u0131 haf\u0131zaya ta\u015f\u0131nd\u0131.
+2025-11-04 22:10:25,946 - INFO - project_x - Geri Bildirim Komutu: !kaydet | Cevap: Geri bildirim ('important'): Kaydedildi (ID: 1). Cevap, kal\u0131c\u0131 haf\u0131zaya ta\u015f\u0131nd\u0131
+2025-11-04 22:10:28,632 - DEBUG - memory - Haf\u0131zadan bilgi bulundu: ankara nedir
+2025-11-04 22:10:28,632 - INFO - retriever - Cevap, kal\u0131c\u0131 haf\u0131zadan çekildi (Ö\u011frenilmi\u015f bilgi).
+2025-11-04 22:10:28,638 - DEBUG - memory - Etkile\u015fim kaydedildi. ID: 2
+2025-11-04 22:10:28,646 - INFO - project_x - Kullan\u0131c\u0131: ankara nedir | Asistan: Ankara, Türkiye'nin ba\u015fkenti ve Ankara ilinin merkezi olan \u015fehirdir. Ayn\u0131 zamanda dünyada en büyük yüzölçümüne sahip olan ba\u015fkenttir. Co\u011frafi olarak Türkiye'nin merkezine yak\u0131n bir konumda bulunur ve \u0130ç Anadolu Bölgesi'nde yer al\u0131r. Ülkenin \u0130stanbul'dan sonra nüfus bak\u0131m\u0131ndan ikinci, kentsel alan bak\u0131m\u0131ndan birinci, metropol alan bak\u0131m\u0131ndan ise Konya ve Sivas'tan sonra en büyük üçüncü \u015fehridir. Toplam 25 tane ilçesi vard\u0131r, bunlar\u0131n 9'u merkez ilçedir.
+Bu bilgi asistan\u0131n ö\u011frendi\u011fi kal\u0131c\u0131 haf\u0131zadan çekilmi\u015ftir.
+2025-11-04 22:10:35,081 - INFO - project_x - Asistan kapat\u0131ld\u0131.
+2025-11-04 22:10:35,081 - INFO - memory - Veritaban\u0131 ba\u011flant\u0131s\u0131 kapat\u0131ld\u0131.
