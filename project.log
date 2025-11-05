@@ -321,3 +321,42 @@
 Bu bilgi asistan\u0131n ö\u011frendi\u011fi kal\u0131c\u0131 haf\u0131zadan çekilmi\u015ftir.
 2025-11-04 22:10:35,081 - INFO - project_x - Asistan kapat\u0131ld\u0131.
 2025-11-04 22:10:35,081 - INFO - memory - Veritaban\u0131 ba\u011flant\u0131s\u0131 kapat\u0131ld\u0131.
+2025-11-05 22:00:26,311 - INFO - memory - SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+2025-11-05 22:00:26,337 - ERROR - memory - Veritaban\u0131 \u015fema çal\u0131\u015ft\u0131rma hatas\u0131: table versions already exists
+2025-11-05 22:00:26,337 - INFO - feedback - FeedbackManager ba\u015flat\u0131ld\u0131.
+2025-11-05 22:00:26,337 - INFO - tool_manager - ToolManager ba\u015flat\u0131ld\u0131 ve araçlar yüklendi.
+2025-11-05 22:00:26,337 - INFO - project_x - Asistan ba\u015flat\u0131l\u0131yor...
+2025-11-05 22:00:34,245 - ERROR - __main__ - Beklenmedik bir hata olu\u015ftu: cannot access local variable 'keywords' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Personal\Workshop\Adam\main.py", line 65, in main
+    answer = generate_response(user_input, memory,tool_manager) # <<< memory'yi de gönderiyoruz
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Personal\Workshop\Adam\response.py", line 42, in generate_response
+    search_terms = " ".join(keywords[:3]) # \u0130lk 3 kelimeyi al
+                            ^^^^^^^^
+UnboundLocalError: cannot access local variable 'keywords' where it is not associated with a value
+2025-11-05 22:00:41,973 - ERROR - __main__ - Beklenmedik bir hata olu\u015ftu: cannot access local variable 'keywords' where it is not associated with a value
+Traceback (most recent call last):
+  File "C:\Personal\Workshop\Adam\main.py", line 65, in main
+    answer = generate_response(user_input, memory,tool_manager) # <<< memory'yi de gönderiyoruz
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Personal\Workshop\Adam\response.py", line 42, in generate_response
+    search_terms = " ".join(keywords[:3]) # \u0130lk 3 kelimeyi al
+                            ^^^^^^^^
+UnboundLocalError: cannot access local variable 'keywords' where it is not associated with a value
+2025-11-05 22:00:53,896 - INFO - project_x - Kullan\u0131c\u0131: toplant\u0131 ba\u015flad\u0131 not al | Asistan: note
+2025-11-05 22:00:57,947 - INFO - project_x - Asistan kapat\u0131ld\u0131.
+2025-11-05 22:00:57,947 - INFO - memory - Veritaban\u0131 ba\u011flant\u0131s\u0131 kapat\u0131ld\u0131.
+2025-11-05 22:09:04,823 - INFO - memory - SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+2025-11-05 22:09:04,823 - ERROR - memory - Veritaban\u0131 \u015fema çal\u0131\u015ft\u0131rma hatas\u0131: table versions already exists
+2025-11-05 22:09:04,823 - INFO - feedback - FeedbackManager ba\u015flat\u0131ld\u0131.
+2025-11-05 22:09:04,823 - INFO - tool_manager - ToolManager ba\u015flat\u0131ld\u0131 ve araçlar yüklendi.
+2025-11-05 22:09:04,829 - INFO - project_x - Asistan ba\u015flat\u0131l\u0131yor...
+2025-11-05 22:09:12,585 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/polonya
+2025-11-05 22:09:16,051 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-11-05 22:09:16,065 - DEBUG - memory - Etkile\u015fim kaydedildi. ID: 3
+2025-11-05 22:09:16,065 - INFO - project_x - Kullan\u0131c\u0131: polonya nedir | Asistan: Polonya, resmî ad\u0131yla Polonya Cumhuriyeti, Orta Avrupa'da bulunan bir ülkedir. Kom\u015fular\u0131, bat\u0131da Almanya, güneybat\u0131da Çekya, güneyde Slovakya, kuzeydo\u011fuda Rusya ve Litvanya, do\u011fuda Belarus, güneydo\u011fuda Ukrayna ve kuzeyde Balt\u0131k Denizi'dir. Ülke 312.696 km²'lik yüzölçümüyle Avrupa'n\u0131n dokuzuncu, dünyan\u0131n altm\u0131\u015f dokuzuncu büyük ülkesidir. Yakla\u015f\u0131k 38,4 milyonluk nüfusuyla dünya s\u0131ralamas\u0131nda en kalabal\u0131k 36. ülkedir.
+2025-11-05 22:09:23,450 - INFO - tools.note_tool - Not Ba\u015far\u0131yla kaydedildi: data/notes.txt
+2025-11-05 22:09:23,450 - INFO - project_x - Kullan\u0131c\u0131: toplant\u0131 ba\u015flad\u0131 not al | Asistan: Notunuz ba\u015far\u0131yla kaydedildi.
+2025-11-05 22:09:25,741 - INFO - project_x - Asistan kapat\u0131ld\u0131.
+2025-11-05 22:09:25,743 - INFO - memory - Veritaban\u0131 ba\u011flant\u0131s\u0131 kapat\u0131ld\u0131.

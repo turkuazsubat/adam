@@ -7,6 +7,7 @@ from response import generate_response
 from memory import MemoryManager 
 from logger import log_event # <<< logger.py'den alıyoruz
 from feedback import FeedbackManager
+from tool_manager import ToolManager #Hafta 5 
 
 # Veritabanı ve şema dosya yolları
 DB_PATH = "db/project.db" # db klasörü içine
@@ -32,6 +33,7 @@ def main():
     try:
         memory = MemoryManager(db_path=DB_PATH, schema_path=SCHEMA_PATH)
         feedback_manager = FeedbackManager(memory) 
+        tool_manager = ToolManager()
     except Exception as e:
         log_event("CRITICAL", f"Hafıza Yöneticisi başlatılamadı: {e}")
         # Programı kapatmak isteyebilirsiniz, şimdilik devam edelim.
@@ -58,8 +60,9 @@ def main():
                 break
             
             else:
-
-                answer = generate_response(user_input, memory) # <<< memory'yi de gönderiyoruz
+                #Normal Sorgu akışı
+                #Hafta 5: tool_manager'ı generate_response'a iletiyoruz
+                answer = generate_response(user_input, memory,tool_manager) # <<< memory'yi de gönderiyoruz
                 print("Asistan:", answer)
 
                 # memory.save_interaction çağrısı zaten response.py'de yapılıyor.
