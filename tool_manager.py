@@ -1,5 +1,6 @@
 import logging
 from tools.note_tool import take_note #Hafta 5, tools paketinden ilk import
+from tools.todo_tool import add_todo, list_todos #Hatfa 6 todo aracını import et 
 
 logger = logging.getLogger(__name__)
 
@@ -16,49 +17,50 @@ class ToolManager:
 
         self.tools = {
             "note": take_note,
+            "todo_add": add_todo,
+            "todo_list": list_todos,
             #Gelecekte eklenecekler(HAFTA 5)
             #"calendar": add_to_calendar,
             #"weather": get_weather,
         }
 
-        #Komut -> Araç Eşleştirmesi (NLU'dan gelen kök kelimelere göre)
-        #NLU'da "not" ve "al" gördüğünde, "note" aracını tetikler.
+        # 'find_tool_for_command' fonksiyonuna artık gerek kalmadı,
+        # çünkü 'nlu.py' bu mantığı (tool_key) bizim için yapıyor.
 
-        self.command_to_tool_map = {
-            ("not","al"): "note",
-        }
         logger.info("ToolManager başlatıldı ve araçlar yüklendi.")
 
-    def find_tool_for_command(self, keywords: list) -> str:
+    def execute_tool(self, tool_key: str, payload: str) -> str:
+        """
+        NLU'dan gelen 'tool_key'e göre belirlenen aracı bulur 
+        ve verilen 'payload' (görev yükü) ile çalıştırır.
+        """
 
-        '''
-        NLU'dan gelen kök kelime listesini analiz eder ve 
-        çalıştıralacak aracın adını ( örn: "note") bulur.
-        '''
-
-        #Şimdilik çok basit bir eşleştirme yapıyoruz.
-        # "not" ve "al" kelimeleri NLU keywords'ları içinde geçiyorsa:
-        if "not" in keywords and "al" in keywords:
-            return "note" #Çalıştırılacak aracın adı
-
-        return None #Uygun aracın bulunmadığı senaryo
-    
-    def execute_tool(self, tool_name: str, payload: str) -> str:
-        '''
-        Belirlenen aracı bulur ve verilen payload(görev yükü) ile çalıştırır.
-        '''
-
-        if tool_name not in self.tools:
-            logger.warning(f"Bilinmeyen araç çağırıldı: {tool_name}")
+        if tool_key not in self.tools:
+            logger.warning(f"Bilinmeyen araç çağırıldı: {tool_key}")
             return "Üzgünüm, bu komutu yürütüecek bir araç bulamadım"
     
         try:
-            #Sözlükten doğru fonksiyonu bul (örn: take_note)
-            tool_function = self.tools[tool_name]
-
-            result = tool_function(payload)
+            #Hafta6 düzeltme 
+            tool_function = self.tools[tool_key]
+            
+            # --- KRİTİK DÜZELTME (Hata 2) ---
+            # 'payload'un 'None' olup olmadığını kontrol et.
+            # 'list_todos' (payload=None) ise argümansız çalıştır.
+            # 'note' veya 'todo_add' (payload=metin) ise argümanla çalıştır.
+            if payload is not None:
+                result = tool_function(payload)
+            else:
+                result = tool_function()
+                
             return result
         
+        except TypeError as e:
+            if "required positional argument" in str(e) or "takes 0" in str(e) or "takes 1" in str(e):
+                 logger.error(f"Araç ({tool_key}) yanlış argümanla çağrıldı. Payload: {payload}. Hata: {e}")
+                 return f"Üzgünüm, '{tool_key}' komutunu çalıştırırken bir argüman hatası oluştu."
+            else:
+                 logger.error(f"Araç çalıştırılırken (TypeError) hata oluştu ({tool_key}): {e}")
+                 return f"Üzgünüm, '{tool_key}' aracını çalıştırırken bir tip hatası oluştu."
         except Exception as e:
-            logger.error(f"Araç çalıştırılırken hata oluştu ({tool_name}): {e}")
-            return f"Üzgünüm, '{tool_name}' aracını çalıştırırken bir hata oluştu."
+            logger.error(f"Araç çalıştırılırken (Genel Hata) hata oluştu ({tool_key}): {e}")
+            return f"Üzgünüm, '{tool_key}' aracını çalıştırırken bir hata oluştu."

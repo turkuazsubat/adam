@@ -10,29 +10,33 @@ def generate_response(user_input: str, memory,tool_manager) -> str: #Hafta5: too
     """
     analysis = interpret_text(user_input)
     intent = analysis["intent"]
-    
-    keywords = analysis.get("keywords",[])
-    raw_text = analysis.get("raw_text", user_input)
 
-    #1.Niyet Komut (Hafta 5)
+    #---- Yönlendirici (Router)-----
+
+    #1.Niyet Komut (Hafta 6 Güncellendi)
     if intent == "command":
         
-        
-        # Hangi aracın çalışacağını bul
-        tool_name = tool_manager.find_tool_for_command(keywords)
-        
-        if tool_name:
-            # KRİTİK DÜZELTME: Aracın adını değil, aracın sonucunu döndür.
-            # tool_manager'a aracı çalıştırmasını söylüyoruz (execute_tool).
-            result = tool_manager.execute_tool(tool_name, raw_text)
+        tool_key = analysis.get("tool_key")
+        payload = analysis.get("payload")
+
+        # 'çık' komutu (main.py zaten yakalıyor ama NLU'da da var)
+        if tool_key:
+            # --- KRİTİK GÜNCELLEME (V2) ---
+            # Artık 'find_tool_for_command' ÇAĞIRMIYORUZ.
+            # Doğrudan 'execute_tool'u 'tool_key' ile çağırıyoruz.
+            result = tool_manager.execute_tool(tool_key, payload)
+            
+            # Not: Komutların sonucunu interactions'a kaydedebiliriz (şimdilik atlıyoruz)
+            # memory.save_interaction(user_input, result) 
             return result
         else:
-            # Niyet "command" ama uygun araç bulunamadı
+            # Niyet "command" ama NLU uygun 'tool_key' bulamadı
             response_text = "Komutunuzu anladım ancak bu eylemi gerçekleştirecek uygun bir araç bulamadım."
             memory.save_interaction(user_input, response_text)
             return response_text
+   
+   
     #2. Niyet: Sorgulama(Hafta3-4)
-
     elif intent == "query":
         # Hafıza araması ve API araması için retriever'a ham girdiyi (user_input) gönderiyoruz
         # (Bu, Hafta 4'te yaptığımız son düzeltmeydi ve doğruydu)

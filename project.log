@@ -360,3 +360,31 @@ UnboundLocalError: cannot access local variable 'keywords' where it is not assoc
 2025-11-05 22:09:23,450 - INFO - project_x - Kullan\u0131c\u0131: toplant\u0131 ba\u015flad\u0131 not al | Asistan: Notunuz ba\u015far\u0131yla kaydedildi.
 2025-11-05 22:09:25,741 - INFO - project_x - Asistan kapat\u0131ld\u0131.
 2025-11-05 22:09:25,743 - INFO - memory - Veritaban\u0131 ba\u011flant\u0131s\u0131 kapat\u0131ld\u0131.
+2025-11-08 16:09:14,075 - INFO - memory - SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+2025-11-08 16:09:14,093 - ERROR - memory - Veritaban\u0131 \u015fema çal\u0131\u015ft\u0131rma hatas\u0131: table versions already exists
+2025-11-08 16:09:14,093 - INFO - feedback - FeedbackManager ba\u015flat\u0131ld\u0131.
+2025-11-08 16:09:14,093 - INFO - tool_manager - ToolManager ba\u015flat\u0131ld\u0131 ve araçlar yüklendi.
+2025-11-08 16:09:14,093 - INFO - project_x - Asistan ba\u015flat\u0131l\u0131yor...
+2025-11-08 16:09:20,385 - INFO - tools.note_tool - Not Ba\u015far\u0131yla kaydedildi: data/notes.txt
+2025-11-08 16:09:20,385 - INFO - project_x - Kullan\u0131c\u0131: Toplant\u0131 ba\u015flad\u0131 not al | Asistan: Notunuz ba\u015far\u0131yla kaydedildi.
+2025-11-08 16:09:26,364 - INFO - tools.todo_tool - Yeni görev eklendi: marketten süt al görev ekle
+2025-11-08 16:09:26,365 - INFO - project_x - Kullan\u0131c\u0131: marketten süt al görev ekle | Asistan: \u015eu görev eklendi: 'marketten süt al görev ekle'
+2025-11-08 16:09:33,485 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/görev
+2025-11-08 16:09:34,300 - WARNING - retriever - API yan\u0131t\u0131 geçerli ancak 'extract' alan\u0131 bo\u015f (404/Bulunamad\u0131).
+2025-11-08 16:09:34,300 - WARNING - retriever - E\u015fle\u015fen yerel dosya bulunamad\u0131 (sorgu: görev).
+2025-11-08 16:09:34,317 - DEBUG - memory - Etkile\u015fim kaydedildi. ID: 4
+2025-11-08 16:09:34,319 - INFO - project_x - Kullan\u0131c\u0131: görev listem nedir | Asistan: Bilgiye ula\u015f\u0131lamad\u0131. Yard\u0131mc\u0131 olabilece\u011fim ba\u015fka bir konu var m\u0131?
+2025-11-08 16:09:38,524 - ERROR - tool_manager - Araç (todo_list) yanl\u0131\u015f argümanla ça\u011fr\u0131ld\u0131. Payload: None. Hata: list_todos() takes 0 positional arguments but 1 was given
+2025-11-08 16:09:38,524 - INFO - project_x - Kullan\u0131c\u0131: görev listele | Asistan: Üzgünüm, 'todo_list' komutunu çal\u0131\u015ft\u0131r\u0131rken bir argüman hatas\u0131 olu\u015ftu.
+2025-11-08 16:09:43,723 - INFO - project_x - Asistan kapat\u0131ld\u0131.
+2025-11-08 16:09:43,723 - INFO - memory - Veritaban\u0131 ba\u011flant\u0131s\u0131 kapat\u0131ld\u0131.
+2025-11-08 16:14:24,335 - INFO - memory - SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+2025-11-08 16:14:24,335 - ERROR - memory - Veritaban\u0131 \u015fema çal\u0131\u015ft\u0131rma hatas\u0131: table versions already exists
+2025-11-08 16:14:24,335 - INFO - feedback - FeedbackManager ba\u015flat\u0131ld\u0131.
+2025-11-08 16:14:24,335 - INFO - tool_manager - ToolManager ba\u015flat\u0131ld\u0131 ve araçlar yüklendi.
+2025-11-08 16:14:24,342 - INFO - project_x - Asistan ba\u015flat\u0131l\u0131yor...
+2025-11-08 16:14:27,414 - INFO - project_x - Kullan\u0131c\u0131: görev listem nedir | Asistan: \u0130\u015fte yap\u0131lacaklar listeniz :
+1. - marketten süt al görev ekle
+
+2025-11-08 16:14:30,444 - INFO - project_x - Asistan kapat\u0131ld\u0131.
+2025-11-08 16:14:30,444 - INFO - memory - Veritaban\u0131 ba\u011flant\u0131s\u0131 kapat\u0131ld\u0131.

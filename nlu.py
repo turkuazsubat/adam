@@ -7,21 +7,53 @@ def interpret_text(text: str):
     keywords = [token.lemma_.lower() for token in doc if token.is_alpha]
     entities = [(ent.text, ent.label_) for ent in doc.ents]
     
-    # 3. Amaç (Intent) Düzeltmesi (DAHA KAPSAYICI YENİ MANTIK):
-    # Eğer metin 'nedir', 'ara', 'bilgi', '?' içeriyorsa VEYA 
-    # 5 kelimeden uzunsa (uzunluk bazlı sezgisel tahmin)
-
-    #Hafta 5 Niyet Tanıma
-
-    #1. Komut Niyet Kontrolü
-    if "not" in keywords and "al" in keywords:
-        intent = "command"
-
-    #2. Geri Bildirim Niyeti Kontrolü
+    #Hafta 6 eklemeler
+    raw_text = text
+    intent = "general" #varsayılan text w6
+    tool_key = None #Varsayılan araç
+    payload = raw_text
     
-    elif text.startswith("!"):
-        intent = "feedback" #!kaydet (main.py bunu yakalıyor ama NLU'nun yakalaması gerekiyor)
+    
+    #Hafta 6: Niyet tanıma V2 öncelik sırasına göre 
 
+    #1. Geri bildirim kontrolü
+    if raw_text.startswith("!"):
+        intent = 'feedback'
+
+    #2. Komut(Command) Niyeti Kontrolü
+    elif "not" in keywords and "al" in keywords:
+        intent = "command"
+        tool_key = "note"
+        #Not al komutunda, komut kelimelerini ("Not al") temizleyerek payload oluşturabiliriz
+        #Şimdilik basit tutalım ve ham metni gönderelim:
+        payload = raw_text
+
+    elif("görev" in keywords and "ekle" in keywords) or \
+        ("yapılacak" in keywords and "ekle" in keywords):
+        intent = "command"
+        tool_key = "todo_add"
+        #Payload'dan komut kelimelerini çıkarmak iyi bir pratik olurdu, şimdilik ham metin:
+        payload= raw_text
+
+    # --- KRİTİK DÜZELTME (Hata 1) ---
+    # "listele" veya "liste" kelimelerini (ve eklerini "listem" gibi) ara
+    elif ("görev" in keywords or "yapılacak" in keywords) and \
+         any(k.startswith("liste") for k in keywords): # "liste", "listele", "listem" vb.
+        intent = "command"
+        tool_key = "todo_list"
+        payload = None # Liste isterken ek yüke gerek yok
+    
+
+    elif("görev" in keywords and "liste" in keywords) or \
+        ("görev" in keywords and "listele" in keywords) or \
+        ("yapılacak" in keywords and "liste" in keywords):
+        intent = "command"
+        tool_key = "todo_list"
+        payload = None #Liste isterken ek yüke gerek yok
+
+    elif raw_text.lower() in ["çık","exit","quit"]:
+        intent ="command"
+        tool_key = "exit" #Özel çıkış komutu
 
     #3.Sorgu(Query) niyeti Hafta 3 te yapılmıştı
     elif ("nedir" in text.lower() or 
@@ -31,18 +63,15 @@ def interpret_text(text: str):
         "?" in text or 
         len(text.split()) >= 3): # <<< YENİ: Uzun sorguları 'query' kabul et
         intent = "query"
+    
     #4. Genel Kontrolü
+    #(Yukarıdakilerin hiçbiri eşleşmezse "general" olarak kalır)
 
-    else:
-        # Tekrar kontrol: Sadece 'çık' yazılmışsa 'command' yap (ileri aşama için)
-        if text.lower() in ["çık", "exit", "quit"]:
-             intent = "command"
-        else:
-             intent = "general" 
     
     return {
         "intent": intent,
-        "keywords": keywords,
-        "entities": entities,
-        "raw_text": text #Yeni: Eylemler için (payload) ham metini görmek
+        "tool_key": tool_key, #W6, Hangi aracın çalışacağını belitir
+        "payload": payload, #W6, araca gönderilecek veri
+        "keywords": keywords, # (Hala debug için tutuluyor)
+        "entities": entities
     }
