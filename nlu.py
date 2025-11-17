@@ -1,6 +1,22 @@
 import spacy
 nlp = spacy.load("en_core_web_sm") 
 
+def clean_payload(text: str, triggers: list) -> str:
+    '''
+    Yardımcı Fonksiyon:
+    Metnin sonundaki tetikleyici komut kelimelerini(örn. 'görev ekle') temizler.
+    '''
+
+    text_lower = text.lower().strip()
+    for trigger in triggers:
+        #Eğer cümle bu tetikleyici ile bitiyorsa
+        if text_lower.endswith(trigger):
+            #Orjinal metinden, tetikleyicinin uzunluğu kadar sonran kırp
+            #text[:-lent(trigger)] -> Sondan kelime atar
+            return text[:-len(trigger)].strip()
+        return text
+    
+
 def interpret_text(text: str):
     doc = nlp(text)
     
@@ -26,14 +42,15 @@ def interpret_text(text: str):
         tool_key = "note"
         #Not al komutunda, komut kelimelerini ("Not al") temizleyerek payload oluşturabiliriz
         #Şimdilik basit tutalım ve ham metni gönderelim:
-        payload = raw_text
+        payload = clean_payload(raw_text, ["not al","notunu al"])
 
     elif("görev" in keywords and "ekle" in keywords) or \
         ("yapılacak" in keywords and "ekle" in keywords):
         intent = "command"
         tool_key = "todo_add"
         #Payload'dan komut kelimelerini çıkarmak iyi bir pratik olurdu, şimdilik ham metin:
-        payload= raw_text
+        payload = clean_payload(raw_text, ["görev ekle", "yapılacaklara ekle", "listeye ekle", "ekle"])
+        
 
     # --- KRİTİK DÜZELTME (Hata 1) ---
     # "listele" veya "liste" kelimelerini (ve eklerini "listem" gibi) ara

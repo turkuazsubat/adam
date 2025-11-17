@@ -1,1 +1,4 @@
 - marketten süt al görev ekle
+- eve giderken ekmek al görev ekle
+- ekmek alıcam
+- not alıcam
