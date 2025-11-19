@@ -3,6 +3,8 @@ from tkinter import scrolledtext
 import datetime
 import logging
 import sys
+import threading #W8
+import locale #GUI UTF*8 Sorunu 
 
 #---Backend Modülleri (Beyin)---
 from response import generate_response
@@ -18,8 +20,13 @@ SCHEMA_PATH = "db_schema.sql"
 class ProjectXGUI:
     def __init__(self,root):
         self.root = root
-        self.root.title("Proje X Asistanı (GUI v1)")
+        self.root.title("Proje X Asistanı (GUI v2 - Threading)")
         self.root.geometry("600x700") #Pencere boyutu
+
+        #---Durum takibi---
+        self.is_processing = False #İşlem sürüyor mu?
+        self.thinkind_id = None #"Düşünüyor..." mesajının ID'si
+        self.memor = None # Thread id çakışması için buraya taşıdım
 
         #--- Arayüz Kurulumu---
         self.setup_ui()
@@ -64,7 +71,7 @@ class ProjectXGUI:
 
         #4.Gönder Butonu
 
-        send_button = tk.Button(
+        self.send_button = tk.Button(
             bottom_frame,
             text="Gönder",
             command=self.send_message,
@@ -73,7 +80,7 @@ class ProjectXGUI:
             fg="#FFFFFF",
             width=10
         )
-        send_button.pack(side="right",padx=10,pady=10)
+        self.send_button.pack(side="right",padx=10,pady=10)
 
     def init_backend(self):
         '''Arka plan servislerini başlatır'''
@@ -96,61 +103,117 @@ class ProjectXGUI:
         '''Kullanıcı "Gönder" e bastığında veya Enter'a tıkladığında çalışır'''
         user_input = self.entry_field.get().strip()
 
-        if not user_input:
-            return
+        # --- KRİTİK KLAVYE DÜZELTMESİ (Input Translation) ---
+        # Tcl/Tk'nın bozduğu karakterleri (özellikle 'ı' karakterini) düzeltiyoruz.
+        user_input = user_input.replace('ý', 'ı').replace('Ý', 'İ') # <<< YENİ: I, ı karakter düzeltmesi
+        # ----------------------------------------------------
+
+        if not user_input or self.is_processing:
+            return "break" #Tuş basımını engelle
+        
+        # --- KRİTİK DÜZELTME 1: Çıkış Komutunu Ana Thread'de Yakala ---
+        if user_input.lower() in ["çık", "exit", "quit"]:
+            self.append_message("Sistem", "Kapatılıyor...", 'system')
+            self.memory.close() 
+            self.root.destroy() # Pencereyi kapat
+            return "break"
         
         # 1. Kullanıcı mesajını yaz
         self.append_message("Siz", user_input, 'user')
         self.entry_field.delete(0, 'end')
 
-        # 2. Backend'e gönder (Process Input)
-        # Arayüzün donmasını engellemek için 'after' kullanabiliriz ama şimdilik direkt çağırıyoruz.
-        self.process_input(user_input)
+        # 2. Buton ve kutuyu devre dışı bırak
+        self.is_processing = True
+        self.entry_field.configure(state="disabled")
+        self.send_button.configure(state="disabled")
 
-    def process_input(self,user_input):
-        '''Girdiyi analiz eder ve cevabı üretir (main.py mantığı)'''
+        # 3. "Düşünüyor" mesajını yaz
+        self.thinkind_id = self.append_message("Asistan","Yazıyor...",'thinking',is_temp=True)
+
+        # 4. İşlemeyi arka plana gönder 
+        thread = threading.Thread(target=self.process_input_thread,args=(user_input,))
+        thread.start()
+
+        return "break"
+    def process_input_thread(self, user_input):
+        '''
+        Arka plan thread'inde çalışan, bloke edici mantık.
+        '''
         try:
             response = ""
-       
+
             # A) Çıkış Komutu
-            if user_input.lower() in ["çık", "exit", "quit"]:
-                response = "Görüşmek üzere! (Pencereyi kapatabilirsiniz)"
+            '''
+            if user_input.lower() in ["çık","exit","quit"]:
+                response = "Görüşmek üzere! (Pencereyi Kapatabilirsiniz)"
                 self.memory.close()
-                # İsterseniz self.root.destroy() ile pencereyi de kapatabilirsiniz
-            
+            '''
+            #NOT:Çıkış Komutu kontrolü buradan deaktif edildi.
+
             # B) Geri Bildirim (!Komut)
-            elif user_input.startswith("!"):
+            if user_input.startswith("!"):
                 response = self.feedback_manager.handle_command(user_input)
-                
+
             # C) Normal Akış (Sorgu veya Komut)
             else:
                 response = generate_response(user_input, self.memory, self.tool_manager)
 
-            # Cevabı ekrana yaz
-            self.append_message("Asistan", response, 'bot')
-            
-            # Logla
-            log_event("INFO", f"GUI: {user_input} | {response}", "gui")
-
         except Exception as e:
-            error_msg = f"Beklenmedik hata: {e}"
-            self.append_message("Sistem", error_msg, 'system')
-            log_event("ERROR", f"GUI İşlem Hatası: {e}", "gui")
+            response = f"Beklenmedik hata: {e}"
+            log_event("ERROR",f"THREAD İşlem Hatası: {e}", "gui")
 
-    def append_message(self, sender, message,tag):
+        #İşlem bitti: Cevabı ana thread'e göndermemiz gerekiyor(root.after ile)
+        self.root.after(0,self.update_ui_with_response, user_input,response)
+
+    def update_ui_with_response(self, user_input,response):
+        '''Ana thread'de cevabı gösterir ve arayüzü sıfırlar.'''
+
+        #1. Düşünüyor mesajını sil
+        if self.thinkind_id:
+            self.delete_message(self.thinkind_id)
+
+        #2. Cevabı ekrana yaz
+        tag = 'system' if user_input.lower() in ["çık","exit","quit"] or response.startswith("Beklenmedik hata:") else "bot"
+        self.append_message("Asistan", response, tag)
+
+        #3. Arayüzü sıfırla
+        self.is_processing = False
+        self.entry_field.configure(state="normal")
+        self.send_button.configure(state="normal")
+        self.entry_field.focus_set() # imleci giriş kutusuna geri getir (Auto focus)
+
+
+    def append_message(self, sender, message,tag,is_temp = False):
         '''Sohbet Ekranına formatlı mesaj ekler'''
         self.chat_display.configure(state="normal") #Yazma kilidini aç
 
         timestamp = datetime.datetime.now().strftime("%H:%M")
         header = f"{sender} [{timestamp}]:\n"
 
+        start_index = self.chat_display.index("end-1c") #Mesajın başlangıcını bul
+
+
         #Başlığı ve mesajı ekle
         self.chat_display.insert("end", header, tag)
         self.chat_display.insert("end", message + "\n\n",tag)
 
+        end_index = self.chat_display.index("end-1c") #Mesajın sonunu bul
+
         self.chat_display.configure(state="disabled") #Tekrar kilitle(salt okunur yap)
         self.chat_display.see("end") #En aşağıya (son mesaja) kaydır
 
+        #Eğer gecici mesajsa (thinking), silmek için ID'sini döndür
+        if is_temp:
+            #Tkinter'da mesajı silmek için Text widget'ının indexleri döndürülür
+            return start_index, end_index
+        
+    def delete_message(self, indices):
+        '''Geçici "düşünüyor" mesajını siler '''
+        self.chat_display.configure(state="normal")
+        self.chat_display.delete(indices[0],indices[1])
+        self.chat_display.configure(state='disabled')
+
+        
 
 if __name__ == "__main__":
     #Loglama Ayarları (Dosyayı Yaz)
@@ -163,6 +226,18 @@ if __name__ == "__main__":
 
     #Tkinter ana döngüsünü başlat
     root = tk.Tk()
+    #Türkçe klavye(LOCALE) Ayarı
+    # --- KRİTİK VE GARANTİLİ Tcl/Tk ZORLAMASI ---
+    try:
+        # Tcl/Tk ana interpreter'ın varsayılan encoding'ini UTF-8'e ayarlar.
+        root.tk.call('encoding', 'system', 'utf-8') 
+    except Exception as e:
+        log_event("WARNING", f"Tcl/Tk encoding ayarlanamadı: {e}", "gui")
+        pass
+
+
+
+    
     app = ProjectXGUI(root)
     root.mainloop()         
 
