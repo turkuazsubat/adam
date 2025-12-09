@@ -531,3 +531,140 @@ UnboundLocalError: cannot access local variable 'keywords' where it is not assoc
 2025-11-20 01:44:38,903 - INFO - tool_manager - ToolManager ba\u015flat\u0131ld\u0131 ve araçlar yüklendi.
 2025-11-20 01:44:38,903 - INFO - gui - GUI: Asistan ba\u015flat\u0131ld\u0131.
 2025-11-20 01:44:45,905 - INFO - memory - Veritaban\u0131 ba\u011flant\u0131s\u0131 kapat\u0131ld\u0131.
+2025-11-25 15:48:19,076 - INFO - memory - SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+2025-11-25 15:48:19,101 - ERROR - memory - Veritaban\u0131 \u015fema çal\u0131\u015ft\u0131rma hatas\u0131: table versions already exists
+2025-11-25 15:48:19,101 - INFO - feedback - FeedbackManager ba\u015flat\u0131ld\u0131.
+2025-11-25 15:48:19,101 - INFO - tool_manager - ToolManager ba\u015flat\u0131ld\u0131 ve araçlar yüklendi.
+2025-11-25 15:48:19,106 - INFO - gui - GUI: Asistan ba\u015flat\u0131ld\u0131.
+2025-11-25 15:48:28,818 - ERROR - memory - Etkile\u015fim kaydetme hatas\u0131: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 18752 and this is thread id 18608.
+2025-11-25 15:48:32,452 - ERROR - memory - Etkile\u015fim kaydetme hatas\u0131: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 18752 and this is thread id 16964.
+2025-11-25 15:48:40,119 - ERROR - memory - Haf\u0131zadan okuma hatas\u0131: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 18752 and this is thread id 21616.
+2025-11-25 15:48:40,119 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/mersin
+2025-11-25 15:48:42,261 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-11-25 15:48:42,263 - ERROR - memory - Etkile\u015fim kaydetme hatas\u0131: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 18752 and this is thread id 21616.
+2025-11-25 15:49:04,843 - ERROR - memory - Haf\u0131zadan okuma hatas\u0131: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 18752 and this is thread id 29116.
+2025-11-25 15:49:04,843 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/roma
+2025-11-25 15:49:05,883 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-11-25 15:49:05,883 - ERROR - memory - Etkile\u015fim kaydetme hatas\u0131: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 18752 and this is thread id 29116.
+2025-11-25 16:46:55,625 - INFO - memory - SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+2025-11-25 16:46:55,625 - ERROR - memory - Veritaban\u0131 \u015fema çal\u0131\u015ft\u0131rma hatas\u0131: table versions already exists
+2025-11-25 16:46:55,625 - INFO - feedback - FeedbackManager ba\u015flat\u0131ld\u0131.
+2025-11-25 16:46:55,625 - INFO - tool_manager - ToolManager ba\u015flat\u0131ld\u0131 ve araçlar yüklendi.
+2025-11-25 16:46:55,638 - INFO - gui - GUI: Asistan ba\u015flat\u0131ld\u0131.
+2025-11-25 16:47:12,494 - ERROR - memory - Haf\u0131zadan okuma hatas\u0131: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 21008 and this is thread id 26636.
+2025-11-25 16:47:12,494 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/mersin
+2025-11-25 16:47:12,569 - ERROR - retriever - Curl komutu hata kodu döndürdü (6): 
+2025-11-25 16:47:12,575 - WARNING - retriever - E\u015fle\u015fen yerel dosya bulunamad\u0131 (sorgu: mersin).
+2025-11-25 16:47:12,577 - ERROR - memory - Etkile\u015fim kaydetme hatas\u0131: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 21008 and this is thread id 26636.
+2025-11-25 16:47:33,314 - ERROR - memory - Haf\u0131zadan okuma hatas\u0131: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 21008 and this is thread id 27696.
+2025-11-25 16:47:33,314 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/mersin
+2025-11-25 16:47:33,802 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-11-25 16:47:33,802 - ERROR - memory - Etkile\u015fim kaydetme hatas\u0131: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 21008 and this is thread id 27696.
+2025-11-25 16:47:55,017 - INFO - tools.note_tool - Not Ba\u015far\u0131yla kaydedildi: data/notes.txt
+2025-11-25 16:48:00,857 - ERROR - memory - Etkile\u015fim kaydetme hatas\u0131: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 21008 and this is thread id 34652.
+2025-11-25 16:48:06,394 - ERROR - memory - Etkile\u015fim kaydetme hatas\u0131: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 21008 and this is thread id 1476.
+2025-11-25 16:51:07,938 - INFO - memory - SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+2025-11-25 16:51:07,938 - ERROR - memory - Veritaban\u0131 \u015fema çal\u0131\u015ft\u0131rma hatas\u0131: table versions already exists
+2025-11-25 16:51:07,938 - INFO - feedback - FeedbackManager ba\u015flat\u0131ld\u0131.
+2025-11-25 16:51:07,938 - INFO - tool_manager - ToolManager ba\u015flat\u0131ld\u0131 ve araçlar yüklendi.
+2025-11-25 16:51:07,938 - INFO - project_x - Asistan ba\u015flat\u0131l\u0131yor...
+2025-11-25 16:51:16,426 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/mersin
+2025-11-25 16:51:17,024 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-11-25 16:51:17,058 - DEBUG - memory - Etkile\u015fim kaydedildi. ID: 8
+2025-11-25 16:51:17,058 - INFO - project_x - Kullan\u0131c\u0131: mersin üniversitesi nedir | Asistan: Mersin, Türkiye'nin Mersin ilinin merkezi olan \u015fehirdir. Mersin Türkiye'nin Akdeniz Bölgesi'nde bulunan bir liman kentidir. Mersin Liman\u0131 Türkiye'nin en büyük limanlar\u0131 aras\u0131ndad\u0131r. \u015eehirde turizm, sanayi, tar\u0131m ve denizcilik geli\u015fmi\u015ftir.
+2025-11-25 16:51:19,846 - INFO - memory - Geri bildirim kaydedildi (ID: 8, Tip: important).
+2025-11-25 16:51:19,862 - WARNING - memory - !!! KR\u0130T\u0130K Ö\u011eRENME !!! Etkile\u015fim ID 8 kal\u0131c\u0131 haf\u0131zaya ta\u015f\u0131nd\u0131.
+2025-11-25 16:51:19,862 - INFO - project_x - Geri Bildirim Komutu: !kaydet | Cevap: Geri bildirim ('important'): Kaydedildi (ID: 8). Cevap, kal\u0131c\u0131 haf\u0131zaya ta\u015f\u0131nd\u0131
+2025-11-25 16:51:27,359 - DEBUG - memory - Haf\u0131zadan bilgi bulundu: mersin üniversitesi nedir
+2025-11-25 16:51:27,359 - INFO - retriever - Cevap, kal\u0131c\u0131 haf\u0131zadan çekildi (Ö\u011frenilmi\u015f bilgi).
+2025-11-25 16:51:27,370 - DEBUG - memory - Etkile\u015fim kaydedildi. ID: 9
+2025-11-25 16:51:27,370 - INFO - project_x - Kullan\u0131c\u0131: mersin üniversitesi nedir | Asistan: Mersin, Türkiye'nin Mersin ilinin merkezi olan \u015fehirdir. Mersin Türkiye'nin Akdeniz Bölgesi'nde bulunan bir liman kentidir. Mersin Liman\u0131 Türkiye'nin en büyük limanlar\u0131 aras\u0131ndad\u0131r. \u015eehirde turizm, sanayi, tar\u0131m ve denizcilik geli\u015fmi\u015ftir.
+Bu bilgi asistan\u0131n ö\u011frendi\u011fi kal\u0131c\u0131 haf\u0131zadan çekilmi\u015ftir.
+2025-11-25 16:51:35,847 - INFO - tools.note_tool - Not Ba\u015far\u0131yla kaydedildi: data/notes.txt
+2025-11-25 16:51:35,847 - INFO - project_x - Kullan\u0131c\u0131: sunum yap\u0131lacak not al | Asistan: Notunuz ba\u015far\u0131yla kaydedildi.
+2025-11-25 16:51:47,692 - DEBUG - memory - Etkile\u015fim kaydedildi. ID: 10
+2025-11-25 16:51:47,692 - INFO - project_x - Kullan\u0131c\u0131: nolar\u0131m\u0131 listele | Asistan: Bu konuda emin de\u011filim, biraz daha detay verebilir misiniz?
+2025-11-25 16:51:56,489 - INFO - tools.todo_tool - Yeni görev eklendi: sunum yap\u0131lacak
+2025-11-25 16:51:56,489 - INFO - project_x - Kullan\u0131c\u0131: sunum yap\u0131lacak görev ekle | Asistan: \u015eu görev eklendi: 'sunum yap\u0131lacak'
+2025-11-25 16:52:00,891 - DEBUG - memory - Etkile\u015fim kaydedildi. ID: 11
+2025-11-25 16:52:00,891 - INFO - project_x - Kullan\u0131c\u0131: görevlerimi listele | Asistan: Bu konuda emin de\u011filim, biraz daha detay verebilir misiniz?
+2025-11-25 16:52:05,882 - INFO - project_x - Kullan\u0131c\u0131: görev listem nedir | Asistan: \u0130\u015fte yap\u0131lacaklar listeniz :
+1. - marketten süt al görev ekle
+2. - eve giderken ekmek al görev ekle
+3. - ekmek al\u0131cam
+4. - not al\u0131cam
+5. - sunum yap\u0131lacak
+
+2025-12-09 18:15:22,222 - INFO - memory - SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+2025-12-09 18:15:22,238 - ERROR - memory - Veritaban\u0131 \u015fema çal\u0131\u015ft\u0131rma hatas\u0131: table versions already exists
+2025-12-09 18:15:22,238 - INFO - feedback - FeedbackManager ba\u015flat\u0131ld\u0131.
+2025-12-09 18:15:22,238 - INFO - tool_manager - ToolManager ba\u015flat\u0131ld\u0131 ve araçlar yüklendi.
+2025-12-09 18:15:22,240 - INFO - gui - GUI: Asistan ba\u015flat\u0131ld\u0131.
+2025-12-09 18:15:34,734 - ERROR - memory - Haf\u0131zadan okuma hatas\u0131: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 28128 and this is thread id 14100.
+2025-12-09 18:15:34,734 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/japonya
+2025-12-09 18:15:35,720 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-12-09 18:15:35,721 - ERROR - memory - Etkile\u015fim kaydetme hatas\u0131: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 28128 and this is thread id 14100.
+2025-12-09 18:15:45,841 - ERROR - memory - Haf\u0131zadan okuma hatas\u0131: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 28128 and this is thread id 34024.
+2025-12-09 18:15:45,841 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/japonya
+2025-12-09 18:15:46,236 - INFO - retriever - Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+2025-12-09 18:15:46,236 - ERROR - memory - Etkile\u015fim kaydetme hatas\u0131: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 28128 and this is thread id 34024.
+2025-12-09 18:15:59,511 - ERROR - memory - Haf\u0131zadan okuma hatas\u0131: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 28128 and this is thread id 35116.
+2025-12-09 18:15:59,512 - INFO - retriever - Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/marketten
+2025-12-09 18:16:00,250 - WARNING - retriever - API yan\u0131t\u0131 geçerli ancak 'extract' alan\u0131 bo\u015f (404/Bulunamad\u0131).
+2025-12-09 18:16:00,251 - WARNING - retriever - E\u015fle\u015fen yerel dosya bulunamad\u0131 (sorgu: marketten).
+2025-12-09 18:16:00,252 - ERROR - memory - Etkile\u015fim kaydetme hatas\u0131: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 28128 and this is thread id 35116.
+INFO:memory:SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+ERROR:memory:Veritaban\u0131 \u015fema çal\u0131\u015ft\u0131rma hatas\u0131: table versions already exists
+INFO:feedback:FeedbackManager ba\u015flat\u0131ld\u0131.
+INFO:tool_manager:ToolManager ba\u015flat\u0131ld\u0131 ve araçlar yüklendi.
+INFO:memory:SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+ERROR:memory:Veritaban\u0131 \u015fema çal\u0131\u015ft\u0131rma hatas\u0131: table versions already exists
+INFO:feedback:FeedbackManager ba\u015flat\u0131ld\u0131.
+INFO:tool_manager:ToolManager ba\u015flat\u0131ld\u0131 ve araçlar yüklendi.
+INFO:gui:GUI: Asistan ba\u015flat\u0131ld\u0131.
+INFO:memory:SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+ERROR:memory:Veritaban\u0131 \u015fema çal\u0131\u015ft\u0131rma hatas\u0131: table versions already exists
+INFO:feedback:FeedbackManager ba\u015flat\u0131ld\u0131.
+INFO:tool_manager:ToolManager ba\u015flat\u0131ld\u0131 ve araçlar yüklendi.
+INFO:gui:GUI: Asistan ba\u015flat\u0131ld\u0131.
+ERROR:memory:Haf\u0131zadan okuma hatas\u0131: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 21872 and this is thread id 21044.
+INFO:retriever:Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/japonya
+INFO:retriever:Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+ERROR:memory:Etkile\u015fim kaydetme hatas\u0131: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 21872 and this is thread id 21044.
+ERROR:gui:THREAD \u0130\u015flem Hatas\u0131: MemoryManager.promote_to_memory() takes 2 positional arguments but 3 were given
+ERROR:gui:THREAD \u0130\u015flem Hatas\u0131: MemoryManager.promote_to_memory() takes 2 positional arguments but 3 were given
+ERROR:memory:Haf\u0131zadan okuma hatas\u0131: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 21872 and this is thread id 30132.
+INFO:retriever:Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/japonya
+INFO:retriever:Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+ERROR:memory:Etkile\u015fim kaydetme hatas\u0131: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 21872 and this is thread id 30132.
+INFO:tools.todo_tool:Yeni görev eklendi: ak\u015fam spora ç\u0131k\u0131cam
+INFO:memory:SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+ERROR:memory:Veritaban\u0131 \u015fema çal\u0131\u015ft\u0131rma hatas\u0131: table versions already exists
+INFO:feedback:FeedbackManager ba\u015flat\u0131ld\u0131.
+INFO:tool_manager:ToolManager ba\u015flat\u0131ld\u0131 ve araçlar yüklendi.
+INFO:gui:GUI: Asistan ba\u015flat\u0131ld\u0131.
+ERROR:memory:Haf\u0131zadan okuma hatas\u0131: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 35896 and this is thread id 29192.
+INFO:retriever:Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/japonya
+INFO:retriever:Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+ERROR:memory:Etkile\u015fim kaydetme hatas\u0131: SQLite objects created in a thread can only be used in that same thread. The object was created in thread id 35896 and this is thread id 29192.
+ERROR:gui:THREAD \u0130\u015flem Hatas\u0131: 'MemoryManager' object has no attribute 'normalize_query'
+INFO:memory:SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+ERROR:memory:Veritaban\u0131 \u015fema çal\u0131\u015ft\u0131rma hatas\u0131: table versions already exists
+INFO:feedback:FeedbackManager ba\u015flat\u0131ld\u0131.
+INFO:tool_manager:ToolManager ba\u015flat\u0131ld\u0131 ve araçlar yüklendi.
+INFO:gui:GUI: Asistan ba\u015flat\u0131ld\u0131.
+INFO:retriever:Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/japonya
+INFO:retriever:Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+ERROR:memory:Haf\u0131zaya alma hatas\u0131: table memory has no column named timestamp
+ERROR:memory:Haf\u0131zaya alma hatas\u0131: table memory has no column named timestamp
+INFO:memory:SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+INFO:memory:Veritaban\u0131 tablolar\u0131 yüklendi.
+INFO:feedback:FeedbackManager ba\u015flat\u0131ld\u0131.
+INFO:tool_manager:ToolManager ba\u015flat\u0131ld\u0131 ve araçlar yüklendi.
+INFO:gui:GUI: Asistan ba\u015flat\u0131ld\u0131.
+INFO:retriever:Curl API iste\u011fi ba\u015flat\u0131l\u0131yor: https://tr.wikipedia.org/api/rest_v1/page/summary/japonya
+INFO:retriever:Curl ile API'den bilgi ba\u015far\u0131yla al\u0131nd\u0131.
+INFO:memory:LTM Kayd\u0131 Ba\u015far\u0131l\u0131: japonya nedir
+INFO:retriever:Cevap, kal\u0131c\u0131 haf\u0131zadan çekildi (Ö\u011frenilmi\u015f bilgi).
+INFO:tools.todo_tool:Yeni görev eklendi: ak\u015fama roket al\u0131nacak
+INFO:memory:Veritaban\u0131 ba\u011flant\u0131s\u0131 kapat\u0131ld\u0131.

@@ -1,5 +1,5 @@
 -- Versiyon Takibi
-CREATE TABLE versions (
+CREATE TABLE IF NOT EXISTS versions (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   component TEXT,
   version TEXT,
@@ -7,17 +7,16 @@ CREATE TABLE versions (
 );
 
 -- Kaynak Bilgisi
-CREATE TABLE sources (
+CREATE TABLE IF NOT EXISTS sources (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   url TEXT,
   title TEXT,
   fetched_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Kalıcı Hafıza
-CREATE TABLE memory (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  key TEXT,
+-- Kalıcı Hafıza (LTM)
+CREATE TABLE IF NOT EXISTS memory (
+  key TEXT PRIMARY KEY, -- ID yerine Key'i Primary yaptık ki tekrarı önleyelim
   value TEXT,
   provenance TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -27,7 +26,7 @@ CREATE TABLE memory (
 );
 
 -- Etkileşim Kayıtları
-CREATE TABLE interactions (
+CREATE TABLE IF NOT EXISTS interactions (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   user_input TEXT,
@@ -39,11 +38,19 @@ CREATE TABLE interactions (
 );
 
 -- Geri Bildirim Kayıtları
-CREATE TABLE feedback (
+CREATE TABLE IF NOT EXISTS feedback (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   interaction_id INTEGER,
   feedback_type TEXT,
   score INTEGER,
   comment TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- EKSİK OLAN TABLO EKLENDİ: Görev Listesi
+CREATE TABLE IF NOT EXISTS todo_list (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    task TEXT,
+    status TEXT DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

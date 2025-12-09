@@ -2,3 +2,5 @@
 [2025-11-08 16:09:20] - Toplantı başladı not al
 [2025-11-17 19:57:24] - ekmek alıcam
 [2025-11-17 19:57:55] - bardak yıkıcam
+[2025-11-25 16:47:55] - ödev sunumu yapılacak
+[2025-11-25 16:51:35] - sunum yapılacak

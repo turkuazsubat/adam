@@ -29,7 +29,6 @@ def interpret_text(text: str):
     tool_key = None #Varsayılan araç
     payload = raw_text
     
-    
     #Hafta 6: Niyet tanıma V2 öncelik sırasına göre 
 
     #1. Geri bildirim kontrolü
