@@ -849,3 +849,20 @@ INFO:retriever:Temizlenmi\u015f Özne: Apple
 INFO:retriever:OpenSearch E\u015fle\u015fmesi: Apple
 INFO:memory:LTM Kayd\u0131 Ba\u015far\u0131l\u0131: apple
 INFO:response:Cevap LTM'den (Semantik: 0.44) döndü.
+INFO:memory:SQLite veritaban\u0131na ba\u011fland\u0131: db/project.db
+INFO:memory:Veritaban\u0131 tablolar\u0131 yüklendi.
+INFO:feedback:FeedbackManager ba\u015flat\u0131ld\u0131.
+INFO:tool_manager:ToolManager ba\u015flat\u0131ld\u0131 ve araçlar yüklendi.
+INFO:gui:GUI: Asistan ba\u015flat\u0131ld\u0131.
+INFO:response:Niyet belirsiz, son çare internete gidiliyor...
+INFO:retriever:\u0130nternet Aramas\u0131: türkiyenin ba\u015fkenti
+INFO:retriever:Temizlenmi\u015f Özne: Türkiye
+INFO:retriever:OpenSearch E\u015fle\u015fmesi: Türkiye
+INFO:memory:LTM Kayd\u0131 Ba\u015far\u0131l\u0131: türkiyenin ba\u015fkenti
+INFO:response:Cevap LTM'den (Semantik: 0.36) döndü.
+INFO:response:Haf\u0131zada bulunamad\u0131, API'ye gidiliyor...
+INFO:retriever:\u0130nternet Aramas\u0131: süt nedir
+INFO:retriever:Temizlenmi\u015f Özne: Süt
+INFO:retriever:OpenSearch E\u015fle\u015fmesi: Süt
+INFO:memory:LTM Kayd\u0131 Ba\u015far\u0131l\u0131: süt nedir
+INFO:response:Cevap LTM'den (Semantik: 0.58) döndü.

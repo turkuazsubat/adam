@@ -1,6 +1,7 @@
 from nlu import interpret_text
 from retriever import retrieve_info # Adı artık retriever.py
 from semantic_engine import SemanticEngine # Yeni: Semantic Beyin
+from generator import LocalGenerator #Hafta11
 import logging
 from logger import log_event
 
@@ -12,6 +13,14 @@ try:
 except Exception as e:
     log_event("CRITICAL", f"Semantic Engine Başlatılamadı: {e}", "response")
     semantic_brain = None # Hata durumunda sistemin çökmemesi için None atıyoruz (Fallback)
+
+# 2. Generator Motor (Üretme/LLM) - HAFTA 11
+try:
+    print("⏳ Generator Engine (Üretim Modülü) yükleniyor...")
+    brain_generator = LocalGenerator()
+except Exception as e:
+    log_event("CRITICAL", f"Generator Engine Başlatılamadı: {e}", "response")
+    brain_generator = None
 
 def generate_response(user_input: str, memory, tool_manager) -> str: # Hafta5: tool_manager
     """
@@ -82,13 +91,29 @@ def generate_response(user_input: str, memory, tool_manager) -> str: # Hafta5: t
                     log_event("ERROR", f"Semantik Arama Hatası: {e}", "response")
                     # Hata olursa akışı kesme, API'ye devam et.
             
-            # ADIM C: Dış Kaynak (API / İnternet) - Fallback
-            # Hafızada yoksa retriever.py devreye girer.
+            # ADIM C: Dış Kaynak (API / İnternet) - Fallback + LLM İŞLEME(HAFTA11)
+        
             log_event("INFO", "Hafızada bulunamadı, API'ye gidiliyor...", "response")
-            result = retrieve_info(user_input, memory) 
+            raw_result =retrieve_info(user_input,memory)
+            # Eğer Generator (LLM) aktifse ve anlamlı bir veri geldiyse İŞLE
+            # (Hata mesajlarını veya çok kısa metinleri LLM'e sokmuyoruz)
+            if brain_generator and raw_result and len(raw_result) > 100 and "Sorun var" not in raw_result:
+                log_event("INFO", "Ham veri LLM (Generator) ile işleniyor...", "response")
                 
-            memory.save_interaction(user_input, result)
-            return result
+                # Talimat: Flan-T5 İngilizce talimatları daha iyi anlar.
+                # "Summarize this text in Turkish" -> "Bu metni Türkçe özetle" demektir.
+
+                instruction = "Summarize this text in Turkish"
+
+                processed_response = brain_generator.generate(raw_result,instruction,min_length=20)
+
+                final_output = f"{processed_response}\n\n*(Yapay Zeka ile Özetlendi)*"
+                memory.save_interaction(user_input,final_output)
+                return final_output
+            
+            else:
+                memory.save_interaction(user_input, result)
+                return result
 
         # ---------------------------------------------------------
         # 3. NİYET: GENEL SOHBET (Hafta 1-2)
