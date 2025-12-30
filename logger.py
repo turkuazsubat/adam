@@ -1,21 +1,42 @@
 import logging
+import os
 
-def log_event(level: str, message: str, name: str = "project_x"):
+# Senin belirttiğin log dosyası
+LOG_FILE = "project.log"
+
+def setup_logging():
     """
-    Tüm modüllerin kullanabileceği merkezi loglama fonksiyonu.
+    Tüm sistemi ve dış kütüphaneleri susturur, logları dosyaya hapseder.
     """
-    logger = logging.getLogger(name)
-    
-    level = level.upper()
-    if level == "INFO":
-        logger.info(message)
-    elif level == "DEBUG":
-        logger.debug(message)
-    elif level == "WARNING":
-        logger.warning(message)
-    elif level == "ERROR":
-        logger.error(message)
-    elif level == "CRITICAL":
-        logger.critical(message)
-    else:
-        logger.info(f"Bilinmeyen log seviyesi: {level}. Mesaj INFO olarak kaydedildi: {message}")
+    # 1. Kök loglayıcıdaki tüm mevcut handler'ları temizle (Gürültünün kaynağı bunlar)
+    root = logging.getLogger()
+    if root.handlers:
+        for handler in root.handlers[:]:
+            root.removeHandler(handler)
+
+    # 2. Sadece dosyaya yazacak şekilde yapılandır
+    logging.basicConfig(
+        filename=LOG_FILE,
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(name)s - %(message)s',
+        encoding='utf-8'
+    )
+
+    # 3. İnatçı kütüphanelerin sesini manuel olarak kıs (WARNING altına düşemezler)
+    logging.getLogger("transformers").setLevel(logging.WARNING)
+    logging.getLogger("sentence_transformers").setLevel(logging.WARNING)
+    logging.getLogger("urllib3").setLevel(logging.WARNING)
+    logging.getLogger("torch").setLevel(logging.WARNING)
+
+def log_event(level, message, source="System"):
+    """
+    Dosyaya log yazar. Konsola hiçbir şey basmaz.
+    """
+    logger = logging.getLogger(source)
+    if level == "INFO": logger.info(message)
+    elif level == "WARNING": logger.warning(message)
+    elif level == "ERROR": logger.error(message)
+    elif level == "CRITICAL": logger.critical(message)
+
+# Dosya import edildiği an susturma işlemi devreye girsin
+setup_logging()

@@ -866,3 +866,123 @@ INFO:retriever:Temizlenmi\u015f �zne: S�t
 INFO:retriever:OpenSearch E\u015fle\u015fmesi: S�t
 INFO:memory:LTM Kayd\u0131 Ba\u015far\u0131l\u0131: s�t nedir
 INFO:response:Cevap LTM'den (Semantik: 0.58) d�nd�.
+2025-12-30 04:07:46,450 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2025-12-30 04:09:01,478 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2025-12-30 04:09:03,670 - INFO - memory - SQLite veritabanına bağlandı: db/project.db
+2025-12-30 04:09:03,687 - INFO - memory - Veritabanı tabloları yüklendi.
+2025-12-30 04:09:03,687 - INFO - feedback - FeedbackManager başlatıldı.
+2025-12-30 04:09:03,687 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2025-12-30 04:09:03,687 - INFO - gui - GUI: Asistan başlatıldı.
+2025-12-30 04:09:13,466 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-30 04:09:13,466 - INFO - retriever - İnternet Araması: python programlama dili nedir
+2025-12-30 04:09:13,466 - INFO - retriever - Temizlenmiş Özne: Python
+2025-12-30 04:09:14,014 - INFO - retriever - OpenSearch Eşleşmesi: Python
+2025-12-30 04:09:14,298 - INFO - response - Ham veri LLM (Generator) ile işleniyor...
+2025-12-30 04:09:26,417 - INFO - memory - Veritabanı bağlantısı kapatıldı.
+2025-12-30 04:16:51,430 - INFO - memory - SQLite veritabanına bağlandı: db/project.db
+2025-12-30 04:16:51,431 - INFO - memory - Veritabanı tabloları yüklendi.
+2025-12-30 04:16:51,431 - ERROR - Memory - Profil Kayıt Hatası: no such table: user_profile
+2025-12-30 04:16:51,431 - ERROR - Memory - Profil Kayıt Hatası: no such table: user_profile
+2025-12-30 04:18:49,697 - WARNING - huggingface_hub.file_download - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2025-12-30 04:18:53,230 - ERROR - generator - Model yükleme hatası: 
+ requires the protobuf library but it was not found in your environment. Check out the instructions on the
+installation page of its repo: https://github.com/protocolbuffers/protobuf/tree/master/python#installation and follow the ones
+that match your environment. Please note that you may need to restart your runtime after installation.
+
+2025-12-30 04:38:31,052 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2025-12-30 04:38:32,483 - ERROR - generator - Model yükleme hatası: 
+ requires the protobuf library but it was not found in your environment. Check out the instructions on the
+installation page of its repo: https://github.com/protocolbuffers/protobuf/tree/master/python#installation and follow the ones
+that match your environment. Please note that you may need to restart your runtime after installation.
+
+2025-12-30 04:38:32,699 - INFO - memory - SQLite veritabanına bağlandı: db/project.db
+2025-12-30 04:38:32,699 - INFO - memory - Veritabanı tabloları yüklendi.
+2025-12-30 04:38:32,699 - WARNING - Memory - TXT Mirror Hatası: no such table: user_profile
+2025-12-30 04:38:32,699 - INFO - feedback - FeedbackManager başlatıldı.
+2025-12-30 04:38:32,699 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2025-12-30 04:38:32,701 - INFO - gui - GUI: Asistan başlatıldı.
+2025-12-30 04:39:17,970 - INFO - response - Cevap LTM'den (Semantik: 0.48) döndü.
+2025-12-30 04:39:30,350 - INFO - memory - Veritabanı bağlantısı kapatıldı.
+2025-12-30 04:41:10,209 - INFO - memory - SQLite veritabanına bağlandı: db/project.db
+2025-12-30 04:41:10,209 - INFO - memory - Veritabanı tabloları yüklendi.
+2025-12-30 04:44:26,767 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2025-12-30 04:44:28,273 - ERROR - generator - Model yükleme hatası: 
+ requires the protobuf library but it was not found in your environment. Check out the instructions on the
+installation page of its repo: https://github.com/protocolbuffers/protobuf/tree/master/python#installation and follow the ones
+that match your environment. Please note that you may need to restart your runtime after installation.
+
+2025-12-30 04:44:28,496 - INFO - memory - SQLite veritabanına bağlandı: db/project.db
+2025-12-30 04:44:28,499 - INFO - memory - Veritabanı tabloları yüklendi.
+2025-12-30 04:44:28,499 - INFO - feedback - FeedbackManager başlatıldı.
+2025-12-30 04:44:28,499 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2025-12-30 04:44:28,499 - INFO - gui - GUI: Asistan başlatıldı.
+2025-12-30 04:50:43,511 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2025-12-30 04:50:45,034 - ERROR - generator - Model yükleme hatası: 
+ requires the protobuf library but it was not found in your environment. Check out the instructions on the
+installation page of its repo: https://github.com/protocolbuffers/protobuf/tree/master/python#installation and follow the ones
+that match your environment. Please note that you may need to restart your runtime after installation.
+
+2025-12-30 04:50:45,207 - INFO - memory - SQLite veritabanına bağlandı: db/project.db
+2025-12-30 04:50:45,207 - INFO - memory - Veritabanı tabloları yüklendi.
+2025-12-30 04:50:45,209 - INFO - feedback - FeedbackManager başlatıldı.
+2025-12-30 04:50:45,209 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2025-12-30 04:50:45,209 - INFO - gui - GUI: Asistan başlatıldı.
+2025-12-30 04:50:52,940 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-30 04:50:52,940 - INFO - retriever - İnternet Araması: istanbul nasıl bir şehir
+2025-12-30 04:50:52,940 - INFO - retriever - Temizlenmiş Özne: Istanbul
+2025-12-30 04:50:53,398 - INFO - retriever - OpenSearch Eşleşmesi: Istanbul
+2025-12-30 04:50:53,863 - INFO - response - Veri mBART ve Profil ile işleniyor...
+2025-12-30 04:51:13,715 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-30 04:51:13,715 - INFO - retriever - İnternet Araması: tarsusun şehri neresi
+2025-12-30 04:51:13,715 - INFO - retriever - Temizlenmiş Özne: Tarsus
+2025-12-30 04:51:14,165 - INFO - retriever - OpenSearch Eşleşmesi: Tarsus
+2025-12-30 04:51:14,552 - INFO - response - Veri mBART ve Profil ile işleniyor...
+2025-12-30 04:54:44,140 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2025-12-30 04:54:45,587 - ERROR - generator - Model yükleme hatası: 
+ requires the protobuf library but it was not found in your environment. Check out the instructions on the
+installation page of its repo: https://github.com/protocolbuffers/protobuf/tree/master/python#installation and follow the ones
+that match your environment. Please note that you may need to restart your runtime after installation.
+
+2025-12-30 04:54:45,759 - INFO - memory - SQLite veritabanına bağlandı: db/project.db
+2025-12-30 04:54:45,764 - INFO - memory - Veritabanı tabloları yüklendi.
+2025-12-30 04:54:45,764 - INFO - feedback - FeedbackManager başlatıldı.
+2025-12-30 04:54:45,764 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2025-12-30 04:54:45,764 - INFO - gui - GUI: Asistan başlatıldı.
+2025-12-30 04:56:50,024 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2025-12-30 04:56:51,704 - INFO - memory - SQLite veritabanına bağlandı: db/project.db
+2025-12-30 04:56:51,708 - INFO - memory - Veritabanı tabloları yüklendi.
+2025-12-30 04:56:51,708 - INFO - feedback - FeedbackManager başlatıldı.
+2025-12-30 04:56:51,708 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2025-12-30 04:56:51,708 - INFO - gui - GUI: Asistan başlatıldı.
+2025-12-30 04:57:53,739 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2025-12-30 04:57:56,947 - WARNING - huggingface_hub.file_download - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2025-12-30 05:01:41,212 - INFO - memory - SQLite veritabanına bağlandı: db/project.db
+2025-12-30 05:01:41,213 - INFO - memory - Veritabanı tabloları yüklendi.
+2025-12-30 05:01:41,213 - INFO - feedback - FeedbackManager başlatıldı.
+2025-12-30 05:01:41,213 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2025-12-30 05:01:41,214 - INFO - gui - GUI: Asistan başlatıldı.
+2025-12-30 05:22:50,514 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2025-12-30 05:22:57,654 - INFO - memory - SQLite veritabanına bağlandı: db/project.db
+2025-12-30 05:22:57,684 - INFO - memory - Veritabanı tabloları yüklendi.
+2025-12-30 05:22:57,684 - INFO - feedback - FeedbackManager başlatıldı.
+2025-12-30 05:22:57,686 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2025-12-30 05:22:57,686 - INFO - gui - GUI: Asistan başlatıldı.
+2025-12-30 05:23:45,607 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-30 05:23:45,609 - INFO - retriever - İnternet Araması: mersin nasıl bir yer
+2025-12-30 05:23:45,609 - INFO - retriever - Temizlenmiş Özne: Mers
+2025-12-30 05:23:46,215 - INFO - retriever - OpenSearch Eşleşmesi: Mersin
+2025-12-30 05:23:46,654 - INFO - response - Veri mBART ve Profil ile işleniyor...
+2025-12-30 05:24:21,768 - INFO - memory - LTM Kaydı Başarılı: mersin nasıl bir yer
+2025-12-30 05:24:27,855 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-30 05:24:27,855 - INFO - retriever - İnternet Araması: istanbul nasıl bir yer
+2025-12-30 05:24:27,855 - INFO - retriever - Temizlenmiş Özne: Istanbul
+2025-12-30 05:24:28,195 - INFO - retriever - OpenSearch Eşleşmesi: Istanbul
+2025-12-30 05:24:28,548 - INFO - response - Veri mBART ve Profil ile işleniyor...
+2025-12-30 05:25:26,956 - INFO - tools.todo_tool - Yeni görev eklendi: yarın rapor hazırlamam lazım
+2025-12-30 05:27:54,271 - INFO - response - Cevap LTM'den (Semantik: 0.80) döndü.
+2025-12-30 05:28:26,104 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-30 05:28:26,104 - INFO - retriever - İnternet Araması: hem asya hemde avrupa kıtasına sahip olan şehir
+2025-12-30 05:28:26,104 - INFO - retriever - Temizlenmiş Özne: Hem
+2025-12-30 05:28:26,606 - INFO - retriever - OpenSearch Eşleşmesi: Hem
+2025-12-30 05:28:27,076 - INFO - response - Veri mBART ve Profil ile işleniyor...
+2025-12-30 05:29:36,660 - INFO - response - Cevap LTM'den (Semantik: 0.63) döndü.

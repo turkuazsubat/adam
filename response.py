@@ -8,15 +8,32 @@ from logger import log_event
 # --- Global Initialization (Singleton) ---
 # Modeli her sorguda tekrar yüklememek için global alanda bir kere başlatıyoruz.
 try:
-    print("⏳ Semantic Engine Response modülüne yükleniyor...")
+    print("⏳ Semantic Engine (Anlama) yükleniyor...")
     semantic_brain = SemanticEngine()
 except Exception as e:
     log_event("CRITICAL", f"Semantic Engine Başlatılamadı: {e}", "response")
-    semantic_brain = None # Hata durumunda sistemin çökmemesi için None atıyoruz (Fallback)
+    semantic_brain = None
 
-# 2. Generator Motor (Üretme/LLM) - HAFTA 11
+def build_dynamic_instruction(memory):
+    """
+    Hafızadan profil bilgilerini çeker ve mBART için talimat hazırlar.
+    Profil boşsa varsayılan talimatı döner.
+    """
+    profile = memory.get_profile() # memory.py'de yazdığımız fonksiyon
+    
+    if not profile:
+        return "Bu metni Türkçe olarak özetle."
+
+    # Profil bilgilerini metne döküyoruz
+    user_name = profile.get("user_name", "Kullanıcı")
+    expertise = profile.get("expertise", "genel")
+    tone = profile.get("tone", "sade")
+
+    # mBART'a giden dinamik talimat (Instruction)
+    return f"Kullanıcı adı {user_name}. Bilgi seviyesi {expertise}. Üslup {tone}. Bu metni bu profile uygun şekilde Türkçe özetle."
+
 try:
-    print("⏳ Generator Engine (Üretim Modülü) yükleniyor...")
+    print("⏳ mBART Generator (Üretim) yükleniyor...")
     brain_generator = LocalGenerator()
 except Exception as e:
     log_event("CRITICAL", f"Generator Engine Başlatılamadı: {e}", "response")
@@ -54,6 +71,22 @@ def generate_response(user_input: str, memory, tool_manager) -> str: # Hafta5: t
                 response_text = "Komutunuzu anladım ancak bu eylemi gerçekleştirecek uygun bir araç bulamadım."
                 memory.save_interaction(user_input, response_text)
                 return response_text
+        # ---------------------------------------------------------
+        # 1.1 NİYET: PROFİL GÜNCELLEME (HAFTA 12)
+        # ---------------------------------------------------------
+        elif intent == "profile_update":
+            # NLU'dan gelen key (ayar adı) ve value (yeni değer)
+            key = analysis.get("key")
+            value = analysis.get("value")
+            
+            # Veritabanına kaydet (TXT aynası otomatik güncellenir)
+            success = memory.set_profile(key, value)
+            
+            if success:
+                response_text = f"Tamamdır, '{key}' bilgisini '{value}' olarak güncelledim."
+                return response_text
+            else:
+                return "Profil güncellenirken teknik bir sorun oluştu."
 
         # ---------------------------------------------------------
         # 2. NİYET: SORGULAMA (Hafta 3-4 ve Hafta 9 Semantik)
@@ -81,7 +114,7 @@ def generate_response(user_input: str, memory, tool_manager) -> str: # Hafta5: t
                         best_match, score = semantic_brain.find_best_match(user_input, all_memories)
                         
                         # 3. Eşik Değer Kontrolü (0.35 Güven Skoru - Test için düşürdük)
-                        if score >= 0.35:
+                        if score >= 0.60:
                             response_text = f"{best_match}\n\n*(Anlamsal Hafıza Skoru: %{int(score*100)})*"
                             log_event("INFO", f"Cevap LTM'den (Semantik: {score:.2f}) döndü.", "response")
                             memory.save_interaction(user_input, response_text)
@@ -91,29 +124,27 @@ def generate_response(user_input: str, memory, tool_manager) -> str: # Hafta5: t
                     log_event("ERROR", f"Semantik Arama Hatası: {e}", "response")
                     # Hata olursa akışı kesme, API'ye devam et.
             
-            # ADIM C: Dış Kaynak (API / İnternet) - Fallback + LLM İŞLEME(HAFTA11)
+            # ADIM C: Dış Kaynak (API / İnternet) - Fallback + MBART HAFTA 12
         
             log_event("INFO", "Hafızada bulunamadı, API'ye gidiliyor...", "response")
             raw_result =retrieve_info(user_input,memory)
-            # Eğer Generator (LLM) aktifse ve anlamlı bir veri geldiyse İŞLE
-            # (Hata mesajlarını veya çok kısa metinleri LLM'e sokmuyoruz)
+            # mBART Devreye Giriyor
             if brain_generator and raw_result and len(raw_result) > 100 and "Sorun var" not in raw_result:
-                log_event("INFO", "Ham veri LLM (Generator) ile işleniyor...", "response")
+                log_event("INFO", "Veri mBART ve Profil ile işleniyor...", "response")
                 
-                # Talimat: Flan-T5 İngilizce talimatları daha iyi anlar.
-                # "Summarize this text in Turkish" -> "Bu metni Türkçe özetle" demektir.
-
-                instruction = "Summarize this text in Turkish"
-
-                processed_response = brain_generator.generate(raw_result,instruction,min_length=20)
-
-                final_output = f"{processed_response}\n\n*(Yapay Zeka ile Özetlendi)*"
-                memory.save_interaction(user_input,final_output)
+                # Dinamik talimatı oluştur (Hafta 12)
+                instruction = build_dynamic_instruction(memory)
+                
+                # mBART üretimi yap
+                processed_response = brain_generator.generate(raw_result, instruction)
+                
+                final_output = f"{processed_response}\n\n*(Profilinize göre mBART tarafından özetlendi)*"
+                memory.save_interaction(user_input, final_output)
                 return final_output
             
             else:
-                memory.save_interaction(user_input, result)
-                return result
+                memory.save_interaction(user_input, raw_result)
+                return raw_result
 
         # ---------------------------------------------------------
         # 3. NİYET: GENEL SOHBET (Hafta 1-2)
