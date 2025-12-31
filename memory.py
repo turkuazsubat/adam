@@ -32,9 +32,9 @@ class MemoryManager:
             self.conn = sqlite3.connect(self.db_path, check_same_thread=False)
             self.conn.row_factory = sqlite3.Row 
             self.cursor = self.conn.cursor()
-            log_event("INFO", f"SQLite veritabanına bağlandı: {self.db_path}", __name__)
+            log_event("INFO", f"SQLite veritabanina baglandi: {self.db_path}", __name__)
         except sqlite3.Error as e:
-            log_event("CRITICAL", f"Veritabanı bağlantı hatası: {e}", __name__)
+            log_event("CRITICAL", f"Veritabanı baglanti hatasi: {e}", __name__)
             
     def initialize_db(self):
         """Veritabanı tablolarını oluşturur."""
@@ -44,9 +44,9 @@ class MemoryManager:
                     sql_script = f.read()
                 self.cursor.executescript(sql_script)
                 self.conn.commit()
-                log_event("INFO", "Veritabanı tabloları yüklendi.", __name__)
+                log_event("INFO", "Veritabanı tablolari yuklendi.", __name__)
             except sqlite3.Error as e:
-                log_event("ERROR", f"Şema hatası: {e}", __name__)
+                log_event("ERROR", f"Sema hatasi: {e}", __name__)
 
         # Hafta 12: Profil tablosu şemada yoksa burada oluşturulur (Garanti altına alma)
         try:
@@ -58,7 +58,7 @@ class MemoryManager:
             """)
             self.conn.commit()
         except sqlite3.Error as e:
-            log_event("ERROR", f"Profil tablosu oluşturma hatası: {e}", __name__)
+            log_event("ERROR", f"Profil tablosu olusturma hatasi: {e}", __name__)
 
     def normalize_query(self, query: str) -> str:
         """Sorguyu temizler."""
@@ -78,7 +78,7 @@ class MemoryManager:
             self.last_interaction_id = self.cursor.lastrowid
             return self.last_interaction_id
         except sqlite3.Error as e:
-            log_event("ERROR", f"Etkileşim kaydetme hatası: {e}", __name__)
+            log_event("ERROR", f"Etkilesim kaydetme hatasi: {e}", __name__)
             return None
     
     def save_feedback(self, interaction_id, feedback_type, score):
@@ -89,7 +89,7 @@ class MemoryManager:
                 (interaction_id, feedback_type, score))
             self.conn.commit()
         except sqlite3.Error as e:
-            log_event("ERROR", f"Geri bildirim hatası: {e}", __name__)
+            log_event("ERROR", f"Geri bildirim hatasi: {e}", __name__)
 
     def promote_to_memory(self, user_query, bot_response):
         """Kalıcı hafızaya kayıt (LTM)."""
@@ -100,10 +100,10 @@ class MemoryManager:
                 VALUES (?, ?, 'valid', CURRENT_TIMESTAMP)
             """, (normalized_key, bot_response))
             self.conn.commit()
-            log_event("INFO", f"LTM Kaydı Başarılı: {normalized_key}", __name__)
+            log_event("INFO", f"LTM Kaydi Basarili: {normalized_key}", __name__)
             return True
         except Exception as e:
-            log_event("ERROR", f"LTM Kayıt Hatası: {e}", __name__)
+            log_event("ERROR", f"LTM Kayit Hatasi: {e}", __name__)
             return False
 
     def read_from_memory(self, query: str) -> str:
@@ -120,7 +120,7 @@ class MemoryManager:
                 return row['value']
             return None
         except sqlite3.Error as e:
-            log_event("ERROR", f"Okuma Hatası: {e}", __name__)
+            log_event("ERROR", f"Okuma Hatasi: {e}", __name__)
             return None
 
     def add_task(self, task):
@@ -130,7 +130,7 @@ class MemoryManager:
             self.conn.commit()
             return True
         except Exception as e:
-            log_event("ERROR", f"Görev Ekleme Hatası: {e}", __name__)
+            log_event("ERROR", f"Gorev Ekleme Hatasi: {e}", __name__)
             return False
 
     def get_tasks(self):
@@ -139,13 +139,13 @@ class MemoryManager:
             self.cursor.execute("SELECT id, task FROM todo_list WHERE status = 'pending'")
             return self.cursor.fetchall()
         except Exception as e:
-            log_event("ERROR", f"Görev Listeleme Hatası: {e}", __name__)
+            log_event("ERROR", f"Gorev Listeleme Hatasi: {e}", __name__)
             return []
 
     def close(self):
         if self.conn:
             self.conn.close()
-            log_event("INFO", "Veritabanı bağlantısı kapatıldı.", __name__)
+            log_event("INFO", "Veritabanı baglantisi kapatildi.", __name__)
 
     # --- TXT AYNA TOOL BAŞLANGIÇ ---
     def _mirror_to_txt(self):
@@ -157,14 +157,13 @@ class MemoryManager:
             with open(self.profile_txt_path, "w", encoding="utf-8") as f:
                 f.write("=== CANLI PROFiL TAKiBi ===\n\n")
                 if not rows:
-                    f.write("Henüz profil verisi kaydedilmedi.\n")
+                    f.write("Henuz profil verisi kaydedilmedi.\n")
                 else:
                     for row in rows:
-                        # SyntaxError giderildi: Dış çift, iç tek tırnak
                         f.write(f"{row['key'].upper()}: {row['value']}\n")
                         f.write("-" * 20 + "\n")
         except Exception as e:
-            log_event("WARNING", f"TXT Mirror Hatası: {e}", "Memory")
+            log_event("WARNING", f"TXT Mirror Hatasi: {e}", "Memory")
     # --- TXT AYNA TOOL SONU ---
 
     def set_profile(self, key, value):
@@ -175,7 +174,7 @@ class MemoryManager:
             self._mirror_to_txt() # Mirror tetiklendi
             return True
         except Exception as e:
-            log_event("ERROR", f"Profil Kayıt Hatası: {e}", "Memory")
+            log_event("ERROR", f"Profil Kayit Hatasi: {e}", "Memory")
             return False
 
     def get_profile(self):
@@ -184,5 +183,22 @@ class MemoryManager:
             self.cursor.execute("SELECT key, value FROM user_profile")
             return {row['key']: row['value'] for row in self.cursor.fetchall()}
         except Exception as e:
-            log_event("ERROR", f"Profil getirme hatası: {e}", "Memory")
+            log_event("ERROR", f"Profil getirme hatasi: {e}", "Memory")
             return {}
+        
+    #HAFTA13 Hafızadan Silme Fonk
+    def delete_last_memory(self):
+        try:
+            # En son eklenen profil bilgisini tamamen sil (Boşaltma yapma, SİL)
+            self.cursor.execute("SELECT key FROM user_profile ORDER BY rowid DESC LIMIT 1")
+            res = self.cursor.fetchone()
+            if res:
+                self.cursor.execute("DELETE FROM user_profile WHERE key = ?", (res[0],))
+            
+            # Kalıcı hafızayı sil
+            self.cursor.execute("DELETE FROM memory WHERE rowid = (SELECT MAX(rowid) FROM memory)")
+            self.conn.commit()
+            self._mirror_to_txt()
+            return True
+        except:
+            return False

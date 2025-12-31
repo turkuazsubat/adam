@@ -986,3 +986,212 @@ that match your environment. Please note that you may need to restart your runti
 2025-12-30 05:28:26,606 - INFO - retriever - OpenSearch Eşleşmesi: Hem
 2025-12-30 05:28:27,076 - INFO - response - Veri mBART ve Profil ile işleniyor...
 2025-12-30 05:29:36,660 - INFO - response - Cevap LTM'den (Semantik: 0.63) döndü.
+2025-12-31 05:26:55,389 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2025-12-31 05:27:01,010 - INFO - memory - SQLite veritabanına bağlandı: db/project.db
+2025-12-31 05:27:01,029 - INFO - memory - Veritabanı tabloları yüklendi.
+2025-12-31 05:27:01,030 - INFO - feedback - FeedbackManager başlatıldı.
+2025-12-31 05:27:01,030 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2025-12-31 05:27:01,031 - INFO - gui - GUI: Asistan başlatıldı.
+2025-12-31 05:27:14,925 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-31 05:27:14,926 - INFO - retriever - İnternet Araması: muz nerede yetişir?
+2025-12-31 05:27:14,926 - INFO - retriever - Temizlenmiş Özne: Muz nerede yetişir?
+2025-12-31 05:27:31,530 - INFO - response - Niyet belirsiz, son çare internete gidiliyor...
+2025-12-31 05:27:31,530 - INFO - retriever - İnternet Araması: osmaniye neresi
+2025-12-31 05:27:31,530 - INFO - retriever - Temizlenmiş Özne: Osmaniye
+2025-12-31 05:27:32,030 - INFO - retriever - OpenSearch Eşleşmesi: Osmaniye
+2025-12-31 05:27:36,834 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-31 05:27:36,834 - INFO - retriever - İnternet Araması: muz nerede yetişir?
+2025-12-31 05:27:36,834 - INFO - retriever - Temizlenmiş Özne: Muz nerede yetişir?
+2025-12-31 05:27:50,019 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-31 05:27:50,019 - INFO - retriever - İnternet Araması: istanbul nasıl bir yer?
+2025-12-31 05:27:50,019 - INFO - retriever - Temizlenmiş Özne: Istanbul nasıl yer?
+2025-12-31 05:28:08,185 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-31 05:28:08,185 - INFO - retriever - İnternet Araması: motorsiklet sürmeyi çok severim
+2025-12-31 05:28:08,185 - INFO - retriever - Temizlenmiş Özne: Motorsiklet sürmeyi çok severim
+2025-12-31 05:28:45,759 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-31 05:28:45,759 - INFO - retriever - İnternet Araması: en sevdiğim renk siyahtır
+2025-12-31 05:28:45,759 - INFO - retriever - Temizlenmiş Özne: En sevdiğim renk siyahtır
+2025-12-31 05:31:13,560 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2025-12-31 05:31:17,679 - INFO - memory - SQLite veritabanına bağlandı: db/project.db
+2025-12-31 05:31:17,681 - INFO - memory - Veritabanı tabloları yüklendi.
+2025-12-31 05:31:17,682 - INFO - feedback - FeedbackManager başlatıldı.
+2025-12-31 05:31:17,683 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2025-12-31 05:31:17,685 - INFO - gui - GUI: Asistan başlatıldı.
+2025-12-31 05:32:05,922 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-31 05:32:05,922 - INFO - retriever - İnternet Araması: muz nerede yetişir?
+2025-12-31 05:32:05,923 - INFO - retriever - Temizlenmiş Özne: Muz
+2025-12-31 05:32:06,399 - INFO - retriever - OpenSearch Eşleşmesi: Muz
+2025-12-31 05:32:06,808 - INFO - response - Veri mBART ve Profil ile işleniyor...
+2025-12-31 05:32:34,971 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-31 05:32:34,971 - INFO - retriever - İnternet Araması: istanbul nasıl bir yer?
+2025-12-31 05:32:34,971 - INFO - retriever - Temizlenmiş Özne: Istanbul
+2025-12-31 05:32:35,406 - INFO - retriever - OpenSearch Eşleşmesi: Istanbul
+2025-12-31 05:32:35,848 - INFO - response - Veri mBART ve Profil ile işleniyor...
+2025-12-31 05:33:10,429 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-31 05:33:10,429 - INFO - retriever - İnternet Araması: motorsiklet sürmeyi çok severim
+2025-12-31 05:33:10,429 - INFO - retriever - Temizlenmiş Özne: Motorsiklet sürmeyi çok severim
+2025-12-31 05:33:58,191 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-31 05:33:58,191 - INFO - retriever - İnternet Araması: çay nedir?
+2025-12-31 05:33:58,191 - INFO - retriever - Temizlenmiş Özne: Çay
+2025-12-31 05:33:58,654 - INFO - retriever - OpenSearch Eşleşmesi: Çay
+2025-12-31 05:33:59,093 - INFO - response - Veri mBART ve Profil ile işleniyor...
+2025-12-31 05:34:36,037 - INFO - memory - LTM Kaydı Başarılı: çay nedir
+2025-12-31 05:35:11,793 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-31 05:35:11,793 - INFO - retriever - İnternet Araması: bitkilerin tohumları, kökleri yada çiçeklerinin haşlanmasıyla yapılan içeceğin adı nedir?
+2025-12-31 05:35:11,793 - INFO - retriever - Temizlenmiş Özne: Bitkiler tohumları kökleri yada çiçeklerinin haşlanmasıyla yapılan içeceğin adı
+2025-12-31 05:46:44,516 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2025-12-31 05:46:49,219 - INFO - memory - SQLite veritabanına bağlandı: db/project.db
+2025-12-31 05:46:49,221 - INFO - memory - Veritabanı tabloları yüklendi.
+2025-12-31 05:46:49,221 - INFO - feedback - FeedbackManager başlatıldı.
+2025-12-31 05:46:49,221 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2025-12-31 05:46:49,221 - INFO - gui - GUI: Asistan başlatıldı.
+2025-12-31 05:47:00,332 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-31 05:47:00,332 - INFO - retriever - İnternet Araması: Muz nerede yetişir?
+2025-12-31 05:47:00,332 - INFO - retriever - Temizlenmiş Özne: Muz
+2025-12-31 05:47:00,646 - INFO - retriever - OpenSearch Eşleşmesi: Muz
+2025-12-31 05:47:00,926 - INFO - response - Veri mBART ve Profil ile işleniyor...
+2025-12-31 05:47:27,407 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-31 05:47:27,408 - INFO - retriever - İnternet Araması: istanbul nasıl bir yer ?
+2025-12-31 05:47:27,408 - INFO - retriever - Temizlenmiş Özne: Istanbul
+2025-12-31 05:47:27,687 - INFO - retriever - OpenSearch Eşleşmesi: Istanbul
+2025-12-31 05:47:28,003 - INFO - response - Veri mBART ve Profil ile işleniyor...
+2025-12-31 05:48:21,000 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-31 05:48:21,001 - INFO - retriever - İnternet Araması: en sevdiğim renk siyahtır
+2025-12-31 05:48:21,001 - INFO - retriever - Temizlenmiş Özne: En sevdiğim renk siyahtır
+2025-12-31 05:48:33,742 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-31 05:48:33,742 - INFO - retriever - İnternet Araması: en sevdiğim renk siyahtır !kaydet
+2025-12-31 05:48:33,742 - INFO - retriever - Temizlenmiş Özne: En sevdiğim renk siyahtır kaydet
+2025-12-31 05:48:40,238 - INFO - Memory - Son bellek Kaydı Silindi
+2025-12-31 05:49:31,531 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-31 05:49:31,531 - INFO - retriever - İnternet Araması: bitkilerin tohumları çiçeklerinin haşlanmasıyla elde edilen içecek nedir?
+2025-12-31 05:49:31,531 - INFO - retriever - Temizlenmiş Özne: Bitkiler tohumları çiçeklerinin haşlanmasıyla elde edilen içecek
+2025-12-31 05:54:16,381 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2025-12-31 05:54:20,520 - INFO - memory - SQLite veritabanına bağlandı: db/project.db
+2025-12-31 05:54:20,520 - INFO - memory - Veritabanı tabloları yüklendi.
+2025-12-31 05:54:20,521 - INFO - feedback - FeedbackManager başlatıldı.
+2025-12-31 05:54:20,521 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2025-12-31 05:54:20,521 - INFO - gui - GUI: Asistan başlatıldı.
+2025-12-31 05:55:14,304 - INFO - memory - LTM Kaydı Başarılı: en sevdiğim renk siyahtır
+2025-12-31 05:55:23,032 - INFO - Memory - Son bellek Kaydı Silindi
+2025-12-31 05:56:01,769 - INFO - Memory - Son bellek Kaydı Silindi
+2025-12-31 05:56:04,756 - INFO - Memory - Son bellek Kaydı Silindi
+2025-12-31 05:56:09,047 - INFO - Memory - Son bellek Kaydı Silindi
+2025-12-31 05:56:44,877 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-31 05:56:44,878 - INFO - retriever - İnternet Araması: bitkilerin köklerinin ve çiçeklerinin haşlanmasıyla elde edilen içecek nedir?
+2025-12-31 05:56:44,878 - INFO - retriever - Temizlenmiş Özne: Bitkiler köklerinin çiçeklerinin haşlanmasıyla elde edilen içecek
+2025-12-31 06:00:27,538 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2025-12-31 06:00:31,697 - INFO - memory - SQLite veritabanına bağlandı: db/project.db
+2025-12-31 06:00:31,700 - INFO - memory - Veritabanı tabloları yüklendi.
+2025-12-31 06:00:31,702 - INFO - feedback - FeedbackManager başlatıldı.
+2025-12-31 06:00:31,702 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2025-12-31 06:00:31,703 - INFO - gui - GUI: Asistan başlatıldı.
+2025-12-31 06:00:39,582 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-31 06:00:39,582 - INFO - retriever - İnternet Araması: çay nedir
+2025-12-31 06:00:39,582 - INFO - retriever - Temizlenmiş Özne: Çay
+2025-12-31 06:00:40,070 - INFO - retriever - OpenSearch Eşleşmesi: Çay
+2025-12-31 06:00:40,382 - INFO - response - Veri mBART ve Profil ile işleniyor...
+2025-12-31 06:00:54,874 - INFO - memory - LTM Kaydı Başarılı: çay nedir
+2025-12-31 06:01:50,018 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-31 06:01:50,018 - INFO - retriever - İnternet Araması: bitkilerin kökleri, kolları ve tohumlarının kurutulması ve haşlanmasıyla hazırlanan içecek nedir?
+2025-12-31 06:01:50,019 - INFO - retriever - Temizlenmiş Özne: Bitkiler kökleri kolları tohumlarının kurutulması haşlanmasıyla hazırlanan içecek
+2025-12-31 06:01:59,807 - INFO - response - Cevap LTM'den (Tam Eşleşme) döndü.
+2025-12-31 06:02:38,725 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-31 06:02:38,725 - INFO - retriever - İnternet Araması: kas yada doku büyümesine ne ad verilir?
+2025-12-31 06:02:38,726 - INFO - retriever - Temizlenmiş Özne: Kas yada doku büyümesine ad verilir
+2025-12-31 06:03:19,579 - INFO - Memory - Son bellek Kaydı Silindi
+2025-12-31 06:03:35,698 - INFO - Memory - Son bellek Kaydı Silindi
+2025-12-31 06:10:29,317 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2025-12-31 06:10:34,192 - INFO - memory - SQLite veritabanına bağlandı: db/project.db
+2025-12-31 06:10:34,194 - INFO - memory - Veritabanı tabloları yüklendi.
+2025-12-31 06:10:34,194 - INFO - feedback - FeedbackManager başlatıldı.
+2025-12-31 06:10:34,194 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2025-12-31 06:10:34,195 - INFO - gui - GUI: Asistan başlatıldı.
+2025-12-31 06:11:42,170 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-31 06:11:42,170 - INFO - retriever - İnternet Araması: kas veya doku büyümesinin adı neydi?
+2025-12-31 06:11:42,170 - INFO - retriever - Temizlenmiş Özne: Kas veya doku büyümesinin adı neydi
+2025-12-31 06:24:25,176 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2025-12-31 06:24:29,381 - INFO - memory - SQLite veritabanina baglandi: db/project.db
+2025-12-31 06:24:29,383 - INFO - memory - Veritabanı tablolari yuklendi.
+2025-12-31 06:24:29,384 - INFO - feedback - FeedbackManager başlatıldı.
+2025-12-31 06:24:29,384 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2025-12-31 06:24:29,384 - INFO - gui - GUI: Asistan başlatıldı.
+2025-12-31 06:25:58,404 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-31 06:25:58,405 - INFO - retriever - Internet Aramasi: Karakalem çizim, kurşun kalem kullanarak yapılan resim sanatıdır !kaydet
+2025-12-31 06:25:58,405 - INFO - retriever - Temizlenmis Ozne: Karakalem çizim kurşun kalem kullanarak yapılan resim sanatıdır kaydet
+2025-12-31 06:25:58,877 - INFO - retriever - Uzun sorgu basarisiz, son kelime deneniyor: kaydet
+2025-12-31 06:25:59,734 - INFO - response - Veri mBART ve Profil ile işleniyor...
+2025-12-31 06:26:24,962 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-31 06:26:24,963 - INFO - retriever - Internet Aramasi: karakalem çizim nedir
+2025-12-31 06:26:24,963 - INFO - retriever - Temizlenmis Ozne: Karakalem çizim
+2025-12-31 06:26:25,388 - INFO - retriever - OpenSearch Eslesmesi: Karakalem çizim
+2025-12-31 06:26:26,449 - INFO - response - Veri mBART ve Profil ile işleniyor...
+2025-12-31 06:26:37,377 - INFO - memory - LTM Kaydi Basarili: karakalem çizim nedir
+2025-12-31 06:27:11,604 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-31 06:27:11,604 - INFO - retriever - Internet Aramasi: en sevdiğim yemek mantıdır
+2025-12-31 06:27:11,605 - INFO - retriever - Temizlenmis Ozne: En sevdiğim yemek mantıdır
+2025-12-31 06:27:12,038 - INFO - retriever - Uzun sorgu basarisiz, son kelime deneniyor: mantıdır
+2025-12-31 06:27:13,646 - INFO - response - Veri mBART ve Profil ile işleniyor...
+2025-12-31 06:28:01,322 - INFO - response - Niyet belirsiz, son çare internete gidiliyor...
+2025-12-31 06:28:01,322 - INFO - retriever - Internet Aramasi: adım yavuz
+2025-12-31 06:28:01,323 - INFO - retriever - Temizlenmis Ozne: Adım yavuz
+2025-12-31 06:28:01,762 - INFO - retriever - OpenSearch Eslesmesi: Adem Yavuz
+2025-12-31 06:28:19,062 - INFO - response - Hafızada bulunamadı, API'ye gidiliyor...
+2025-12-31 06:28:19,062 - INFO - retriever - Internet Aramasi: Gece gökyüzünde parlayan ve dünyamızı aydınlatan en büyük gök cismi nedir?
+2025-12-31 06:28:19,062 - INFO - retriever - Temizlenmis Ozne: Gece gökyüzünde parlayan dünyamızı aydınlatan en büyük gök cismi
+2025-12-31 06:28:19,509 - INFO - retriever - Uzun sorgu basarisiz, son kelime deneniyor: cismi
+2025-12-31 06:28:24,092 - INFO - response - Veri mBART ve Profil ile işleniyor...
+2025-12-31 06:34:18,527 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2025-12-31 06:34:22,566 - INFO - memory - SQLite veritabanina baglandi: db/project.db
+2025-12-31 06:34:22,567 - INFO - memory - Veritabanı tablolari yuklendi.
+2025-12-31 06:34:22,568 - INFO - feedback - FeedbackManager başlatıldı.
+2025-12-31 06:34:22,568 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2025-12-31 06:34:22,569 - INFO - gui - GUI: Asistan başlatıldı.
+2025-12-31 06:35:31,397 - INFO - response - Hafizada bulunamadi, API'ye gidiliyor...
+2025-12-31 06:35:31,397 - INFO - retriever - Internet Aramasi: kurşun kalemle yapılan resime ne ad verilir
+2025-12-31 06:35:31,398 - INFO - retriever - Temizlenmis Ozne: Kurş kalemle yapılan resime ad verilir
+2025-12-31 06:35:31,912 - INFO - retriever - Uzun sorgu basarisiz, denenen terim: verilir
+2025-12-31 06:35:33,513 - INFO - response - Veri mBART ve Profil ile isleniyor...
+2025-12-31 06:36:18,709 - INFO - response - Hafizada bulunamadi, API'ye gidiliyor...
+2025-12-31 06:36:18,710 - INFO - retriever - Internet Aramasi: karakalem nedir?
+2025-12-31 06:36:18,710 - INFO - retriever - Temizlenmis Ozne: Karakalem
+2025-12-31 06:36:19,140 - INFO - retriever - OpenSearch Eslesmesi: Karakalem çizim
+2025-12-31 06:36:19,560 - INFO - response - Veri mBART ve Profil ile isleniyor...
+2025-12-31 06:36:31,127 - INFO - memory - LTM Kaydi Basarili: karakalem nedir
+2025-12-31 06:36:36,059 - INFO - response - Hafizada bulunamadi, API'ye gidiliyor...
+2025-12-31 06:36:36,059 - INFO - retriever - Internet Aramasi: Kurşun kalemle yapılan resimler hakkında ne biliyorsun?
+2025-12-31 06:36:36,059 - INFO - retriever - Temizlenmis Ozne: Kurş kalemle yapılan resimler biliyorsun
+2025-12-31 06:36:36,591 - INFO - retriever - Uzun sorgu basarisiz, denenen terim: biliyorsun
+2025-12-31 06:36:36,982 - INFO - response - Veri mBART ve Profil ile isleniyor...
+2025-12-31 06:37:30,593 - INFO - response - Hafizada bulunamadi, API'ye gidiliyor...
+2025-12-31 06:37:30,594 - INFO - retriever - Internet Aramasi: Gece gökyüzünde parlayan ve dünyamızı aydınlatan en büyük gök cismi nedir?
+2025-12-31 06:37:30,594 - INFO - retriever - Temizlenmis Ozne: Gece gökyüzünde parlayan dünyamızı aydınlatan en büyük gök cismi
+2025-12-31 06:37:31,071 - INFO - retriever - Uzun sorgu basarisiz, denenen terim: gök
+2025-12-31 06:37:31,965 - INFO - response - Veri mBART ve Profil ile isleniyor...
+2025-12-31 06:42:51,079 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2025-12-31 06:42:55,040 - INFO - memory - SQLite veritabanina baglandi: db/project.db
+2025-12-31 06:42:55,040 - INFO - memory - Veritabanı tablolari yuklendi.
+2025-12-31 06:42:55,041 - INFO - feedback - FeedbackManager başlatıldı.
+2025-12-31 06:42:55,041 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2025-12-31 06:42:55,041 - INFO - gui - GUI: Asistan başlatıldı.
+2025-12-31 06:44:04,194 - INFO - response - Hafizada bulunamadi, API'ye gidiliyor...
+2025-12-31 06:44:04,194 - INFO - retriever - Internet Aramasi: karakalem nedir?
+2025-12-31 06:44:04,195 - INFO - retriever - Temizlenmis Ozne: Karakalem
+2025-12-31 06:44:04,524 - INFO - retriever - OpenSearch Eslesmesi: Karakalem çizim
+2025-12-31 06:44:04,807 - INFO - response - Veri mBART ve Profil ile isleniyor...
+2025-12-31 06:44:18,125 - INFO - memory - LTM Kaydi Basarili: karakalem nedir
+2025-12-31 06:44:52,101 - INFO - response - Hafizada bulunamadi, API'ye gidiliyor...
+2025-12-31 06:44:52,101 - INFO - retriever - Internet Aramasi: kurşun kalemle yapılan resim türü
+2025-12-31 06:44:52,101 - INFO - retriever - Temizlenmis Ozne: Kurş kalemle yapılan resim türü
+2025-12-31 06:44:52,541 - INFO - retriever - Son şans araması: türü
+2025-12-31 06:44:54,116 - INFO - response - Veri mBART ve Profil ile isleniyor...
+2025-12-31 06:45:29,968 - INFO - response - Hafizada bulunamadi, API'ye gidiliyor...
+2025-12-31 06:45:29,968 - INFO - retriever - Internet Aramasi: Gece gökyüzünde parlayan ve dünyamızı aydınlatan en büyük gök cismi nedir?
+2025-12-31 06:45:29,968 - INFO - retriever - Temizlenmis Ozne: Gece gökyüzünde parlayan dünyamızı aydınlatan en büyük gök cismi
+2025-12-31 06:45:30,228 - INFO - retriever - Son şans araması: gök
+2025-12-31 06:45:30,858 - INFO - response - Veri mBART ve Profil ile isleniyor...
+2025-12-31 06:46:31,726 - INFO - response - Hafizada bulunamadi, API'ye gidiliyor...
+2025-12-31 06:46:31,727 - INFO - retriever - Internet Aramasi: tost nedir
+2025-12-31 06:46:31,727 - INFO - retriever - Temizlenmis Ozne: Tost
+2025-12-31 06:46:32,232 - INFO - retriever - OpenSearch Eslesmesi: Tost
+2025-12-31 06:46:32,669 - INFO - response - Veri mBART ve Profil ile isleniyor...
+2025-12-31 06:46:43,111 - INFO - memory - LTM Kaydi Basarili: tost nedir

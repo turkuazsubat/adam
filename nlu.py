@@ -22,9 +22,9 @@ def interpret_text(text: str):
     
     # --- HAFTA 12: PROFIL GÜNCELLEME YAKALAYICI (ÖNCELİKLİ) ---
     
-    # 1. İsim Güncelleme (Örn: "Adım Adam", "Bana Kaptan de")
-    # ([\w\s]+?) : Bu kısım ismi yakalayan 'Capture Group' (Yakalama Grubu) kısmıdır.
-    name_match = re.search(r"(?:adım|ismim|bana)\s+([\w\s]+?)(?:\s+olsun|\s+de|$)", text_lower)
+    # 1. İsim Güncelleme (Örn: "Adım Yavuz", "Bana Kaptan de")
+    # Hafta 13 Fix: Regex açgözlü (greedy) hale getirildi ve Türkçe karakterler eklendi.
+    name_match = re.search(r"(?:adım|ismim|bana)\s+([a-zA-ZçğıöşüÇĞİÖŞÜ\s]+)(?:\s+olsun|\s+de|$)", text_lower)
     if name_match:
         return {
             "intent": "profile_update",
@@ -33,8 +33,8 @@ def interpret_text(text: str):
             "keywords": keywords, "entities": entities
         }
 
-    # 2. Üslup Güncelleme (Örn: "Üslubun sert olsun", "Tavrın ciddi olsun")
-    tone_match = re.search(r"(?:üslubun|tavrın|konuşman)\s+([\w\s]+?)(?:\s+olsun|$)", text_lower)
+    # 2. Üslup Güncelleme (Örn: "Üslubun sert olsun")
+    tone_match = re.search(r"(?:üslubun|tavrın|konuşman)\s+([a-zA-ZçğıöşüÇĞİÖŞÜ\s]+)(?:\s+olsun|$)", text_lower)
     if tone_match:
         return {
             "intent": "profile_update",
@@ -42,7 +42,36 @@ def interpret_text(text: str):
             "value": tone_match.group(1).strip(),
             "keywords": keywords, "entities": entities
         }
+    
+    # Hafta 13: Unutma/Silme Komutu yakalayıcı
+    if any(word in text_lower for word in ["unut", "sil", "hafızandan çıkar"]):
+        return {
+            "intent": "command",
+            "tool_key": "forget_last",
+            "payload": None,
+            "keywords": keywords, "entities": entities
+        }
+    
+    # --- HAFTA 13: ÜSLUP GERİ BİLDİRİMİ (FEEDBACK LOOP) ---
+    style_match = re.search(r"([\w\s]+?)\s+(?:anlat|konuş|yaz)", text_lower)
+    if style_match and any(w in text_lower for w in ["daha", "biraz"]):
+        return {
+            "intent": "feedback_style",
+            "value": style_match.group(1).strip(),
+            "keywords": keywords, "entities": entities
+        }
 
+    # --- HAFTA 13: KİŞİSEL İFADE VE GÖZLEM AYRIMI (PASİF ANALİZ) ---
+    # Hafta 13 Fix: 'renk' ve 'favori' gibi kelimeler eklendi, query'den önce yakalanması sağlandı.
+    # Fix: 'denk', 'yemek', 'hobi' gibi kelimeler ve yazım hataları eklendi.
+    personal_keywords = ["severim", "sevmem", "hoşlanırım", "hoşlanmam", "ilgi", "sevdiğim", "en sevdiğim", "favori", "rengim", "renk", "dengim", "denk", "yemek"]
+    if any(k in text_lower for k in personal_keywords):
+        return {
+            "intent": "chat",
+            "tool_key": None,
+            "payload": raw_text,
+            "keywords": keywords, "entities": entities
+        }
     # --- ESKİ MANTIK DEVAM EDİYOR ---
     if raw_text.startswith("!"):
         intent = 'feedback'

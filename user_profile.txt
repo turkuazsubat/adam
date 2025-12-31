@@ -4,7 +4,9 @@ TEST_KULLANICI: Adam
 --------------------
 DURUM: sistem_test_ediliyor
 --------------------
-USER_NAME: Kaptan
---------------------
 TONE: teknik ve ciddi
+--------------------
+USER_NAME: Yavuz
+--------------------
+FAVORI_YEMEK: ne
 --------------------

@@ -64,8 +64,27 @@ class LocalGenerator:
                 early_stopping=True
             )
             
+            
             # Sayıları tekrar metne çevir
             response = self.tokenizer.batch_decode(summary_ids, skip_special_tokens=True)[0]
+            
+            #Hafta 13 Çıktı Temizleme
+            #Model, kendisine verilen taliamtları(user_adı, üslüo vb) cevaba dahil ederse onları ayıklar
+
+            if "Bağlam:" in response:
+                #Metni "Bağlam:" kelimesinden böler ve en son(gerçek cevap) kısmı alır.
+                response = response.split("Bağlam:")[-1].strip()
+
+            elif "User adı" in response or "Üslup" in response:
+                # Eğer "Bağlam:" kelimesini yuttuysa ama talimatlar oradaysa, 
+                # cümle yapısına göre ilk 2-3 talimat cümlesini atlamaya çalışır.
+                parts = response.split(". ")
+                if len(parts) >2:
+                    response=". ".join(parts[2:]).strip()
+
+            #Hafta 13 Çıktı Temizleme sonu
+
+            
             return response
 
         except Exception as e:

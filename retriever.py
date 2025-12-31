@@ -2,6 +2,7 @@ import logging
 import subprocess 
 import json       
 import urllib.parse 
+import re # HAFTA 13: Regex işlemleri için eklendi
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -30,7 +31,7 @@ def run_pure_curl(url):
         if result.returncode == 0:
             return result.stdout
     except Exception as e:
-        logger.error(f"CURL Hatası: {e}")
+        logger.error(f"CURL Hatasi: {e}")
     return None
 
 def clean_query_for_wikipedia(query):
@@ -38,29 +39,50 @@ def clean_query_for_wikipedia(query):
     Türkçe ekleri ve soru kalıplarını temizleyip 'Yalın Hal' bulmaya çalışır.
     Örn: "Türkiyenin başkenti neresidir" -> "Türkiye"
     """
+
+    # --- HAFTA 13 DÜZELTME: Noktalama işaretlerini temizle ---
+    # Sorgunun sonundaki ? ! . gibi işaretleri kaldırıyoruz.
+    query = re.sub(r'[^\w\s]', '', query)
+
     # 1. Küçük harfe çevirip kelimelere ayır
     words = query.lower().split()
     
+    # Hafta 13 güncellemesi: genişletilmiş stopwords
+    # hem.. hem... hatasını önlemek için bağlaçlar eklendi
     # 2. Soru eklerini at (neresi, kimdir, nedir...)
-    stop_words = ["neresi", "neresidir", "kimdir", "nedir", "ne", "hangi", "başkenti", "merkezi"]
+    stop_words = [
+        "hem", "ve", "ile", "de", "da", "bir", "nedir", "nelerdir", "hakkında",
+        "neresi", "neresidir", "kimdir", "ne", "hangi", "başkenti", "merkezi",
+        "nerede", "nasıl", "yer", "yetişir", "olur", "istiyorum", "bilgi", "ver"
+    ]
     cleaned_words = [w for w in words if w not in stop_words]
     
     if not cleaned_words:
         return query # Temizleyince bir şey kalmazsa orijinalini döndür
         
     # 3. İlk kelimeyi al (Genelde öznedir: "Türkiyenin...")
-    subject = cleaned_words[0]
+    # Hafta 13 notu: sadece ilk kelimeyi değil, anlamlı tüm kelimeleri birleştirir
+    # örn: mersin ve istanbul" -> "Mersin istanbul"
+    subject = " ".join(cleaned_words)
+    
+    # ilk kelime üzerinden ek temizliği (Heuristik korundu)
+    first_word = cleaned_words[0]
     
     # 4. Basit ek temizliği (Heuristik)
     # Wikipedia 'opensearch' zaten biraz esnektir ama biz yine de yardımcı olalım
     suffixes = ["nin", "nın", "nun", "nün", "in", "ın", "un", "ün", "'nin", "'nın"]
     for suffix in suffixes:
-        if subject.endswith(suffix):
-            subject = subject[:-len(suffix)] # Eki kes
+        if first_word.endswith(suffix):
+            first_word = first_word[:-len(suffix)] # Eki kes
             break
             
+    # temizlenmiş ilk kelimeyi ve geri kalanları birleştir (wikipedia için optimize)
+    final_subject = first_word.capitalize()
+    if len(cleaned_words) > 1:
+        final_subject = first_word.capitalize() + " " + " ".join(cleaned_words[1:])
+
     # İlk harfi büyüt (Wikipedia başlık formatı: Türkiye)
-    return subject.capitalize()
+    return final_subject
 
 def get_wikipedia_summary(title):
     """
@@ -92,28 +114,26 @@ def retrieve_info(query: str, memory) -> str:
     """
     query = query.strip()
     if not query:
-        return "Boş sorgu."
+        return "Bos sorgu."
 
     # 1. HAFIZA
     try:
         if memory:
             memory_result = memory.read_from_memory(query) 
             if memory_result:
-                return f"{memory_result}\n(Hafızadan)"
+                return f"{memory_result}\n(Hafizadan)"
     except:
         pass
 
     # 2. İNTERNET (CURL)
     try:
-        logger.info(f"İnternet Araması: {query}")
+        logger.info(f"Internet Aramasi: {query}")
         
-        # YÖNTEM A: Direkt Temizlenmiş Başlığı Dene ("Türkiye")
-        # "Türkiyenin başkenti" -> "Türkiye" olarak temizlenir.
+        # Hafta 13: Sorgulama Öncesi Temizlik
         clean_subject = clean_query_for_wikipedia(query)
-        logger.info(f"Temizlenmiş Özne: {clean_subject}")
+        logger.info(f"Temizlenmis Ozne: {clean_subject}")
         
-        # OpenSearch API: Başlık önerir (En güvenlisi budur, metin aramaz)
-        # Örn: "Türkiye" yazarız -> Bize ["Türkiye", "Türkiye Cumhuriyeti"] döner.
+        # OpenSearch API: Başlık önerir
         encoded_query = urllib.parse.quote(clean_subject)
         opensearch_url = f"https://tr.wikipedia.org/w/api.php?action=opensearch&search={encoded_query}&limit=1&namespace=0&format=json"
         
@@ -122,10 +142,9 @@ def retrieve_info(query: str, memory) -> str:
         best_title = None
         if opensearch_res:
             data = json.loads(opensearch_res)
-            # data[1] başlıkları içerir
             if len(data) > 1 and len(data[1]) > 0:
                 best_title = data[1][0]
-                logger.info(f"OpenSearch Eşleşmesi: {best_title}")
+                logger.info(f"OpenSearch Eslesmesi: {best_title}")
         
         # Eğer OpenSearch bulduysa, onun özetini çek
         if best_title:
@@ -133,21 +152,34 @@ def retrieve_info(query: str, memory) -> str:
             if summary:
                 return f"{summary}\n\n*(Kaynak: Wikipedia - {best_title})*"
         
-        # YÖNTEM B: Eğer A başarısızsa, sorgunun kendisiyle dene (Fallback)
-        # Belki kullanıcı "Rize Kalesi" gibi spesifik bir şey sordu ve biz temizlerken bozduk.
-        if query != clean_subject:
-             encoded_raw = urllib.parse.quote(query)
-             opensearch_url_raw = f"https://tr.wikipedia.org/w/api.php?action=opensearch&search={encoded_raw}&limit=1&namespace=0&format=json"
-             raw_res = run_pure_curl(opensearch_url_raw)
-             if raw_res:
-                 data = json.loads(raw_res)
-                 if len(data) > 1 and len(data[1]) > 0:
-                     fallback_title = data[1][0]
-                     summary = get_wikipedia_summary(fallback_title)
-                     if summary:
-                         return f"{summary}\n\n*(Kaynak: Wikipedia - {fallback_title})*"
+        # --- HAFTA 13: SON SANS (LAST RESORT) STRATEJISI ---
+        # Eger uzun temiz sorgu sonuc vermediyse, cumlenin sonundaki temel kelimeyi dene.
+        # --- HAFTA 13: AKILLI SON ŞANS ---
+        words = clean_subject.split()
+        if words:
+            # 'nedir', 'cismi', 'adı' gibi kelimeleri atla, bir öncekini özne seç
+            last_resort_term = words[-1]
+            stop_terms = ["nedir", "ne", "adı", "cismi", "olan", "seydir", "denir"]
+            if last_resort_term in stop_terms and len(words) > 1:
+                last_resort_term = words[-2]
+            
+            logger.info(f"Son şans araması: {last_resort_term}")
+            # Wikipedia araması devam eder...
+            encoded_last = urllib.parse.quote(last_resort_term)
+            url_last = f"https://tr.wikipedia.org/w/api.php?action=opensearch&search={encoded_last}&limit=1&namespace=0&format=json"
+            res_last = run_pure_curl(url_last)
+            
+            if res_last:
+                data_last = json.loads(res_last)
+                if len(data_last) > 1 and len(data_last[1]) > 0:
+                    best_title = data_last[1][0]
+                    summary = get_wikipedia_summary(best_title)
+                    if summary:
+                        return f"Net bir eslesme bulamadim ama sunu buldum:\n\n{summary}\n\n*(Kaynak: Wikipedia - {best_title})*"
+
+        return f"Uzgunum Yavuz, '{query}' hakkinda Wikipedia'da bir baslik bulamadim."
 
     except Exception as e:
-        logger.error(f"İnternet hatası: {e}")
+        logger.error(f"Internet hatasi: {e}")
 
-    return "İnternet bağlantısında sorun var veya Wikipedia yanıt vermiyor."
+    return f"Uzgunum Yavuz, '{query}' hakkinda Wikipedia'da bir baslik bulamadim."
