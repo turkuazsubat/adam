@@ -77,7 +77,7 @@ def generate_response(user_input: str, memory, tool_manager) -> str: # Hafta5: t
                     if success:
                         return "Son etkileşimi hafızamdan sildim ve unuttum."
                     else:
-                        return "Hafızayo temizlerken teknik bir sorun oluştu"
+                        return "Hafızayı temizlerken teknik bir sorun oluştu"
 
                 result = tool_manager.execute_tool(tool_key, payload)
                 
@@ -133,18 +133,34 @@ def generate_response(user_input: str, memory, tool_manager) -> str: # Hafta5: t
                         # 2. Beyne sor
                         best_match, score = semantic_brain.find_best_match(user_input, all_memories)
                         
-                        # 3. Eşik Değer Kontrolü (0.35 Güven Skoru - Test için düşürdük)
-                        #HAFTA13: Eşik değeri 70 e alındı
-                        # Skor 0.75 üzerindeyse kelime kontrolüne bakmadan kabul et (Güçlü eşleşme)
-                        # Skor 0.60 - 0.75 arasındaysa en az 1 tane önemli kelime uyuşmalı
-
-                        if score >= 0.75:
+                        # [WEEK 13 FIX]: Eşik Değerleri ve Şehir Karışıklığı Çözümü
+                        # Mersin sorulup İstanbul gelmemesi için "Özel İsim" kontrolü ekliyoruz.
+                        
+                        # Çok yüksek benzerlik: Direkt kabul et
+                        if score >= 0.82:
                             return f"{best_match}\n\n*(Hafıza Skoru: %{int(score*100)})*"
                         
-                        elif score >= 0.60:
-                            important_words = [w for w in user_input.lower().split() if len(w) > 3]
-                            if any(w in best_match.lower() for w in important_words):
+                        # Gri Bölge (Şüpheli): Kelime Kontrolü Yap
+                        elif score >= 0.65:
+                            # 1. Inputtaki büyük harfli kelimeleri (Özel İsimleri) bul (Örn: Mersin)
+                            proper_nouns = [w for w in user_input.split() if w[0].isupper() and len(w) > 2]
+                            
+                            # 2. Inputtaki uzun kelimeleri bul (Örn: Nüfusu)
+                            # 'nedir', 'bilgi' gibi genel kelimeleri hariç tutuyoruz
+                            stop_words = ["nedir", "bilgi", "hakkında", "kaçtır", "neredir"]
+                            important_words = [w for w in user_input.lower().split() if len(w) > 3 and w not in stop_words]
+
+                            # KURAL: Eğer soruda Özel İsim (Mersin) varsa, bulduğumuz cevapta da KESİN OLMALI.
+                            if proper_nouns:
+                                if any(noun in best_match for noun in proper_nouns):
+                                     return f"{best_match}\n\n*(Anlamsal Hafıza - Entity Match: %{int(score*100)})*"
+                                else:
+                                    log_event("INFO", f"Skor yetiyor ({score}) ama Ozel Isim ({proper_nouns}) tutmadi.", "response")
+                            
+                            # Özel isim yoksa, önemli kelimelerden biri tutuyor mu?
+                            elif any(w in best_match.lower() for w in important_words):
                                 return f"{best_match}\n\n*(Anlamsal Hafıza: %{int(score*100)})*"
+                                
                 except Exception as e:
                     log_event("ERROR", f"Semantik Arama Hatasi: {e}", "response")
                     # Hata olursa akışı kesme, API'ye devam et.
@@ -163,8 +179,7 @@ def generate_response(user_input: str, memory, tool_manager) -> str: # Hafta5: t
                 # mBART üretimi yap
                 processed_response = brain_generator.generate(raw_result, instruction)
                 
-                # HAFTA 13: PASİF PROFİLLEME (Gözlem)
-                # Kullanıcı cümle içinde "severim, ilgi duyuyorum" gibi şeyler dediyse not al
+                # HAFTA 13: PASİF PROFİLLEME (Gözlem) - API Cevabında da çalışsın
                 if "severim" in user_input.lower() or "sevdiğim" in user_input.lower():
                     # Zarf temizleme mantığı eklendi
                     parts = user_input.lower().split()
@@ -193,6 +208,7 @@ def generate_response(user_input: str, memory, tool_manager) -> str: # Hafta5: t
         # --- HAFTA 13: NİYET AYRIMI - KİŞİSEL SOHBET VE PASİF GÖZLEMCİ ---
         elif intent == "chat":
             # --- HAFTA 13: NESNE AYRIŞTIRICI (Yemek, Renk, Hobi) ---
+            # [WEEK 13 FIX]: Regex \b (word boundary) ile substring hataları giderildi.
             text_low = user_input.lower()
             parts = text_low.split()
             adverbs = ["çok", "en", "daha", "gerçekten", "aşırı", "fazla"]
@@ -206,7 +222,8 @@ def generate_response(user_input: str, memory, tool_manager) -> str: # Hafta5: t
                     memory.set_profile("favori_yemek", match.group(1).strip())
             
             # 2. Renk Yakalayıcı (Dengim/Rengim hatası dahil)
-            elif any(r in text_low for r in ["renk", "rengim", "dengim", "denk"]):
+            # [WEEK 13 FIX]: Regex \b kullanımı
+            elif re.search(r"\b(renk|rengim|dengim|denk)\b", text_low):
                 match = re.search(r"(?:renk|rengim|dengim|denk)\s+([\w\s]+?)(?:\s|dır|dir|tır|tir|$)", text_low)
                 if match:
                     memory.set_profile("favori_renk", match.group(1).strip())

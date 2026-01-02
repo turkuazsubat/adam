@@ -6,7 +6,7 @@ DURUM: sistem_test_ediliyor
 --------------------
 TONE: teknik ve ciddi
 --------------------
-USER_NAME: Yavuz
---------------------
 FAVORI_YEMEK: ne
+--------------------
+USER_NAME: Yavuz
 --------------------

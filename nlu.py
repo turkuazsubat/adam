@@ -44,13 +44,16 @@ def interpret_text(text: str):
         }
     
     # Hafta 13: Unutma/Silme Komutu yakalayıcı
-    if any(word in text_lower for word in ["unut", "sil", "hafızandan çıkar"]):
-        return {
-            "intent": "command",
-            "tool_key": "forget_last",
-            "payload": None,
-            "keywords": keywords, "entities": entities
-        }
+    # [WEEK 13 FIX]: "Silgi" kelimesinin "sil" komutunu tetiklememesi için 'keywords' (kök) listesine bakıyoruz.
+    # Ayrıca 'nedir' koruması eklendi.
+    if (any(word in keywords for word in ["unut", "sil"]) or "hafızandan çıkar" in text_lower):
+        if "nedir" not in text_lower: # Eğer soru soruyorsa silme işlemi yapma
+            return {
+                "intent": "command",
+                "tool_key": "forget_last",
+                "payload": None,
+                "keywords": keywords, "entities": entities
+            }
     
     # --- HAFTA 13: ÜSLUP GERİ BİLDİRİMİ (FEEDBACK LOOP) ---
     style_match = re.search(r"([\w\s]+?)\s+(?:anlat|konuş|yaz)", text_lower)
@@ -65,7 +68,12 @@ def interpret_text(text: str):
     # Hafta 13 Fix: 'renk' ve 'favori' gibi kelimeler eklendi, query'den önce yakalanması sağlandı.
     # Fix: 'denk', 'yemek', 'hobi' gibi kelimeler ve yazım hataları eklendi.
     personal_keywords = ["severim", "sevmem", "hoşlanırım", "hoşlanmam", "ilgi", "sevdiğim", "en sevdiğim", "favori", "rengim", "renk", "dengim", "denk", "yemek"]
-    if any(k in text_lower for k in personal_keywords):
+    
+    # [WEEK 13 FIX]: Regex \b (word boundary) ile kelime sınırı eklendi. 
+    # Artık "Ahenk" içinde "renk" veya "Hemoglobin" içinde "hem" bulunmayacak.
+    pattern = r"\b(?:" + "|".join(personal_keywords) + r")\b"
+    
+    if re.search(pattern, text_lower):
         return {
             "intent": "chat",
             "tool_key": None,
