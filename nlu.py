@@ -7,6 +7,9 @@ def clean_payload(text: str, triggers: list) -> str:
     for trigger in triggers:
         if text_lower.endswith(trigger):
             return text[:-len(trigger)].strip()
+        # Bazı durumlarda trigger başta olabilir (Örn: "Başlat spotify")
+        if text_lower.startswith(trigger):
+            return text[len(trigger):].strip()
     return text
 
 def interpret_text(text: str):
@@ -80,6 +83,58 @@ def interpret_text(text: str):
             "payload": raw_text,
             "keywords": keywords, "entities": entities
         }
+    
+    #Hafta 14 Masaüstü otomasyon komutları
+    
+    #1. Pano(Clipboard Okuma)
+    #"Panoyu oku", "Kopyaladığın şey ne", "Panodaki hatayı açıkla"
+
+    if "pano" in text_lower or "kopya" in text_lower or "clipboard" in text_lower:
+        return {
+            "intent": "command",
+            "tool_key": "clipboard_read", # tools/clipboard_tool.py
+            "payload": None,
+            "keywords": keywords, "entities": entities
+        }
+
+    # 2. Uygulama Başlatma (Launcher)
+    # "Spotify'ı aç", "brave başlat", "Hesap makinesini çalıştır"
+
+    launch_triggers = ["aç", "başlat", "çalıştır"]
+    if any(trig in text_lower for trig in launch_triggers):
+        if len(text.split()) > 1: 
+            target_app = clean_payload(raw_text, launch_triggers)
+            
+            # [WEEK 14 FIX] Ek Temizliği (Suffix Removal)
+            # Türkçe belirtme eklerini (ı, i, u, ü) sondan temizle
+            # Örn: "Spotifyı" -> "Spotify", "Notepadi" -> "Notepad"
+            target_app = target_app.replace("'ı", "").replace("'i", "").replace("'u", "").replace("'ü", "") # Kesme işaretliler
+            if target_app[-1] in ["ı", "i", "u", "ü"]: # Bitişik yazılanlar
+                target_app = target_app[:-1]
+            
+            return {
+                "intent": "command",
+                "tool_key": "app_launcher",
+                "payload": target_app.strip(),
+                "keywords": keywords, "entities": entities
+            }
+    
+    #3. PDF Döküman Okuma
+    #"tez.pdf" dosyasını oku","notlar.pdf analiz et"
+    if ".pdf" in text_lower:
+        # ".pdf" kelimesini içeren kelimeyi bul (dosya adı)
+        words = text.split()
+        filename = next((w for w in words if ".pdf" in w.lower()), None) 
+    
+        if filename:
+            return{
+                "intent":"command",
+                "tool_key": "pdf_reader", #tools/document_tool.py
+                "payload":filename,
+                "keywords":keywords, "entities":entities
+
+            }
+
     # --- ESKİ MANTIK DEVAM EDİYOR ---
     if raw_text.startswith("!"):
         intent = 'feedback'

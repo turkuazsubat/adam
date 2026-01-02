@@ -1,6 +1,11 @@
 import logging
 from tools.note_tool import take_note #Hafta 5, tools paketinden ilk import
 from tools.todo_tool import add_todo, list_todos #Hatfa 6 todo aracını import et 
+#Hafta14
+from tools.launcher_tool import launch_app
+from tools.clipboard_tool import read_clipboard
+from tools.document_tool import read_pdf
+
 
 logger = logging.getLogger(__name__)
 
@@ -22,6 +27,11 @@ class ToolManager:
             #Gelecekte eklenecekler(HAFTA 5)
             #"calendar": add_to_calendar,
             #"weather": get_weather,
+
+            #hafta14 masaüstü otomasyon ve okuma araçları
+            "app_launcher":launch_app, #uygulama başlatıcı
+            "clipboard_read":read_clipboard, #Pano Okuyucu
+            "pdf_reader": read_pdf #PDF Analizcisi
         }
 
         # 'find_tool_for_command' fonksiyonuna artık gerek kalmadı,
@@ -37,8 +47,12 @@ class ToolManager:
 
         if tool_key not in self.tools:
             logger.warning(f"Bilinmeyen araç çağırıldı: {tool_key}")
+            # Eğer 'exit' komutu gelirse ve tools listesinde yoksa (Main loop kıracak olsa bile)
+            # kullanıcıya bir şey dönmesi gerekir.
+            if tool_key == "exit":
+                return "EXIT_SIGNAL"
             return "Üzgünüm, bu komutu yürütüecek bir araç bulamadım"
-    
+        
         try:
             #Hafta6 düzeltme 
             tool_function = self.tools[tool_key]
@@ -50,6 +64,8 @@ class ToolManager:
             if payload is not None:
                 result = tool_function(payload)
             else:
+                # [WEEK 14 NOTU]: read_clipboard gibi bazı araçlar payload olmasa bile çalışabilir,
+                # bu yapı o esnekliği zaten sağlıyor.
                 result = tool_function()
                 
             return result

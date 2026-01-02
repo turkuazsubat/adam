@@ -1,0 +1,11 @@
+{
+    "notepad": "notepad.exe",
+    "hesap_makinesi": "calc.exe",
+    "paint": "mspaint.exe",
+    "brave": "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe",
+    "spotify": "C:\\Users\\turku\\AppData\\Local\\Microsoft\\WindowsApps\\Spotify.exe",
+    "word": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+    "vscode": "C:\\Users\\turku\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+    "steam": "C:\\Program Files (x86)\\Steam\\Steam.exe"
+    
+}

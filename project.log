@@ -1260,3 +1260,12 @@ that match your environment. Please note that you may need to restart your runti
 2026-01-02 03:13:49,096 - INFO - retriever - Temizlenmis Ozne: 15 milyondan fazla nüfusa sahip şehir hangisidir
 2026-01-02 03:13:49,685 - INFO - retriever - Son şans araması: hangisidir
 2026-01-02 03:13:50,291 - INFO - response - Veri mBART ve Profil ile isleniyor...
+2026-01-02 06:16:55,375 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2026-01-02 06:17:03,107 - INFO - memory - SQLite veritabanina baglandi: db/project.db
+2026-01-02 06:17:03,138 - INFO - memory - Veritabanı tablolari yuklendi.
+2026-01-02 06:17:03,138 - INFO - feedback - FeedbackManager başlatıldı.
+2026-01-02 06:17:03,138 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2026-01-02 06:17:03,138 - INFO - gui - GUI: Asistan başlatıldı.
+2026-01-02 06:18:38,405 - INFO - response - clipboard_read çıktısı mBART ile işleniyor...
+2026-01-02 06:23:03,263 - INFO - response - pdf_reader çıktısı mBART ile işleniyor...
+2026-01-02 06:27:43,922 - INFO - memory - Veritabanı baglantisi kapatildi.

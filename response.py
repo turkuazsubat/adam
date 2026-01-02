@@ -57,7 +57,7 @@ def generate_response(user_input: str, memory, tool_manager) -> str: # Hafta5: t
             return f"Anladım. Üslubumu '{new_tone}' olarak güncelledim. Bundan sonra böyle konuşacağım" 
 
         # ---------------------------------------------------------
-        # 1. NİYET: KOMUT (Hafta 6-13 Güncellendi)
+        # 1. NİYET: KOMUT (Hafta 6-13-14 güncellendi)
         # ---------------------------------------------------------
         if intent == "command":
             tool_key = analysis.get("tool_key") 
@@ -81,8 +81,38 @@ def generate_response(user_input: str, memory, tool_manager) -> str: # Hafta5: t
 
                 result = tool_manager.execute_tool(tool_key, payload)
                 
+                # --- [WEEK 14] BAĞLAMSAL YORUMLAMA (LLM Entegrasyonu) ---
+                # Bazı araçlar (Pano, PDF) içerik getirir. Bu içeriği ham haliyle basmak yerine
+                # mBART ile işleyip (özetleyip/yorumlayıp) sunmak istiyoruz.
+                
+                content_tools = ["clipboard_read", "pdf_reader"]
+
+                # Eğer araç bir içerik getirdiyse VE sonuç bir hata mesajı değilse:
+                if tool_key in content_tools and brain_generator and isinstance(result, str):
+                    if len(result) > 50 and not result.startswith("Hata") and not result.startswith("Üzgünüm"):
+                        
+                        log_event("INFO", f"{tool_key} çıktısı mBART ile işleniyor...", "response")
+                        
+                        # Dinamik talimatı oluştur
+                        instruction = build_dynamic_instruction(memory)
+                        # Talimatı araca özelleştir
+                        if tool_key == "clipboard_read":
+                            instruction += " Bu metin kullanıcının panosundan (clipboard) geliyor. Ne olduğunu açıkla."
+                        elif tool_key == "pdf_reader":
+                            instruction += " Bu metin bir PDF dokümanından geliyor. Önemli noktaları özetle."
+
+                        # mBART üretimi yap
+                        processed_response = brain_generator.generate(result, instruction)
+                        
+                        final_output = f"{processed_response}\n\n*(Araç verisi mBART tarafından işlendi)*"
+                        # memory.save_interaction(user_input, final_output) # İsteğe bağlı
+                        return final_output
+
+                
+
                 # Not: Komutların sonucunu interactions'a kaydedebiliriz
                 # memory.save_interaction(user_input, result) 
+                # Launcher veya Note gibi araçlar için direkt sonucu dön
                 return result
             else:
                 # Niyet "command" ama NLU uygun 'tool_key' bulamadı
