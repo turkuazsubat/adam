@@ -27,6 +27,14 @@ except ImportError as e:
 from modules.scheduler_module import TimeMaster 
 # ------------------------------------
 
+import customtkinter as ctk # Hafta 16
+#Modern Arayüz Ayarları
+ctk.set_appearance_mode("Dark") # Modes: "System" (standard), "Dark", "Light"
+ctk.set_default_color_theme("green") # Themes: "blue" (standard), "green", "dark-blue"
+
+#Hafta 16 - installers
+from modules.installer_check import check_and_install_tesseract # <-- YENİ
+
 # Sabitler
 DB_PATH = "db/project.db"
 SCHEMA_PATH = "db_schema.sql"
@@ -34,7 +42,7 @@ SCHEMA_PATH = "db_schema.sql"
 class ProjectXGUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Proje X Asistanı (v15 - Time & Vision)")
+        self.root.title("ADAM (Adaptive Personal Core)")
         self.root.geometry("600x750")
         
         # --- Durum Yönetimi ---
@@ -54,70 +62,100 @@ class ProjectXGUI:
         self.setup_ui()
         
         # Renk ve Font Ayarları
-        self.chat_display.tag_config('user', foreground="#0000FF", justify="right", rmargin=10)
-        self.chat_display.tag_config('bot', foreground="#006400", justify="left", lmargin1=10, lmargin2=10)
-        self.chat_display.tag_config('system', foreground="#640000", justify="center")
+        # NOT: Koyu mod (Dark Mode) için renkleri güncelledik
+        self.chat_display.tag_config('user', foreground="#4da6ff", justify="right", rmargin=10) # Açık Mavi
+        self.chat_display.tag_config('bot', foreground="#00e676", justify="left", lmargin1=10, lmargin2=10) # Parlak Yeşil
+        self.chat_display.tag_config('system', foreground="#ff5252", justify="center") # Kırmızı
         self.chat_display.tag_config("info", foreground="gray", justify="center")
         self.chat_display.tag_config('thinking', foreground='orange', justify='left')
 
         # Backend Başlatma (DÜZELTME: Buradaki çift çağırma silindi, sadece bir tane var)
-        self.append_message("Sistem", "Beyin modülleri yükleniyor..", "info")
+        self.append_message("Sistem", "Çekirdek modülleri yükleniyor...", "info")
         self.root.after(100, self.init_backend)
 
 
     def setup_ui(self):
         '''Pencere elemanları (Widget) yerleştirir.'''
-
+        '''Modern Arayüz Elemanları - HAFTA 16 GÜNCELLEMESİ'''
+        
+        # Hafta 16: Grid sistemine tam uyum için root konfigürasyonu
+        self.root.grid_columnconfigure(0, weight=1)
+        self.root.grid_rowconfigure(0, weight=1)
+        
         # 1. Sohbet Geçmişi
+        # Not: CTkTextbox yerine ScrolledText kullanmaya devam ediyoruz çünkü 
+        # "Seslendir" butonu (window_create) standart tkinter ile daha stabil çalışıyor.
+        # Ancak renkleri koyu moda uyarladık.
         self.chat_display = scrolledtext.ScrolledText(
-            self.root, state='disabled', wrap='word', font=('Arial', 11), bg="#f0f0f0"
+            self.root, 
+            state='disabled', 
+            wrap='word', 
+            font=('Segoe UI', 18), # Modern Font
+            bg="#2b2b2b", # Koyu Arka Plan
+            fg="white",   # Beyaz Yazı
+            borderwidth=0,
+            highlightthickness=0
         )
-        self.chat_display.pack(expand=True, fill='both', padx=10, pady=10)
+        self.chat_display.grid(row=0, column=0, sticky="nsew", padx=15, pady=(15, 5))
 
-        # 2. Alt Panel (Giriş alanı ve buton için)
-        bottom_frame = tk.Frame(self.root, bg="#ddd")
-        bottom_frame.pack(fill="x", side="bottom")
+        # 2. Alt Panel (Giriş alanı ve butonlar için)
+        # DÜZELTME: tk.Frame yerine ctk.CTkFrame (Yuvarlak köşeli ve Koyu)
+        bottom_frame = ctk.CTkFrame(self.root, corner_radius=15, fg_color="#333333")
+        bottom_frame.grid(row=1, column=0, sticky="ew", padx=15, pady=15)
+        
+        # Panel içi grid ayarı (Input kutusu genişlesin diye)
+        bottom_frame.grid_columnconfigure(0, weight=1)
 
-        # --- KRİTİK SIRALAMA: Önce Butonu Yerleştir (Sağa) ---
-        # Böylece Text kutusu büyüdüğünde butonu ekrandan dışarı itemez.
-        self.send_button = tk.Button(
-            bottom_frame,
-            text="Gönder",
-            command=self.send_message,
-            font=("Arial", 10, "bold"),
-            bg="#4CAF50",
-            fg="#FFFFFF",
-            width=10,
-            height=2 # Buton yüksekliği
+        # 3. Metin Giriş Kutusu (Modern Textbox)
+        # DÜZELTME: tk.Text yerine ctk.CTkTextbox
+        self.entry_field = ctk.CTkTextbox(
+            bottom_frame, 
+            height=50, 
+            font=("Segoe UI", 12),
+            activate_scrollbars=False,
+            fg_color="#404040", # Kutu rengi koyu gri
+            text_color="white"
         )
-        self.send_button.pack(side="right", padx=10, pady=10)
+        self.entry_field.grid(row=0, column=0, sticky="ew", padx=(10, 5), pady=10)
 
-        # --- BAS-KONUŞ MİKROFON BUTONU ---
-        # Not: command parametresini kaldırdık, yerine bind kullanacağız.
-        self.mic_button = tk.Button(
+        # Olay Bağlayıcılar (Bind)
+        self.entry_field.bind("<Return>", self.handle_enter)
+        self.entry_field.bind("<KeyRelease>", self.fix_turkish_chars_live)
+
+        # --- BAS-KONUŞ MİKROFON BUTONU (MODERN) ---
+        # DÜZELTME: tk.Button yerine ctk.CTkButton
+        self.mic_button = ctk.CTkButton(
             bottom_frame, 
             text="🎙️", 
-            font=("Arial",12), 
-            bg="#FF5722", 
-            fg="white", 
-            width=4, 
-            height=2
+            width=50, 
+            height=40,
+            font=("Arial",16), 
+            fg_color="#E65100", # Turuncu (Normal)
+            hover_color="#EF6C00", # Üzerine gelince
+            corner_radius=10
         )
-        self.mic_button.pack(side="right", padx=5, pady=10)
+        self.mic_button.grid(row=0, column=1, padx=5, pady=10)
         
         # Olayları Bağla (Basınca ve Bırakınca)
         self.mic_button.bind('<ButtonPress-1>', self.on_mic_press)
         self.mic_button.bind('<ButtonRelease-1>', self.on_mic_release)
         # --------------------------------- 
 
-        # 3. Metin Giriş Kutusu (Text Widget)
-        # Türkçe karakter sorunu için Entry yerine Text kullanıyoruz
-        self.entry_field = tk.Text(bottom_frame, height=2, font=("Arial", 12)) 
-        self.entry_field.pack(side="left", fill="x", expand=True, padx=10, pady=10)
-        
-        # Olay Bağlayıcılar (Bind)
-        self.entry_field.bind("<Return>", self.handle_enter)
-        self.entry_field.bind("<KeyRelease>", self.fix_turkish_chars_live)
+        # --- GÖNDER BUTONU (MODERN) ---
+        # DÜZELTME: tk.Button yerine ctk.CTkButton
+        self.send_button = ctk.CTkButton(
+            bottom_frame,
+            text="Gönder",
+            command=self.send_message,
+            width=80,
+            height=40,
+            font=("Segoe UI", 12, "bold"),
+            fg_color="#2E7D32", # Yeşil
+            hover_color="#1B5E20",
+            corner_radius=10
+        )
+        self.send_button.grid(row=0, column=2, padx=(5, 10), pady=10)
+
 
     def fix_turkish_chars_live(self, event):
         """
@@ -131,7 +169,11 @@ class ProjectXGUI:
         
         # Bozuk karakter kontrolü
         if any(char in current_text for char in ['ð', 'Ð', 'þ', 'Þ', 'ý', 'Ý']):
-            cursor_pos = self.entry_field.index(tk.INSERT)
+            # CTkTextbox imleç yönetimi için try-except
+            try:
+                cursor_pos = self.entry_field.index("insert")
+            except:
+                cursor_pos = "end"
             
             fixed_text = (current_text
                           .replace('ð', 'ğ').replace('Ð', 'Ğ')
@@ -142,7 +184,10 @@ class ProjectXGUI:
             self.entry_field.insert("1.0", fixed_text)
             
             # İmleci kaldığı yere geri koy
-            self.entry_field.mark_set(tk.INSERT, cursor_pos)
+            try:
+                self.entry_field.mark_set("insert", cursor_pos)
+            except:
+                pass
 
     def handle_enter(self, event):
         """Shift+Enter alt satıra geçer, Enter gönderir."""
@@ -158,8 +203,8 @@ class ProjectXGUI:
             self.feedback_manager = FeedbackManager(self.memory)
             self.tool_manager = ToolManager()
 
-            self.append_message("Sistem", "Bağlantı başarılı. Asistan hazır.", "info")
-            self.append_message("Asistan", "Merhaba! Size nasıl yardımcı olabilirim?", "bot")
+            self.append_message("Sistem", "Bağlantı başarılı. ADAM hazır.", "info")
+            self.append_message("Asistan", "Merhaba! Ben ADAM (Adaptive Personal Core). Nasıl yardımcı olabilirim?", "bot")
             log_event("INFO", "GUI: Asistan başlatıldı.", "gui")
 
             #--Hafta 14.5 Ses--
@@ -181,7 +226,7 @@ class ProjectXGUI:
             self.append_message("Sistem","Ses modülleri yükleniyor","info")
             self.tts = TextToSpeech()
             self.stt = SpeechToText()
-            self.append_message("Sistem","Ses sistemi aktif. (Basılı tutarak konuşun)","info")
+            self.append_message("Sistem","Ses sistemi aktif.","info")
         except Exception as e:
             self.append_message("Sistem",f"Ses hatası: {e}","system")
 
@@ -189,8 +234,8 @@ class ProjectXGUI:
         """Butona basılınca: Kaydı Başlat"""
         if not self.stt or self.is_processing: return
         
-        # Görsel Geri Bildirim
-        self.mic_button.config(bg="red", text="🔴") # Kayıt işareti
+        # DÜZELTME: CTkButton rengini 'fg_color' ile değiştiririz
+        self.mic_button.configure(fg_color="#D32F2F", text="🔴") # Kırmızı
         self.entry_field.delete("1.0", "end")
         
         # Kaydı başlat (stt.py içindeki fonksiyon)
@@ -203,8 +248,8 @@ class ProjectXGUI:
         """Butonu bırakınca: Kaydı Bitir ve İşle"""
         if not self.stt or self.is_processing: return
         
-        # Görsel Değişim
-        self.mic_button.config(bg="orange", text="⏳") # Bekle işareti
+        # DÜZELTME: CTkButton rengi
+        self.mic_button.configure(fg_color="#FF9800", text="⏳") # Turuncu
         
         # İşlemi Thread'e at (Arayüz donmasın)
         threading.Thread(target=self.process_voice_thread, daemon=True).start()
@@ -223,8 +268,8 @@ class ProjectXGUI:
 
     def finish_voice_process(self, text):
         """Sonucu ekrana basar"""
-        # Butonu normale çevir
-        self.mic_button.config(bg="#FF5722", text="🎙️")
+        # Butonu normale çevir (Turuncu)
+        self.mic_button.configure(fg_color="#E65100", text="🎙️")
         
         if text:
             # Metni kutuya yaz ve gönder fonksiyonunu tetikle
@@ -277,10 +322,10 @@ class ProjectXGUI:
 
         # 2. Kilitle
         self.is_processing = True
-        self.entry_field.config(state="disabled") 
-        self.send_button.config(state="disabled")
+        self.entry_field.configure(state="disabled") # CTk için configure
+        self.send_button.configure(state="disabled")
         # --- HAFTA 14.5 (SES) ---
-        self.mic_button.config(state="disabled")
+        self.mic_button.configure(state="disabled")
         # ------------------------
 
         # 3. Bekleme Mesajı
@@ -368,9 +413,9 @@ class ProjectXGUI:
         # ----------------------------------------------
 
         self.is_processing = False
-        self.entry_field.config(state="normal")
-        self.send_button.config(state="normal")
-        self.mic_button.config(state="normal") 
+        self.entry_field.configure(state="normal")
+        self.send_button.configure(state="normal")
+        self.mic_button.configure(state="normal") 
         self.entry_field.focus_set()
 
     def append_message(self, sender, message, tag, is_temp=False):
@@ -385,12 +430,13 @@ class ProjectXGUI:
         # --- İSTEĞE BAĞLI OKUMA BUTONU (Sadece Asistan ve Alarmlar İçin) ---
         if sender == "Asistan" and not is_temp and self.tts:
             # Küçük, mavi, link görünümlü bir etiket oluştur
+            # Koyu modda okunabilir olması için renkleri güncelledik (Açık Mavi/Cyan)
             lbl = tk.Label(
                 self.chat_display, 
                 text="🔊 Seslendir", 
-                font=("Arial", 9, "underline"), 
-                fg="blue", 
-                bg="#f0f0f0", 
+                font=("Segoe UI", 15, "underline"), 
+                fg="#40C4FF", # Açık Mavi (Dark Mode için uygun)
+                bg="#2b2b2b", # Arka planla aynı renk
                 cursor="hand2"
             )
             # Bu etikete tıklandığında, o anki mesajı okumasını söyle
@@ -420,7 +466,15 @@ if __name__ == "__main__":
     # Loglama kısmını terminalde görebilmen için düzelttim:
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
     
-    root = tk.Tk()
+    # --- HAFTA 16: BAĞIMLILIK KONTROLÜ ---
+    # Program açılmadan önce Tesseract kontrolü yapılır.
+    # Kullanıcı reddetse bile program açılır (sadece OCR çalışmaz).
+    check_and_install_tesseract()
+    # -------------------------------------
+    
+    # --- DÜZELTME: Ana Pencere artık CTk ---
+    # tk.Tk() yerine ctk.CTk() kullanıyoruz ki tema her yere işlesin
+    root = ctk.CTk() 
     try:
         # Windows Türkçe encoding zorlaması
         root.tk.call('encoding', 'system', 'utf-8')
