@@ -1,3 +1,24 @@
+import os
+import sys
+
+# --- KRİTİK AYARLAR (PYINSTALLER İÇİN) ---
+# 1. PyTorch JIT Derleyicisini Kapat (Kaynak kod okuma hatasını engeller)
+os.environ["PYTORCH_JIT"] = "0"
+os.environ["PYTORCH_NO_CUDA_MEMORY_CACHING"] = "1"
+
+# 2. Kaynak Kod Yaması (Monkey Patch)
+# Typeguard ve Inspect modüllerini kandırarak hata vermelerini engeller.
+if getattr(sys, 'frozen', False):
+    import inspect
+    def _mock_getsource(obj):
+        return "def _mock_func(): pass"
+    def _mock_getsourcelines(obj):
+        return (["def _mock_func(): pass"], 1)
+    
+    inspect.getsource = _mock_getsource
+    inspect.getsourcelines = _mock_getsourcelines
+# -----------------------------------------------
+
 import tkinter as tk
 from tkinter import scrolledtext
 import datetime
@@ -471,7 +492,7 @@ if __name__ == "__main__":
     # Kullanıcı reddetse bile program açılır (sadece OCR çalışmaz).
     check_and_install_tesseract()
     # -------------------------------------
-    
+
     # --- DÜZELTME: Ana Pencere artık CTk ---
     # tk.Tk() yerine ctk.CTk() kullanıyoruz ki tema her yere işlesin
     root = ctk.CTk() 

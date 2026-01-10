@@ -1592,3 +1592,74 @@ that match your environment. Please note that you may need to restart your runti
 2026-01-10 17:00:21,217 - INFO - modules.tts - 📢 ADAM'ın Sesi (Glow-TTS) Hazırlanıyor...
 2026-01-10 17:00:21,217 - INFO - modules.tts - ⚙️ Model Yükleniyor... (Bu kez indirme yapmayacak)
 2026-01-10 17:00:23,974 - INFO - modules.tts - ✅ Ses Sistemi Devrede.
+2026-01-10 20:48:29,286 - WARNING - huggingface_hub.utils._http - '(MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/modules.json (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002AA16D4EDD0>: Failed to resolve \'huggingface.co\' ([Errno 11001] getaddrinfo failed)"))'), '(Request ID: dab9661a-167a-44eb-826b-6ab29050e64a)')' thrown while requesting HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/modules.json
+2026-01-10 20:48:29,288 - WARNING - huggingface_hub.utils._http - Retrying in 1s [Retry 1/5].
+2026-01-10 20:48:35,156 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2026-01-10 21:36:46,548 - WARNING - huggingface_hub.utils._http - '(MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/modules.json (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002317FF2A490>: Failed to resolve \'huggingface.co\' ([Errno 11001] getaddrinfo failed)"))'), '(Request ID: fe652673-b89f-4e0f-a39c-5d573cf253c3)')' thrown while requesting HEAD https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2/resolve/main/modules.json
+2026-01-10 21:36:46,548 - WARNING - huggingface_hub.utils._http - Retrying in 1s [Retry 1/5].
+2026-01-10 21:36:56,560 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2026-01-10 21:37:18,329 - INFO - apscheduler.scheduler - Scheduler started
+2026-01-10 21:37:19,402 - INFO - memory - SQLite veritabanina baglandi: db/project.db
+2026-01-10 21:37:19,403 - INFO - memory - Veritabanı tablolari yuklendi.
+2026-01-10 21:37:19,407 - INFO - feedback - FeedbackManager başlatıldı.
+2026-01-10 21:37:19,407 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2026-01-10 21:37:19,410 - INFO - gui - GUI: Asistan başlatıldı.
+2026-01-10 21:37:19,431 - INFO - modules.tts - 📢 ADAM'ın Sesi (Glow-TTS) Hazırlanıyor...
+2026-01-10 21:37:19,432 - INFO - modules.tts - ⚙️ Model Yükleniyor... (Bu kez indirme yapmayacak)
+2026-01-10 21:37:22,623 - INFO - modules.tts - ✅ Ses Sistemi Devrede.
+2026-01-10 21:37:38,769 - INFO - response - Hafizada bulunamadi, API'ye gidiliyor...
+2026-01-10 21:37:38,770 - INFO - retriever - Internet Aramasi: Benim adım ne?
+2026-01-10 21:37:38,770 - INFO - retriever - Temizlenmis Ozne: Benim adım
+2026-01-10 21:37:47,122 - INFO - retriever - OpenSearch Eslesmesi: Benim Adım Melek
+2026-01-10 21:37:47,622 - INFO - response - Veri mBART ve Profil ile isleniyor...
+2026-01-10 21:38:11,159 - INFO - tools.note_tool - Not Başarıyla kaydedildi: data/notes.txt
+2026-01-10 21:38:15,386 - INFO - response - Hafizada bulunamadi, API'ye gidiliyor...
+2026-01-10 21:38:15,387 - INFO - retriever - Internet Aramasi: Listeme proje teslimini ekle.
+2026-01-10 21:38:15,387 - INFO - retriever - Temizlenmis Ozne: Listeme proje teslimini ekle
+2026-01-10 21:38:16,891 - INFO - retriever - Son şans araması: ekle
+2026-01-10 21:38:18,299 - INFO - response - Veri mBART ve Profil ile isleniyor...
+2026-01-10 21:38:35,731 - INFO - response - Niyet belirsiz, son care internete gidiliyor...
+2026-01-10 21:38:35,731 - INFO - retriever - Internet Aramasi: hesap_makinesi
+2026-01-10 21:38:35,731 - INFO - retriever - Temizlenmis Ozne: Hesap_makinesi
+2026-01-10 21:38:36,289 - INFO - retriever - OpenSearch Eslesmesi: Hesap makinesi
+2026-01-10 21:38:56,476 - INFO - response - Hafizada bulunamadi, API'ye gidiliyor...
+2026-01-10 21:38:56,476 - INFO - retriever - Internet Aramasi: Python nedir diye internette ara.
+2026-01-10 21:38:56,476 - INFO - retriever - Temizlenmis Ozne: Python diye internette ara
+2026-01-10 21:38:56,822 - INFO - retriever - Son şans araması: ara
+2026-01-10 21:39:00,956 - INFO - modules.tts - 🗣️ Konuşuyor: uzgunum yavuz, 'python nedir diye internette ara.' hakkinda wikipedia'da bir baslik bulamadim.
+2026-01-10 21:39:18,228 - INFO - response - Niyet belirsiz, son care internete gidiliyor...
+2026-01-10 21:39:18,228 - INFO - retriever - Internet Aramasi: Anasал neler.
+2026-01-10 21:39:18,228 - INFO - retriever - Temizlenmis Ozne: Anasал neler
+2026-01-10 21:39:18,779 - INFO - retriever - Son şans araması: neler
+2026-01-10 21:39:28,861 - INFO - response - Hafizada bulunamadi, API'ye gidiliyor...
+2026-01-10 21:39:28,862 - INFO - retriever - Internet Aramasi: Ana son nedir?
+2026-01-10 21:39:28,862 - INFO - retriever - Temizlenmis Ozne: Ana son
+2026-01-10 21:39:29,367 - INFO - retriever - OpenSearch Eslesmesi: Anason
+2026-01-10 21:39:29,961 - INFO - response - Veri mBART ve Profil ile isleniyor...
+2026-01-10 22:03:36,584 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2026-01-10 22:03:55,941 - INFO - apscheduler.scheduler - Scheduler started
+2026-01-10 22:03:57,007 - INFO - memory - SQLite veritabanina baglandi: db/project.db
+2026-01-10 22:03:57,007 - INFO - memory - Veritabanı tablolari yuklendi.
+2026-01-10 22:03:57,007 - INFO - feedback - FeedbackManager başlatıldı.
+2026-01-10 22:03:57,007 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2026-01-10 22:03:57,007 - INFO - gui - GUI: Asistan başlatıldı.
+2026-01-10 22:03:57,019 - INFO - modules.tts - 📢 ADAM'ın Sesi (Glow-TTS) Hazırlanıyor...
+2026-01-10 22:03:57,019 - INFO - modules.tts - ⚙️ Model Yükleniyor... (Bu kez indirme yapmayacak)
+2026-01-10 22:04:00,121 - INFO - modules.tts - ✅ Ses Sistemi Devrede.
+2026-01-10 22:04:30,409 - CRITICAL - response - Response Hatasi: 'MemoryManager' object has no attribute 'save_memory'
+2026-01-10 22:04:35,756 - INFO - response - Yerel eşleşme yok, Gelişmiş Retriever çalışıyor...
+2026-01-10 22:04:35,757 - INFO - retriever - Internet Aramasi: polonya nedir
+2026-01-10 22:04:35,757 - INFO - retriever - Temizlenmis Ozne: Polonya
+2026-01-10 22:04:47,005 - INFO - retriever - Son şans araması: Polonya
+2026-01-10 22:05:08,784 - INFO - memory - LTM Kaydi Basarili: polonya nedir
+2026-01-10 22:05:41,310 - INFO - response - Yerel eşleşme yok, Gelişmiş Retriever çalışıyor...
+2026-01-10 22:05:41,311 - INFO - retriever - Internet Aramasi: orta avrupada yer alan bir ülke, komşuları almayna güveybatı çekya güney slovakya olan ülke hangisidir?
+2026-01-10 22:05:41,311 - INFO - retriever - Temizlenmis Ozne: Orta avrupada alan ülke komşuları almayna güveybatı çekya güney slovakya olan ülke hangisidir
+2026-01-10 22:05:41,854 - INFO - retriever - Son şans araması: hangisidir
+2026-01-10 22:06:02,844 - INFO - response - Yerel eşleşme yok, Gelişmiş Retriever çalışıyor...
+2026-01-10 22:06:02,845 - INFO - retriever - Internet Aramasi: gemini ı kıracam görev ekle
+2026-01-10 22:06:02,845 - INFO - retriever - Temizlenmis Ozne: Gemini ı kıracam görev ekle
+2026-01-10 22:06:04,485 - INFO - retriever - Son şans araması: ekle
+2026-01-10 22:06:33,837 - CRITICAL - response - Response Hatasi: 'ToolManager' object has no attribute 'add_note'
+2026-01-10 22:07:18,907 - INFO - memory - Veritabanı baglantisi kapatildi.
+2026-01-10 22:07:18,907 - INFO - apscheduler.scheduler - Scheduler has been shut down

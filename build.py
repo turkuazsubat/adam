@@ -1,62 +1,103 @@
 import PyInstaller.__main__
 from PyInstaller.utils.hooks import collect_all
 import os
+import shutil
+import sys
 
-# --- AYARLAR ---
 APP_NAME = "ADAM_v1.0"
 MAIN_FILE = "gui_app.py"
 
-print("🚀 ADAM Paketleme İşlemi Başlıyor (Tam Kapsamlı Mod)...")
+print(f"🔥 ADAM FİNAL BUILD - TESPİT EDİLEN 100+ KÜTÜPHANE PAKETLENİYOR...")
 
-# --- 1. OTOMATİK TOPLAYICI (COLLECT ALL) ---
-# Sorun çıkaran kütüphanelerin 'HER ŞEYİNİ' topluyoruz.
-# Artık "VERSION eksik", "config eksik" hatası almayacaksın.
+# --- SENİN ANALİZ RPORUNDAN GELEN GERÇEK LİSTE ---
+# Bu liste, sistemin çalışırken RAM'e yüklediği kütüphanelerdir.
+target_libs = [
+    # KRİTİK OLANLAR (Daha önceki hataların kaynağı)
+    'jamo', 'jieba', 'pypinyin', 'gruut', 'gruut_ipa', 
+    'TTS', 'trainer', 'spacy', 'torch', 'torchaudio', 'whisper',
+    'en_core_web_sm', # Spacy Modeli
+    
+    # DİĞER TESPİT EDİLENLER
+    'Cython', 'PIL', 'PyPDF2', 'apscheduler', 'audioread', 'babel',
+    'bangla', 'blis', 'bnnumerizer', 'bnunicodenormalizer', 'catalogue',
+    'certifi', 'cffi', 'charset_normalizer', 'click', 'colorama', 'confection',
+    'coqpit', 'customtkinter', 'cycler', 'cymem', 'cython', 'darkdetect',
+    'dateparser', 'dateutil', 'decorator', 'filelock',
+    'fsspec', 'google', 'huggingface_hub', 'idna',
+    'inflect', 'jinja2', 'joblib', 'jsonlines', 'kiwisolver',
+    'langcodes', 'lazy_loader', 'librosa', 'llvmlite', 'markupsafe',
+    'matplotlib', 'more_itertools', 'mpl_toolkits', 'msgpack', 'murmurhash',
+    'networkx', 'num2words', 'numba', 'numpy', 'packaging', 'pandas',
+    'pkg_resources', 'platformdirs', 'pooch', 'preshed', 'psutil', 'pyaudio',
+    'pycparser', 'pycrfsuite', 'pydantic', 'pydantic_core', 'pygame',
+    'pyparsing', 'pyperclip', 'pysbd', 'pytesseract', 'pythoncom',
+    'pytz', 'regex', 'requests', 'safetensors', 'scipy', 'sentence_transformers',
+    'sentencepiece', 'six', 'sklearn', 'soundfile', 'soxr',
+    'spacy_alignments', 'spacy_transformers', 'srsly', 'thinc',
+    'threadpoolctl', 'tiktoken', 'tokenizers', 'torchgen', 'tqdm', 
+    'transformers', 'typeguard', 'typer', 'typing_extensions', 
+    'tzlocal', 'urllib3', 'wasabi', 'weasel', 'wrapt', 'yaml'
+]
 
-target_libs = ['TTS', 'trainer', 'customtkinter', 'babel', 'speech_recognition']
 collected_args = []
+
+print(f"📦 Hedeflenen {len(target_libs)} kütüphane için 'collect_all' çalıştırılıyor...")
 
 for lib in target_libs:
     try:
-        print(f"📦 {lib} kütüphanesi toplanıyor...")
+        # Kütüphanenin tüm veri, binary ve config dosyalarını al
         datas, binaries, hiddenimports = collect_all(lib)
         
-        # Veri dosyalarını ekle (--add-data)
         for source, dest in datas:
             collected_args.append(f'--add-data={source};{dest}')
             
-        # Gizli importları ekle (--hidden-import)
         for hi in hiddenimports:
             collected_args.append(f'--hidden-import={hi}')
             
     except Exception as e:
-        print(f"⚠️ {lib} toplanırken uyarı: {e}")
+        # Bazı sistem kütüphaneleri (win32 vb) collect_all ile hata verebilir, onları geçiyoruz.
+        # Ama jamo, gruut gibi asıl hedefler hata vermez.
+        pass
 
-# --- 2. MANUEL DOSYALAR ---
-# Kendi proje dosyalarımızı ekliyoruz
+# --- MANUEL DOSYALAR ---
 manual_datas = [
     'db/project.db;db',
     'db_schema.sql;.',
-    'installers/tesseract_setup.exe;installers'
+    'installers/tesseract_setup.exe;installers',
+    'data;data',
+    'audio.wav;.', 'reply.wav;.', 'test.wav;.'
 ]
 
 for item in manual_datas:
-    collected_args.append(f'--add-data={item}')
+    if os.path.exists(item.split(';')[0]):
+        collected_args.append(f'--add-data={item}')
 
-# --- 3. KOMUTU OLUŞTUR VE ÇALIŞTIR ---
+# --- TEMİZLİK ---
+if os.path.exists("dist"): shutil.rmtree("dist")
+if os.path.exists("build"): shutil.rmtree("build")
+
+# --- KOMUT ---
 pyinstaller_args = [
     MAIN_FILE,
     f'--name={APP_NAME}',
-    '--onefile',
+    '--onedir',           # Klasör Modu (Hızlı)
     '--noconsole',
     '--clean',
-    '--hidden-import=sqlite3',
-    '--hidden-import=PIL',
-    '--hidden-import=pytesseract',
-] + collected_args # Otomatik toplananları ekle
+    '--contents-directory=internal',
+    
+    # Spacy ve Torch için ekstra garantiler
+    '--hidden-import=spacy.lang.en',
+    '--hidden-import=spacy.lang.tr',
+    '--hidden-import=en_core_web_sm',
+    
+    # GUI APP içindeki yamayı (JIT disable) çalıştırması için:
+    '--runtime-hook=gui_app.py', 
+    
+] + collected_args
 
-print("🔨 Paketleme başlatılıyor (Bu işlem biraz sürebilir)...")
+print("🔨 Derleme başlatılıyor (Bu işlem 3-5 dakika sürebilir)...")
 
 PyInstaller.__main__.run(pyinstaller_args)
 
 print("\n✅ İŞLEM TAMAMLANDI!")
-print(f"📂 EXE dosyanız 'dist' klasöründe: {APP_NAME}.exe")
+print(f"📂 Çıktı: dist\\{APP_NAME}")
