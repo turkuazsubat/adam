@@ -12,6 +12,17 @@ from feedback import FeedbackManager
 from tool_manager import ToolManager
 from logger import log_event
 
+# --- HAFTA 14.5 (SES) ---
+# Ses modüllerini dahil ediyoruz
+try:
+    from modules.tts import TextToSpeech
+    from modules.stt import SpeechToText
+    VOICE_AVAILABLE = True
+except ImportError as e:
+    print(f"Ses modülleri bulunamadı: {e}")
+    VOICE_AVAILABLE = False
+# ------------------------
+
 # Sabitler
 DB_PATH = "db/project.db"
 SCHEMA_PATH = "db_schema.sql"
@@ -19,7 +30,7 @@ SCHEMA_PATH = "db_schema.sql"
 class ProjectXGUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Proje X Asistanı (v8.5 - Final)")
+        self.root.title("Proje X Asistanı (v14.5 - Voice)")
         self.root.geometry("600x750")
         
         # --- Durum Yönetimi ---
@@ -27,6 +38,9 @@ class ProjectXGUI:
         self.thinking_id = None 
         # Son konuşulanı burada tutacağız ki !kaydet diyebilelim
         self.last_interaction = {"user": None, "bot": None}
+
+        self.tts = None
+        self.stt = None
         
         self.setup_ui()
         
@@ -67,6 +81,24 @@ class ProjectXGUI:
             height=2 # Buton yüksekliği
         )
         self.send_button.pack(side="right", padx=10, pady=10)
+
+        # --- BAS-KONUŞ MİKROFON BUTONU ---
+        # Not: command parametresini kaldırdık, yerine bind kullanacağız.
+        self.mic_button = tk.Button(
+            bottom_frame, 
+            text="🎙️", 
+            font=("Arial",12), 
+            bg="#FF5722", 
+            fg="white", 
+            width=4, 
+            height=2
+        )
+        self.mic_button.pack(side="right", padx=5, pady=10)
+        
+        # Olayları Bağla (Basınca ve Bırakınca)
+        self.mic_button.bind('<ButtonPress-1>', self.on_mic_press)
+        self.mic_button.bind('<ButtonRelease-1>', self.on_mic_release)
+        # --------------------------------- 
 
         # 3. Metin Giriş Kutusu (Text Widget)
         # Türkçe karakter sorunu için Entry yerine Text kullanıyoruz
@@ -119,11 +151,83 @@ class ProjectXGUI:
             self.append_message("Sistem", "Bağlantı başarılı. Asistan hazır.", "info")
             self.append_message("Asistan", "Merhaba! Size nasıl yardımcı olabilirim?", "bot")
             log_event("INFO", "GUI: Asistan başlatıldı.", "gui")
+
+            #--Hafta 14.5 Ses--
+            #Ses modüllerini ayrı bir thread'de yükle (Arayüz donmasın diye)
+            if VOICE_AVAILABLE:
+                threading.Thread(target=self.init_voice_modules,daemon=True).start()
         
         except Exception as e:
             self.append_message("Sistem", f"KRİTİK HATA: {e}", "system")
             log_event("CRITICAL", f"GUI Başlatma Hatası: {e}", "gui")
 
+
+    # --- HAFTA 14.5: GÜNCELLENEN BAS-KONUŞ FONKSİYONLARI ---
+    # Eski start_listening_thread yerine bu yeni yapı geldi:
+
+    def init_voice_modules(self):
+        '''Ses motorlarını arka planda başlatır.'''
+        try:
+            self.append_message("Sistem","Ses modülleri yükleniyor","info")
+            self.tts = TextToSpeech()
+            self.stt = SpeechToText()
+            self.append_message("Sistem","Ses sistemi aktif. (Basılı tutarak konuşun)","info")
+        except Exception as e:
+            self.append_message("Sistem",f"Ses hatası: {e}","system")
+
+    def on_mic_press(self, event):
+        """Butona basılınca: Kaydı Başlat"""
+        if not self.stt or self.is_processing: return
+        
+        # Görsel Geri Bildirim
+        self.mic_button.config(bg="red", text="🔴") # Kayıt işareti
+        self.entry_field.delete("1.0", "end")
+        
+        # Kaydı başlat (stt.py içindeki fonksiyon)
+        try:
+            self.stt.start_recording()
+        except Exception as e:
+            print(f"Kayıt başlatma hatası: {e}")
+
+    def on_mic_release(self, event):
+        """Butonu bırakınca: Kaydı Bitir ve İşle"""
+        if not self.stt or self.is_processing: return
+        
+        # Görsel Değişim
+        self.mic_button.config(bg="orange", text="⏳") # Bekle işareti
+        
+        # İşlemi Thread'e at (Arayüz donmasın)
+        threading.Thread(target=self.process_voice_thread, daemon=True).start()
+
+    def process_voice_thread(self):
+        """Sesi yazıya çevirir ve sisteme gönderir"""
+        try:
+            # Kaydı durdur ve transkripte çevir
+            text = self.stt.stop_and_transcribe()
+            
+            # GUI'yi güncelle
+            self.root.after(0, lambda: self.finish_voice_process(text))
+        except Exception as e:
+            print(f"Ses işleme hatası: {e}")
+            self.root.after(0, lambda: self.finish_voice_process(None))
+
+    def finish_voice_process(self, text):
+        """Sonucu ekrana basar"""
+        # Butonu normale çevir
+        self.mic_button.config(bg="#FF5722", text="🎙️")
+        
+        if text:
+            # Metni kutuya yaz ve gönder fonksiyonunu tetikle
+            self.entry_field.insert("1.0", text)
+            self.send_message() # Otomatik gönder
+        else:
+            self.append_message("Sistem", "Ses algılanamadı veya çok kısaydı.", "info")
+
+    def manual_speak(self, text):
+        """YENİ: Mavi linke tıklanınca metni okur."""
+        if self.tts:
+            threading.Thread(target=self.tts.speak, args=(text,), daemon=True).start()
+    # -------------------------------------------------------
 
     def send_message(self, event=None):
         '''Kullanıcı mesajını alır, temizler ve işler.'''
@@ -154,6 +258,9 @@ class ProjectXGUI:
         self.is_processing = True
         self.entry_field.config(state="disabled") 
         self.send_button.config(state="disabled")
+        # --- HAFTA 14.5 (SES) ---
+        self.mic_button.config(state="disabled")
+        # ------------------------
 
         # 3. Bekleme Mesajı
         self.thinking_id = self.append_message("Asistan", "Yazıyor...", 'thinking', is_temp=True)
@@ -217,11 +324,17 @@ class ProjectXGUI:
         tag = 'system' if response.startswith("Beklenmedik hata:") else "bot"
         self.append_message("Asistan", response, tag)
 
+        # --- DEĞİŞİKLİK: Otomatik okumayı kaldırdık ---
+        # Artık aşağıda çıkan mavi linke tıklayınca okuyacak.
+        # if self.tts and not response.startswith("Beklenmedik hata:"):
+        #     threading.Thread(target=self.tts.speak, args=(response,), daemon=True).start()
+        # ----------------------------------------------
+
         self.is_processing = False
         self.entry_field.config(state="normal")
         self.send_button.config(state="normal")
+        self.mic_button.config(state="normal") 
         self.entry_field.focus_set()
-
 
     def append_message(self, sender, message, tag, is_temp=False):
         self.chat_display.configure(state="normal") 
@@ -230,7 +343,28 @@ class ProjectXGUI:
 
         start_index = self.chat_display.index("end-1c")
         self.chat_display.insert("end", header, tag)
-        self.chat_display.insert("end", str(message) + "\n\n", tag)
+        self.chat_display.insert("end", str(message) + "\n", tag)
+        
+        # --- İSTEĞE BAĞLI OKUMA BUTONU (Sadece Asistan İçin) ---
+        if sender == "Asistan" and not is_temp and self.tts:
+            # Küçük, mavi, link görünümlü bir etiket oluştur
+            lbl = tk.Label(
+                self.chat_display, 
+                text="🔊 Seslendir", 
+                font=("Arial", 9, "underline"), 
+                fg="blue", 
+                bg="#f0f0f0", 
+                cursor="hand2"
+            )
+            # Bu etikete tıklandığında, o anki mesajı okumasını söyle
+            lbl.bind("<Button-1>", lambda e, m=message: self.manual_speak(m))
+            
+            # Etiketi metin kutusunun içine (sonuna) göm
+            self.chat_display.window_create("end", window=lbl)
+            self.chat_display.insert("end", "\n\n") # Biraz boşluk bırak
+        else:
+             self.chat_display.insert("end", "\n\n", tag)
+        # -------------------------------------------------------
         
         self.chat_display.configure(state="disabled")
         self.chat_display.see("end")
@@ -246,7 +380,8 @@ class ProjectXGUI:
         self.chat_display.configure(state="disabled")
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.DEBUG, filename='project.log', filemode='a')
+    # Loglama kısmını terminalde görebilmen için düzelttim:
+    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
     
     root = tk.Tk()
     try:

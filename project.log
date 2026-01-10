@@ -1269,3 +1269,154 @@ that match your environment. Please note that you may need to restart your runti
 2026-01-02 06:18:38,405 - INFO - response - clipboard_read çıktısı mBART ile işleniyor...
 2026-01-02 06:23:03,263 - INFO - response - pdf_reader çıktısı mBART ile işleniyor...
 2026-01-02 06:27:43,922 - INFO - memory - Veritabanı baglantisi kapatildi.
+2026-01-10 02:57:52,026 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2026-01-10 02:59:58,903 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2026-01-10 03:00:19,622 - INFO - memory - SQLite veritabanina baglandi: db/project.db
+2026-01-10 03:00:19,646 - INFO - memory - Veritabanı tablolari yuklendi.
+2026-01-10 03:00:19,648 - INFO - feedback - FeedbackManager başlatıldı.
+2026-01-10 03:00:19,648 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2026-01-10 03:00:19,651 - INFO - gui - GUI: Asistan başlatıldı.
+2026-01-10 03:00:19,670 - INFO - modules.tts - 📢 ADAM'ın Sesi (Glow-TTS) Hazırlanıyor...
+2026-01-10 03:00:19,670 - INFO - modules.tts - ⚙️ Model Yükleniyor... (Bu kez indirme yapmayacak)
+2026-01-10 03:00:24,170 - INFO - modules.tts - ✅ Ses Sistemi Devrede.
+2026-01-10 03:00:24,462 - INFO - modules.stt - 👂 Kulak (Whisper) Hazırlanıyor...
+2026-01-10 03:00:24,462 - INFO - modules.stt - ⚙️ STT Çalışma Ortamı: CPU
+2026-01-10 03:00:24,462 - INFO - modules.stt - 📥 Whisper 'base' modeli yükleniyor...
+2026-01-10 03:00:25,538 - INFO - modules.stt - ✅ Kulak Sistemi Devrede.
+2026-01-10 03:02:52,793 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2026-01-10 03:03:16,903 - INFO - memory - SQLite veritabanina baglandi: db/project.db
+2026-01-10 03:03:16,903 - INFO - memory - Veritabanı tablolari yuklendi.
+2026-01-10 03:03:16,903 - INFO - feedback - FeedbackManager başlatıldı.
+2026-01-10 03:03:16,903 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2026-01-10 03:03:16,911 - INFO - gui - GUI: Asistan başlatıldı.
+2026-01-10 03:03:16,912 - INFO - modules.tts - 📢 ADAM'ın Sesi (Glow-TTS) Hazırlanıyor...
+2026-01-10 03:03:16,912 - INFO - modules.tts - ⚙️ Model Yükleniyor... (Bu kez indirme yapmayacak)
+2026-01-10 03:03:20,563 - INFO - modules.tts - ✅ Ses Sistemi Devrede.
+2026-01-10 03:03:20,892 - INFO - modules.stt - 👂 Kulak (Whisper) Hazırlanıyor...
+2026-01-10 03:03:20,892 - INFO - modules.stt - ⚙️ STT Çalışma Ortamı: CPU
+2026-01-10 03:03:20,892 - INFO - modules.stt - 📥 Whisper 'base' modeli yükleniyor...
+2026-01-10 03:03:21,821 - INFO - modules.stt - ✅ Kulak Sistemi Devrede.
+2026-01-10 03:06:01,610 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2026-01-10 03:06:28,805 - INFO - memory - SQLite veritabanina baglandi: db/project.db
+2026-01-10 03:06:28,806 - INFO - memory - Veritabanı tablolari yuklendi.
+2026-01-10 03:06:28,809 - INFO - feedback - FeedbackManager başlatıldı.
+2026-01-10 03:06:28,809 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2026-01-10 03:06:28,812 - INFO - gui - GUI: Asistan başlatıldı.
+2026-01-10 03:06:28,830 - INFO - modules.tts - 📢 ADAM'ın Sesi (Glow-TTS) Hazırlanıyor...
+2026-01-10 03:06:28,830 - INFO - modules.tts - ⚙️ Model Yükleniyor... (Bu kez indirme yapmayacak)
+2026-01-10 03:06:32,258 - INFO - modules.tts - ✅ Ses Sistemi Devrede.
+2026-01-10 03:06:32,569 - INFO - modules.stt - 👂 Kulak (Whisper) Hazırlanıyor...
+2026-01-10 03:06:32,570 - INFO - modules.stt - 📥 Whisper 'base' modeli yükleniyor...
+2026-01-10 03:06:33,506 - INFO - modules.stt - ✅ Kulak Sistemi Devrede.
+2026-01-10 03:13:54,224 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2026-01-10 03:14:13,301 - INFO - memory - SQLite veritabanina baglandi: db/project.db
+2026-01-10 03:14:13,301 - INFO - memory - Veritabanı tablolari yuklendi.
+2026-01-10 03:14:13,301 - INFO - feedback - FeedbackManager başlatıldı.
+2026-01-10 03:14:13,301 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2026-01-10 03:14:13,316 - INFO - gui - GUI: Asistan başlatıldı.
+2026-01-10 03:14:13,332 - INFO - modules.tts - 📢 ADAM'ın Sesi (Glow-TTS) Hazırlanıyor...
+2026-01-10 03:14:13,332 - INFO - modules.tts - ⚙️ Model Yükleniyor... (Bu kez indirme yapmayacak)
+2026-01-10 03:14:16,417 - INFO - modules.tts - ✅ Ses Sistemi Devrede.
+2026-01-10 03:14:17,309 - INFO - modules.stt - --- STT (Kulak) BAŞLATILIYOR ---
+2026-01-10 03:14:17,310 - INFO - modules.stt - ⚙️ Çalışma Ortamı: CPU
+2026-01-10 03:14:17,310 - INFO - modules.stt - 📥 Whisper 'base' modeli yükleniyor...
+2026-01-10 03:14:18,164 - INFO - modules.stt - ✅ Model RAM'e yüklendi.
+2026-01-10 03:15:39,036 - INFO - response - Hafizada bulunamadi, API'ye gidiliyor...
+2026-01-10 03:15:39,036 - INFO - retriever - Internet Aramasi: ankara nedir
+2026-01-10 03:15:39,036 - INFO - retriever - Temizlenmis Ozne: Ankara
+2026-01-10 03:15:39,592 - INFO - retriever - OpenSearch Eslesmesi: Ankara
+2026-01-10 03:15:40,508 - INFO - response - Veri mBART ve Profil ile isleniyor...
+2026-01-10 03:15:50,760 - INFO - modules.tts - 🗣️ Konuşuyor: ankara, türkiye'nin başkenti ve ankara ilinin merkezi. coğrafi olarak türkiye'nin merkezine yakın bir konumda ve i̇ç anadolu bölgesi'nde yer alıyor. ülke, i̇stanbul'dan sonra nüfus açısından ikinci, kentsel alan açısından birinci, metropol alan açısından konya ve sivas'dan sonra en büyük üçüncü kent. toplam 25 il, 9'u merkez ilçe. *(kaynak: wikipedia - ankara)*
+
+*(profilinize göre mbart tarafından özetlendi)*
+2026-01-10 03:20:05,111 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2026-01-10 03:20:25,117 - INFO - memory - SQLite veritabanina baglandi: db/project.db
+2026-01-10 03:20:25,121 - INFO - memory - Veritabanı tablolari yuklendi.
+2026-01-10 03:20:25,122 - INFO - feedback - FeedbackManager başlatıldı.
+2026-01-10 03:20:25,122 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2026-01-10 03:20:25,124 - INFO - gui - GUI: Asistan başlatıldı.
+2026-01-10 03:20:25,148 - INFO - modules.tts - 📢 ADAM'ın Sesi (Glow-TTS) Hazırlanıyor...
+2026-01-10 03:20:25,148 - INFO - modules.tts - ⚙️ Model Yükleniyor... (Bu kez indirme yapmayacak)
+2026-01-10 03:20:28,445 - INFO - modules.tts - ✅ Ses Sistemi Devrede.
+2026-01-10 03:20:29,415 - INFO - modules.stt - --- STT (Kulak) BAŞLATILIYOR ---
+2026-01-10 03:20:29,415 - INFO - modules.stt - ⚙️ Çalışma Ortamı: CPU
+2026-01-10 03:20:29,415 - INFO - modules.stt - 📥 Whisper 'base' modeli yükleniyor...
+2026-01-10 03:20:30,450 - INFO - modules.stt - ✅ Model RAM'e yüklendi.
+2026-01-10 03:21:32,807 - INFO - response - Hafizada bulunamadi, API'ye gidiliyor...
+2026-01-10 03:21:32,809 - INFO - retriever - Internet Aramasi: bartın nedir
+2026-01-10 03:21:32,809 - INFO - retriever - Temizlenmis Ozne: Bart
+2026-01-10 03:21:34,327 - INFO - retriever - OpenSearch Eslesmesi: Bart
+2026-01-10 03:21:38,093 - INFO - response - Veri mBART ve Profil ile isleniyor...
+2026-01-10 03:21:54,745 - INFO - modules.tts - 🗣️ Konuşuyor: bartholomew jojo "bart" simpson, animasyon dizisinin kurgu ana karakteri ve dizinin adını veren aile üyesi. nancy cartwright'a seslendirilen bart, 19 nisan 1987'de the tracey ullman show'da yayınlanan simpsonlar kısası'nda "good night" gösterildi. bart, matt groening'in james l. brooks'un ofisi'nin bekleme salonunda beklerken tasarlandı ve yaratıldı. groening, life in hell'a dayanan bir dizi yapmasına çağrıldı, fakat bunun yerine yeni bir grup karakter yaratmaya karar verdi. characterlerin geri adları groening'in aile üyelerinden almasına karşın, bart'ın adı brat sözcüğü anagram. after three years the tracey ullman
+
+*(profilinize göre mbart tarafından özetlendi)*
+2026-01-10 03:24:19,199 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2026-01-10 03:24:37,725 - INFO - memory - SQLite veritabanina baglandi: db/project.db
+2026-01-10 03:24:37,725 - INFO - memory - Veritabanı tablolari yuklendi.
+2026-01-10 03:24:37,725 - INFO - feedback - FeedbackManager başlatıldı.
+2026-01-10 03:24:37,725 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2026-01-10 03:24:37,725 - INFO - gui - GUI: Asistan başlatıldı.
+2026-01-10 03:24:37,752 - INFO - modules.tts - 📢 ADAM'ın Sesi (Glow-TTS) Hazırlanıyor...
+2026-01-10 03:24:37,756 - INFO - modules.tts - ⚙️ Model Yükleniyor... (Bu kez indirme yapmayacak)
+2026-01-10 03:24:40,917 - INFO - modules.tts - ✅ Ses Sistemi Devrede.
+2026-01-10 03:27:56,283 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2026-01-10 03:28:15,274 - INFO - memory - SQLite veritabanina baglandi: db/project.db
+2026-01-10 03:28:15,290 - INFO - memory - Veritabanı tablolari yuklendi.
+2026-01-10 03:28:15,290 - INFO - feedback - FeedbackManager başlatıldı.
+2026-01-10 03:28:15,290 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2026-01-10 03:28:15,306 - INFO - gui - GUI: Asistan başlatıldı.
+2026-01-10 03:28:15,337 - INFO - modules.tts - 📢 ADAM'ın Sesi (Glow-TTS) Hazırlanıyor...
+2026-01-10 03:28:15,337 - INFO - modules.tts - ⚙️ Model Yükleniyor... (Bu kez indirme yapmayacak)
+2026-01-10 03:28:17,981 - INFO - modules.tts - ✅ Ses Sistemi Devrede.
+2026-01-10 03:37:42,109 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2026-01-10 03:40:39,319 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2026-01-10 03:40:58,983 - INFO - memory - SQLite veritabanina baglandi: db/project.db
+2026-01-10 03:40:58,984 - INFO - memory - Veritabanı tablolari yuklendi.
+2026-01-10 03:40:58,986 - INFO - feedback - FeedbackManager başlatıldı.
+2026-01-10 03:40:58,986 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2026-01-10 03:40:59,022 - INFO - gui - GUI: Asistan başlatıldı.
+2026-01-10 03:40:59,065 - INFO - modules.tts - 📢 ADAM'ın Sesi (Glow-TTS) Hazırlanıyor...
+2026-01-10 03:40:59,065 - INFO - modules.tts - ⚙️ Model Yükleniyor... (Bu kez indirme yapmayacak)
+2026-01-10 03:41:02,781 - INFO - modules.tts - ✅ Ses Sistemi Devrede.
+2026-01-10 03:41:17,370 - INFO - response - Niyet belirsiz, son care internete gidiliyor...
+2026-01-10 03:41:17,370 - INFO - retriever - Internet Aramasi: Amerikan edir.
+2026-01-10 03:41:17,371 - INFO - retriever - Temizlenmis Ozne: Amerikan edir
+2026-01-10 03:41:18,528 - INFO - retriever - OpenSearch Eslesmesi: Amerikan Kedisi
+2026-01-10 03:41:19,579 - INFO - modules.tts - 🗣️ Konuşuyor: amerikan kedisi bir kedi ırkı. değerli yüklerini fare ve sıçanlardan korumak amacıyla, ilk göçmenler tarafından kuzey amerika'ya getirilen evcil avrupa kedileri soyundan geldiğine inanılır. cat fancier's derneğine göre, 2011 boyunca, birleşik devletler'de en popüler sekizinci kedi ırkı olmuştur.
+
+*(kaynak: wikipedia - amerikan kedisi)*
+2026-01-10 03:42:02,106 - INFO - response - Niyet belirsiz, son care internete gidiliyor...
+2026-01-10 03:42:02,106 - INFO - retriever - Internet Aramasi: Amerikan edir.
+2026-01-10 03:42:02,107 - INFO - retriever - Temizlenmis Ozne: Amerikan edir
+2026-01-10 03:42:02,492 - INFO - retriever - OpenSearch Eslesmesi: Amerikan Kedisi
+2026-01-10 03:42:03,000 - INFO - modules.tts - 🗣️ Konuşuyor: amerikan kedisi bir kedi ırkı. değerli yüklerini fare ve sıçanlardan korumak amacıyla, ilk göçmenler tarafından kuzey amerika'ya getirilen evcil avrupa kedileri soyundan geldiğine inanılır. cat fancier's derneğine göre, 2011 boyunca, birleşik devletler'de en popüler sekizinci kedi ırkı olmuştur.
+
+*(kaynak: wikipedia - amerikan kedisi)*
+2026-01-10 03:43:55,427 - INFO - response - Hafizada bulunamadi, API'ye gidiliyor...
+2026-01-10 03:43:55,428 - INFO - retriever - Internet Aramasi: amerika nedir
+2026-01-10 03:43:55,428 - INFO - retriever - Temizlenmis Ozne: Amerika
+2026-01-10 03:43:56,017 - INFO - retriever - OpenSearch Eslesmesi: Amerika
+2026-01-10 03:43:56,636 - INFO - response - Veri mBART ve Profil ile isleniyor...
+2026-01-10 03:44:08,041 - INFO - modules.tts - 🗣️ Konuşuyor: amerika veya amerika kıtası, kuzey amerika, orta amerika, güney amerika ve bunlara bağlı adalar topluluğu, west peninsula'da yeni dünya olarak adlandırılan bir bölgede. amerika kıtası, west peninsula'daki kara alanının çoğunu kapsıyor ve yeni dünya'yı meydana getiriyor. amerika sözcüğü, pek çok dilde abd (abd) anlamına da, kavram karmaşasına yol açabilir. *(yunan: wikipedia - amerika)*
+
+*(profilinize göre mbart tarafından özetlendi)*
+2026-01-10 03:48:00,962 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2026-01-10 03:48:20,571 - INFO - memory - SQLite veritabanina baglandi: db/project.db
+2026-01-10 03:48:20,574 - INFO - memory - Veritabanı tablolari yuklendi.
+2026-01-10 03:48:20,574 - INFO - feedback - FeedbackManager başlatıldı.
+2026-01-10 03:48:20,574 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2026-01-10 03:48:20,577 - INFO - gui - GUI: Asistan başlatıldı.
+2026-01-10 03:48:20,592 - INFO - modules.tts - 📢 ADAM'ın Sesi (Glow-TTS) Hazırlanıyor...
+2026-01-10 03:48:20,592 - INFO - modules.tts - ⚙️ Model Yükleniyor... (Bu kez indirme yapmayacak)
+2026-01-10 03:48:24,283 - INFO - modules.tts - ✅ Ses Sistemi Devrede.
+2026-01-10 03:48:37,688 - INFO - response - Hafizada bulunamadi, API'ye gidiliyor...
+2026-01-10 03:48:37,688 - INFO - retriever - Internet Aramasi: Fransa nedir?
+2026-01-10 03:48:37,688 - INFO - retriever - Temizlenmis Ozne: Fransa
+2026-01-10 03:48:38,185 - INFO - retriever - OpenSearch Eslesmesi: Fransa
+2026-01-10 03:48:38,636 - INFO - response - Veri mBART ve Profil ile isleniyor...
+2026-01-10 03:48:57,609 - INFO - modules.tts - 🗣️ Konuşuyor: france, resmi adı fransız cumhuriyeti, western europe'da yer alan ve dünyanın pek çok bölgesinde denizaltları olan bir ülke. fransa'nın avrupa'daki komşuları belçika, luxembourg, almanya, i̇sviçre, i̇talya, i̇spanya, monako ve andorra. akdeniz'de sadece 12 km'lik i̇talya'nın sardinya adası'na ait korsika adası da fransa'ya ait. sahip denizaltlarında da, fransız guyana'dan brezilya ve surinam'a, saint martin adası'ndan hollanda antilles'a sınırı var. fransa, manş denizi'nin altından geçen manş tüneli ile birleşik kraliyet'e bağlı. *(query: wikipedia - france)*
+
+*(profilinize göre mbart tarafından özetlendi)*
+2026-01-10 03:50:04,522 - INFO - memory - LTM Kaydi Basarili: fransa nedir
+2026-01-10 03:50:07,710 - INFO - modules.tts - 🗣️ Konuşuyor: son konuşma kalıcı hafızaya kaydedildi ✅
+2026-01-10 03:50:58,280 - INFO - memory - Veritabanı baglantisi kapatildi.
