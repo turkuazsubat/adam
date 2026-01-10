@@ -1420,3 +1420,74 @@ that match your environment. Please note that you may need to restart your runti
 2026-01-10 03:50:04,522 - INFO - memory - LTM Kaydi Basarili: fransa nedir
 2026-01-10 03:50:07,710 - INFO - modules.tts - 🗣️ Konuşuyor: son konuşma kalıcı hafızaya kaydedildi ✅
 2026-01-10 03:50:58,280 - INFO - memory - Veritabanı baglantisi kapatildi.
+2026-01-10 04:23:39,340 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2026-01-10 04:24:10,935 - INFO - memory - SQLite veritabanina baglandi: db/project.db
+2026-01-10 04:24:10,935 - INFO - memory - Veritabanı tablolari yuklendi.
+2026-01-10 04:24:10,939 - INFO - feedback - FeedbackManager başlatıldı.
+2026-01-10 04:24:10,939 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2026-01-10 04:24:10,944 - INFO - gui - GUI: Asistan başlatıldı.
+2026-01-10 04:24:10,952 - INFO - modules.tts - 📢 ADAM'ın Sesi (Glow-TTS) Hazırlanıyor...
+2026-01-10 04:24:10,952 - INFO - modules.tts - ⚙️ Model Yükleniyor... (Bu kez indirme yapmayacak)
+2026-01-10 04:24:15,473 - INFO - modules.tts - ✅ Ses Sistemi Devrede.
+2026-01-10 04:24:22,909 - INFO - modules.cache - 💾 CACHE SAVED: 'merhaba' önbelleğe alındı.
+2026-01-10 04:24:28,090 - INFO - modules.cache - ⚡ CACHE HIT: Cevap önbellekten getirildi ('merhaba')
+2026-01-10 04:24:42,269 - INFO - modules.cache - ⚡ CACHE HIT: Cevap önbellekten getirildi ('merhaba')
+2026-01-10 04:25:10,940 - INFO - response - Hafizada bulunamadi, API'ye gidiliyor...
+2026-01-10 04:25:10,941 - INFO - retriever - Internet Aramasi: urfa nedir
+2026-01-10 04:25:10,941 - INFO - retriever - Temizlenmis Ozne: Urfa
+2026-01-10 04:25:12,484 - INFO - retriever - OpenSearch Eslesmesi: Urfa
+2026-01-10 04:25:12,965 - INFO - response - Veri mBART ve Profil ile isleniyor...
+2026-01-10 04:25:19,845 - INFO - modules.cache - 💾 CACHE SAVED: 'urfa nedir' önbelleğe alındı.
+2026-01-10 04:27:00,243 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2026-01-10 04:27:24,449 - INFO - memory - SQLite veritabanina baglandi: db/project.db
+2026-01-10 04:27:24,449 - INFO - memory - Veritabanı tablolari yuklendi.
+2026-01-10 04:27:24,453 - INFO - feedback - FeedbackManager başlatıldı.
+2026-01-10 04:27:24,453 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2026-01-10 04:27:24,455 - INFO - gui - GUI: Asistan başlatıldı.
+2026-01-10 04:27:24,480 - INFO - modules.tts - 📢 ADAM'ın Sesi (Glow-TTS) Hazırlanıyor...
+2026-01-10 04:27:24,480 - INFO - modules.tts - ⚙️ Model Yükleniyor... (Bu kez indirme yapmayacak)
+2026-01-10 04:27:28,189 - INFO - modules.tts - ✅ Ses Sistemi Devrede.
+2026-01-10 04:45:59,979 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2026-01-10 04:46:19,785 - INFO - memory - SQLite veritabanina baglandi: db/project.db
+2026-01-10 04:46:19,787 - INFO - memory - Veritabanı tablolari yuklendi.
+2026-01-10 04:46:19,789 - INFO - feedback - FeedbackManager başlatıldı.
+2026-01-10 04:46:19,789 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2026-01-10 04:46:19,791 - INFO - gui - GUI: Asistan başlatıldı.
+2026-01-10 04:46:19,809 - INFO - modules.tts - 📢 ADAM'ın Sesi (Glow-TTS) Hazırlanıyor...
+2026-01-10 04:46:19,811 - INFO - modules.tts - ⚙️ Model Yükleniyor... (Bu kez indirme yapmayacak)
+2026-01-10 04:46:24,314 - INFO - modules.tts - ✅ Ses Sistemi Devrede.
+2026-01-10 04:52:00,334 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2026-01-10 04:52:28,056 - INFO - apscheduler.scheduler - Scheduler started
+2026-01-10 04:52:28,153 - INFO - memory - SQLite veritabanina baglandi: db/project.db
+2026-01-10 04:52:28,155 - INFO - memory - Veritabanı tablolari yuklendi.
+2026-01-10 04:52:28,155 - INFO - feedback - FeedbackManager başlatıldı.
+2026-01-10 04:52:28,157 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2026-01-10 04:52:28,161 - INFO - gui - GUI: Asistan başlatıldı.
+2026-01-10 04:52:28,163 - INFO - memory - SQLite veritabanina baglandi: db/project.db
+2026-01-10 04:52:28,166 - INFO - memory - Veritabanı tablolari yuklendi.
+2026-01-10 04:52:28,166 - INFO - feedback - FeedbackManager başlatıldı.
+2026-01-10 04:52:28,168 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2026-01-10 04:52:28,171 - INFO - gui - GUI: Asistan başlatıldı.
+2026-01-10 04:52:28,188 - INFO - modules.tts - 📢 ADAM'ın Sesi (Glow-TTS) Hazırlanıyor...
+2026-01-10 04:52:28,188 - INFO - modules.tts - 📢 ADAM'ın Sesi (Glow-TTS) Hazırlanıyor...
+2026-01-10 04:52:28,188 - INFO - modules.tts - ⚙️ Model Yükleniyor... (Bu kez indirme yapmayacak)
+2026-01-10 04:52:28,188 - INFO - modules.tts - ⚙️ Model Yükleniyor... (Bu kez indirme yapmayacak)
+2026-01-10 04:52:32,879 - INFO - modules.tts - ✅ Ses Sistemi Devrede.
+2026-01-10 04:52:33,114 - INFO - modules.tts - ✅ Ses Sistemi Devrede.
+2026-01-10 04:52:38,608 - INFO - apscheduler.scheduler - Added job "TimeMaster.trigger_alarm" to job store "default"
+2026-01-10 04:52:43,609 - INFO - apscheduler.executors.default - Running job "TimeMaster.trigger_alarm (trigger: date[2026-01-10 04:52:43 +03], next run at: 2026-01-10 04:52:43 +03)" (scheduled at 2026-01-10 04:52:43.606837+03:00)
+2026-01-10 04:52:43,610 - INFO - apscheduler.scheduler - Removed job reminder_1768009958.606837
+2026-01-10 04:52:43,637 - INFO - apscheduler.executors.default - Job "TimeMaster.trigger_alarm (trigger: date[2026-01-10 04:52:43 +03], next run at: 2026-01-10 04:52:43 +03)" executed successfully
+2026-01-10 04:52:43,639 - INFO - modules.tts - 🗣️ Konuşuyor: ⏰ hatirlatma: çayını unutma
+2026-01-10 04:55:52,306 - INFO - semantic_engine - Semantik Model Yüklendi: paraphrase-multilingual-MiniLM-L12-v2
+2026-01-10 04:56:18,806 - INFO - apscheduler.scheduler - Scheduler started
+2026-01-10 04:56:20,308 - INFO - memory - SQLite veritabanina baglandi: db/project.db
+2026-01-10 04:56:20,308 - INFO - memory - Veritabanı tablolari yuklendi.
+2026-01-10 04:56:20,313 - INFO - feedback - FeedbackManager başlatıldı.
+2026-01-10 04:56:20,314 - INFO - tool_manager - ToolManager başlatıldı ve araçlar yüklendi.
+2026-01-10 04:56:20,337 - INFO - gui - GUI: Asistan başlatıldı.
+2026-01-10 04:56:20,377 - INFO - modules.tts - 📢 ADAM'ın Sesi (Glow-TTS) Hazırlanıyor...
+2026-01-10 04:56:20,377 - INFO - modules.tts - ⚙️ Model Yükleniyor... (Bu kez indirme yapmayacak)
+2026-01-10 04:56:23,764 - INFO - modules.tts - ✅ Ses Sistemi Devrede.
+2026-01-10 04:56:52,060 - INFO - memory - Veritabanı baglantisi kapatildi.
+2026-01-10 04:56:52,060 - INFO - apscheduler.scheduler - Scheduler has been shut down

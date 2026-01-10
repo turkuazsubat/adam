@@ -2,6 +2,7 @@ from nlu import interpret_text
 from retriever import retrieve_info # Adı artık retriever.py
 from semantic_engine import SemanticEngine # Yeni: Semantic Beyin
 from generator import LocalGenerator #Hafta11
+from modules.cache import CacheManager # --- HAFTA 15: CACHING ---
 import re
 import logging
 from logger import log_event
@@ -14,6 +15,15 @@ try:
 except Exception as e:
     log_event("CRITICAL", f"Semantic Engine Baslatilamadi: {e}", "response")
     semantic_brain = None
+
+# --- HAFTA 15: CACHE MANAGER BAŞLATMA ---
+try:
+    print("Cache Manager (Onbellek) yukleniyor...")
+    cache_manager = CacheManager()
+except Exception as e:
+    log_event("ERROR", f"Cache Manager Baslatilamadi: {e}", "response")
+    cache_manager = None
+# ----------------------------------------
 
 def build_dynamic_instruction(memory):
     """
@@ -43,9 +53,18 @@ except Exception as e:
 def generate_response(user_input: str, memory, tool_manager) -> str: # Hafta5: tool_manager
     """
     Kullanıcı girdisini analiz eder ve cevabı oluşturur.
-    Akış: NLU -> (Komut / Sorgu / Sohbet) -> (LTM Exact -> LTM Semantic -> API)
+    Akış: Cache -> NLU -> (Komut / Sorgu / Sohbet) -> (LTM Exact -> LTM Semantic -> API)
     """
     try:
+        # --- HAFTA 15: HIZLI CACHE KONTROLÜ ---
+        # NLU ve LLM gibi ağır işlemlere girmeden önce hafızaya bakıyoruz.
+        if cache_manager:
+            cached_resp = cache_manager.get_cached_response(user_input)
+            if cached_resp:
+                # Cache'den geliyorsa direkt dön
+                return f"{cached_resp}" # (Opsiyonel: Sonuna '⚡' eklenebilir ama sadelik için eklemedim)
+        # --------------------------------------
+
         # 1. NLU Analizi
         analysis = interpret_text(user_input)
         intent = analysis["intent"]
@@ -108,8 +127,6 @@ def generate_response(user_input: str, memory, tool_manager) -> str: # Hafta5: t
                         # memory.save_interaction(user_input, final_output) # İsteğe bağlı
                         return final_output
 
-                
-
                 # Not: Komutların sonucunu interactions'a kaydedebiliriz
                 # memory.save_interaction(user_input, result) 
                 # Launcher veya Note gibi araçlar için direkt sonucu dön
@@ -146,6 +163,10 @@ def generate_response(user_input: str, memory, tool_manager) -> str: # Hafta5: t
             if exact_match:
                 log_event("INFO", "Cevap LTM'den (Tam Eslesme) dondu.", "response")
                 memory.save_interaction(user_input, exact_match)
+                
+                # --- HAFTA 15: CACHE KAYIT ---
+                if cache_manager: cache_manager.save_to_cache(user_input, f"{exact_match} (Hafızadan)")
+                # -----------------------------
                 return f"{exact_match} (Hafızadan)"
             
             # ADIM B: Semantik Arama (Semantic Match) - Akıllı Hafıza (Hafta 9)
@@ -168,7 +189,10 @@ def generate_response(user_input: str, memory, tool_manager) -> str: # Hafta5: t
                         
                         # Çok yüksek benzerlik: Direkt kabul et
                         if score >= 0.82:
-                            return f"{best_match}\n\n*(Hafıza Skoru: %{int(score*100)})*"
+                            response_text = f"{best_match}\n\n*(Hafıza Skoru: %{int(score*100)})*"
+                            # --- HAFTA 15: CACHE KAYIT ---
+                            if cache_manager: cache_manager.save_to_cache(user_input, response_text)
+                            return response_text
                         
                         # Gri Bölge (Şüpheli): Kelime Kontrolü Yap
                         elif score >= 0.65:
@@ -183,13 +207,17 @@ def generate_response(user_input: str, memory, tool_manager) -> str: # Hafta5: t
                             # KURAL: Eğer soruda Özel İsim (Mersin) varsa, bulduğumuz cevapta da KESİN OLMALI.
                             if proper_nouns:
                                 if any(noun in best_match for noun in proper_nouns):
-                                     return f"{best_match}\n\n*(Anlamsal Hafıza - Entity Match: %{int(score*100)})*"
+                                     response_text = f"{best_match}\n\n*(Anlamsal Hafıza - Entity Match: %{int(score*100)})*"
+                                     if cache_manager: cache_manager.save_to_cache(user_input, response_text)
+                                     return response_text
                                 else:
-                                    log_event("INFO", f"Skor yetiyor ({score}) ama Ozel Isim ({proper_nouns}) tutmadi.", "response")
+                                     log_event("INFO", f"Skor yetiyor ({score}) ama Ozel Isim ({proper_nouns}) tutmadi.", "response")
                             
                             # Özel isim yoksa, önemli kelimelerden biri tutuyor mu?
                             elif any(w in best_match.lower() for w in important_words):
-                                return f"{best_match}\n\n*(Anlamsal Hafıza: %{int(score*100)})*"
+                                response_text = f"{best_match}\n\n*(Anlamsal Hafıza: %{int(score*100)})*"
+                                if cache_manager: cache_manager.save_to_cache(user_input, response_text)
+                                return response_text
                                 
                 except Exception as e:
                     log_event("ERROR", f"Semantik Arama Hatasi: {e}", "response")
@@ -229,10 +257,17 @@ def generate_response(user_input: str, memory, tool_manager) -> str: # Hafta5: t
                 
                 final_output = f"{processed_response}\n\n*(Profilinize göre mBART tarafından özetlendi)*"
                 memory.save_interaction(user_input, final_output)
+                
+                # --- HAFTA 15: CACHE KAYIT ---
+                if cache_manager: cache_manager.save_to_cache(user_input, final_output)
+                # -----------------------------
                 return final_output
             
             else:
                 memory.save_interaction(user_input, raw_result)
+                # --- HAFTA 15: CACHE KAYIT (API Ham Cevap) ---
+                if cache_manager: cache_manager.save_to_cache(user_input, raw_result)
+                # ---------------------------------------------
                 return raw_result
             
         # --- HAFTA 13: NİYET AYRIMI - KİŞİSEL SOHBET VE PASİF GÖZLEMCİ ---
@@ -273,6 +308,10 @@ def generate_response(user_input: str, memory, tool_manager) -> str: # Hafta5: t
 
             response_text = "Bunu öğrendiğim iyi oldu Yavuz, notlarımı aldım."
             memory.save_interaction(user_input, response_text)
+            
+            # --- HAFTA 15: CACHE KAYIT ---
+            if cache_manager: cache_manager.save_to_cache(user_input, response_text)
+            # -----------------------------
             return response_text
 
         # ---------------------------------------------------------
@@ -281,11 +320,15 @@ def generate_response(user_input: str, memory, tool_manager) -> str: # Hafta5: t
         elif "merhaba" in user_input.lower():
             response_text = "Merhaba! Size nasıl yardımcı olabilirim?"
             memory.save_interaction(user_input, response_text)
+            # --- HAFTA 15: CACHE KAYIT ---
+            if cache_manager: cache_manager.save_to_cache(user_input, response_text)
             return response_text
 
         elif "nasılsın" in user_input.lower():
             response_text = "İyiyim, teşekkür ederim. Hafızam ve Semantik motorum aktif."
             memory.save_interaction(user_input, response_text)
+            # --- HAFTA 15: CACHE KAYIT ---
+            if cache_manager: cache_manager.save_to_cache(user_input, response_text)
             return response_text
 
         # ---------------------------------------------------------
@@ -298,6 +341,10 @@ def generate_response(user_input: str, memory, tool_manager) -> str: # Hafta5: t
             result = retrieve_info(user_input, memory)
             
             memory.save_interaction(user_input, result)
+            
+            # --- HAFTA 15: CACHE KAYIT ---
+            if cache_manager: cache_manager.save_to_cache(user_input, result)
+            # -----------------------------
             return result
             
     except Exception as e:

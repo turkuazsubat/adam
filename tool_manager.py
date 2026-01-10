@@ -5,10 +5,10 @@ from tools.todo_tool import add_todo, list_todos #Hatfa 6 todo aracını import 
 from tools.launcher_tool import launch_app
 from tools.clipboard_tool import read_clipboard
 from tools.document_tool import read_pdf
-
+# HAFTA 15: GÖRME YETİSİ (OCR)
+from modules.vision import VisionSystem 
 
 logger = logging.getLogger(__name__)
-
 
 class ToolManager:
     '''
@@ -17,6 +17,10 @@ class ToolManager:
     '''
 
     def __init__(self):
+        # HAFTA 15: Vision (Göz) Modülünü Başlat
+        # (Sınıf örneğini burada oluşturuyoruz ki her seferinde yeniden yüklemesin)
+        self.vision = VisionSystem()
+
         #Araç kaydı: Hangi anahtar kelimenin hangi fonksiyonu tetikleyeceğimi eşleştirir
         #Bu yapı, gelecekte yeni araçlar eklememizi kolaylaştırır.
 
@@ -31,7 +35,10 @@ class ToolManager:
             #hafta14 masaüstü otomasyon ve okuma araçları
             "app_launcher":launch_app, #uygulama başlatıcı
             "clipboard_read":read_clipboard, #Pano Okuyucu
-            "pdf_reader": read_pdf #PDF Analizcisi
+            "pdf_reader": read_pdf, #PDF Analizcisi
+            
+            # HAFTA 15: GÖRÜNTÜ İŞLEME
+            "ocr_read": self.vision.read_from_clipboard # OCR (Ekran Okuma) Aracı
         }
 
         # 'find_tool_for_command' fonksiyonuna artık gerek kalmadı,
@@ -66,6 +73,7 @@ class ToolManager:
             else:
                 # [WEEK 14 NOTU]: read_clipboard gibi bazı araçlar payload olmasa bile çalışabilir,
                 # bu yapı o esnekliği zaten sağlıyor.
+                # [WEEK 15 NOTU]: ocr_read de argümansız çalışır, buraya düşer.
                 result = tool_function()
                 
             return result

@@ -1,6 +1,14 @@
 import spacy
 import re # Düzenli ifadeler için gerekli
-nlp = spacy.load("en_core_web_sm") 
+
+# Model yükleme
+try:
+    nlp = spacy.load("en_core_web_sm") 
+except:
+    # Eğer model yoksa hata vermesin, basic çalışsın
+    import sys
+    print("Spacy modeli bulunamadı, 'python -m spacy download en_core_web_sm' yapmalısın.")
+    nlp = lambda x: x # Dummy
 
 def clean_payload(text: str, triggers: list) -> str:
     text_lower = text.lower().strip()
@@ -13,9 +21,15 @@ def clean_payload(text: str, triggers: list) -> str:
     return text
 
 def interpret_text(text: str):
-    doc = nlp(text)
-    keywords = [token.lemma_.lower() for token in doc if token.is_alpha]
-    entities = [(ent.text, ent.label_) for ent in doc.ents]
+    # Dummy nlp kontrolü
+    if hasattr(nlp, "pipe"): 
+        doc = nlp(text)
+        keywords = [token.lemma_.lower() for token in doc if token.is_alpha]
+        entities = [(ent.text, ent.label_) for ent in doc.ents]
+    else:
+        # Spacy yoksa manuel basit split
+        keywords = text.lower().split()
+        entities = []
     
     raw_text = text
     text_lower = text.lower().strip()
@@ -132,8 +146,19 @@ def interpret_text(text: str):
                 "tool_key": "pdf_reader", #tools/document_tool.py
                 "payload":filename,
                 "keywords":keywords, "entities":entities
-
             }
+
+    # --- HAFTA 15: OCR / GÖRÜNTÜ OKUMA ---
+    # "Resmi oku", "Ekranı oku", "OCR yap"
+    ocr_triggers = ["resmi oku", "ekranı oku", "görüntüyü oku", "ocr"]
+    if any(trig in text_lower for trig in ocr_triggers):
+        return {
+            "intent": "command",
+            "tool_key": "ocr_read", # ToolManager'da tanımladığımız vision.py
+            "payload": None, # Panodaki resmi okuyacağı için payload yok
+            "keywords": keywords, "entities": entities
+        }
+    # -------------------------------------
 
     # --- ESKİ MANTIK DEVAM EDİYOR ---
     if raw_text.startswith("!"):

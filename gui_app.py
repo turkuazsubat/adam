@@ -23,6 +23,10 @@ except ImportError as e:
     VOICE_AVAILABLE = False
 # ------------------------
 
+# --- HAFTA 15: ZAMANLAYICI MODÜLÜ ---
+from modules.scheduler_module import TimeMaster 
+# ------------------------------------
+
 # Sabitler
 DB_PATH = "db/project.db"
 SCHEMA_PATH = "db_schema.sql"
@@ -30,7 +34,7 @@ SCHEMA_PATH = "db_schema.sql"
 class ProjectXGUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Proje X Asistanı (v14.5 - Voice)")
+        self.root.title("Proje X Asistanı (v15 - Time & Vision)")
         self.root.geometry("600x750")
         
         # --- Durum Yönetimi ---
@@ -42,6 +46,11 @@ class ProjectXGUI:
         self.tts = None
         self.stt = None
         
+        # --- HAFTA 15: ZAMANLAYICI ---
+        # Zamanı gelince 'self.incoming_notification' fonksiyonunu çalıştıracak
+        self.scheduler = TimeMaster(self.incoming_notification)
+        # -----------------------------
+
         self.setup_ui()
         
         # Renk ve Font Ayarları
@@ -51,9 +60,10 @@ class ProjectXGUI:
         self.chat_display.tag_config("info", foreground="gray", justify="center")
         self.chat_display.tag_config('thinking', foreground='orange', justify='left')
 
-        # Backend Başlatma
+        # Backend Başlatma (DÜZELTME: Buradaki çift çağırma silindi, sadece bir tane var)
         self.append_message("Sistem", "Beyin modülleri yükleniyor..", "info")
         self.root.after(100, self.init_backend)
+
 
     def setup_ui(self):
         '''Pencere elemanları (Widget) yerleştirir.'''
@@ -227,7 +237,17 @@ class ProjectXGUI:
         """YENİ: Mavi linke tıklanınca metni okur."""
         if self.tts:
             threading.Thread(target=self.tts.speak, args=(text,), daemon=True).start()
-    # -------------------------------------------------------
+    
+    # --- HAFTA 15: ZAMANLAYICI TETİKLEYİCİSİ ---
+    def incoming_notification(self, message):
+        """Scheduler arka plandan bunu tetikler."""
+        # Thread güvenliği için root.after kullanıyoruz
+        self.root.after(0, lambda: self.append_message("Asistan", message, "bot"))
+        
+        # DÜZELTME: Otomatik konuşma kapatıldı. Sadece ekranda buton çıkacak.
+        # if self.tts:
+        #    self.root.after(0, lambda: self.manual_speak(message))
+    # --------------------------------------------
 
     def send_message(self, event=None):
         '''Kullanıcı mesajını alır, temizler ve işler.'''
@@ -247,6 +267,7 @@ class ProjectXGUI:
         if user_input.lower() in ["çık", "exit", "quit"]:
             self.append_message("Sistem", "Kapatılıyor...", 'system')
             self.memory.close() 
+            if self.scheduler: self.scheduler.shutdown() # Zamanlayıcıyı kapat
             self.root.destroy() 
             return "break"
         
@@ -294,6 +315,22 @@ class ProjectXGUI:
                             response = "Kaydetme sırasında bir veritabanı hatası oluştu."
                     else:
                         response = "Hafızada kaydedilecek önceki bir konuşma bulunamadı." 
+                
+                # --- HAFTA 15: ALARM TEST KOMUTU ---
+                elif command.startswith("!alarm"):
+                    try:
+                        # !alarm 5 mesaj -> parçala
+                        parts = command.split(" ", 2)
+                        if len(parts) < 3:
+                            response = "Hata: !alarm [saniye] [mesaj] şeklinde yazmalısın."
+                        else:
+                            seconds = int(parts[1])
+                            note = parts[2]
+                            response = self.scheduler.set_reminder(note, seconds)
+                    except ValueError:
+                        response = "Hata: Saniye sayı olmalı."
+                # -----------------------------------
+
                 else:
                     response = self.feedback_manager.handle_command(user_input)
 
@@ -345,7 +382,7 @@ class ProjectXGUI:
         self.chat_display.insert("end", header, tag)
         self.chat_display.insert("end", str(message) + "\n", tag)
         
-        # --- İSTEĞE BAĞLI OKUMA BUTONU (Sadece Asistan İçin) ---
+        # --- İSTEĞE BAĞLI OKUMA BUTONU (Sadece Asistan ve Alarmlar İçin) ---
         if sender == "Asistan" and not is_temp and self.tts:
             # Küçük, mavi, link görünümlü bir etiket oluştur
             lbl = tk.Label(
